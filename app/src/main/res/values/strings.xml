@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">DoAnThucTap</string>
+    <string name="application_slogan">Mua hết ở Wa-hoo</string>
+    <string name="login">Đăng nhập</string>
+    <string name="application_avatar">Ảnh đại diện ứng dụng</string>
+    <string name="email">E-mail</string>
+    <string name="password">Mật khẩu</string>
+    <string name="greetings">Welcome</string>
+    <string name="welcome_back">Welcome back,</string>
+    <string name="enter_email_and_password_to_login"><![CDATA[Nhập email & mật khẩu để đăng nhập]]></string>
+    <string name="username">phongkaster@gmail.com</string>
+    <string name="forget_password">Quên mật khẩu ?</string>
+    <string name="or">Hoặc</string>
+    <string name="does_have_an_account">Chưa có tài khoản</string>
+    <string name="create_account">Tạo mới tài khoản</string>
+    <string name="loading">Loading...</string>
+</resources>

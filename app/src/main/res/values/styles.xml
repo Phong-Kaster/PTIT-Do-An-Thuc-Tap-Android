@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="text_view_color_theme_style">
+        <item name="android:textColor">@color/colorTheme</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_view_color_normal_style">
+        <item name="android:textColor">@color/colorTextBlack</item>
+    </style>
+
+    <style name="input_style">
+        <item name="android:background">@drawable/input_style</item>
+        <item name="android:drawablePadding">20dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">20dp</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="button_style">
+        <item name="android:layout_width">247dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">@drawable/button_style_state</item>
+        <item name="android:textColor">@drawable/button_text_color_style_state</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>
