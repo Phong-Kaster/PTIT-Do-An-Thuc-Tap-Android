@@ -5,6 +5,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -13,6 +14,8 @@ import android.widget.Toast;
 
 import com.example.doanthuctap.R;
 import com.example.doanthuctap.container.LoginResponse;
+import com.example.doanthuctap.helper.Dialog;
+import com.example.doanthuctap.helper.GlobalVariable;
 import com.example.doanthuctap.helper.LoadingScreen;
 import com.example.doanthuctap.model.User;
 import com.example.doanthuctap.viewModel.authentication.LoginViewModel;
@@ -27,7 +30,11 @@ public class LoginActivity extends AppCompatActivity {
     private AppCompatButton btnLogin;
 
     private LoginViewModel viewModel;
+
     private LoadingScreen loadingScreen;
+    private GlobalVariable globalVariable;
+    private Dialog dialog;
+    private SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,33 +57,56 @@ public class LoginActivity extends AppCompatActivity {
         btnGoogleLogin = findViewById(R.id.btnGoogleLogin);
         btnFacebookLogin = findViewById(R.id.btnFacebookLogin);
         btnLogin = findViewById(R.id.btnLogin);
+
+
         loadingScreen = new LoadingScreen(this);
+        globalVariable = (GlobalVariable) this.getApplication();
+        dialog = new Dialog(this);
+        sharedPreferences = this.getApplication()
+                .getSharedPreferences(globalVariable.getSharedReferenceKey(), MODE_PRIVATE);
     }
 
 
     /**
      * @author Phong-Kaster
-     * set up login view model
+     * set up view model
      */
     private void setupViewModel(){
         viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
-        viewModel.getAnimation().observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if( aBoolean ){
-                    loadingScreen.start();
-                }
-                else{
-                    loadingScreen.stop();
-                }
+        viewModel.getAnimation().observe(this, aBoolean -> {
+            if( aBoolean ){
+                loadingScreen.start();
+            }
+            else{
+                loadingScreen.stop();
             }
         });
-        viewModel.getObjects().observe(this, new Observer<LoginResponse>() {
-            @Override
-            public void onChanged(LoginResponse loginResponse) {
+        viewModel.getObjects().observe(this, loginResponse -> {
+            int result = loginResponse.getResult();
+            if( result == 1)
+            {
+                /*Lay du lieu tu API ra*/
+                String token = loginResponse.getAccessToken();
                 User user = loginResponse.getData();
-                Toast.makeText(LoginActivity.this,"Ciao " + user.getFirstName(), Toast.LENGTH_SHORT).show();
+
+                /*Lay du lieu vao Global Variable*/
+                globalVariable.setAccessToken( "JWT " + token );
+                globalVariable.setAuthUser(user);
+
+                /*luu accessToken vao Shared Reference*/
+                sharedPreferences.edit().putString("accessToken", "JWT " + token.trim()).apply();
+
+                /*hien thi thong bao la dang nhap thanh cong*/
+                Toast.makeText(this, getString(R.string.login_successfully), Toast.LENGTH_SHORT).show();
             }
+            else{
+                dialog.announce();
+                dialog.show(getString(R.string.attention),
+                        getString(R.string.oops_there_is_an_issue),
+                        R.drawable.ic_close);
+                dialog.btnOK.setOnClickListener(view->dialog.close());
+            }
+
         });
     }
 
@@ -93,10 +123,15 @@ public class LoginActivity extends AppCompatActivity {
             viewModel.login(username, password);
         });
 
-        txtForgotPassword.setOnClickListener(view-> Toast.makeText(this,"Tính năng đang được phát triển", Toast.LENGTH_SHORT).show());
+        txtForgotPassword.setOnClickListener(view-> {
+            Toast.makeText(this,"Tính năng đang được phát triển", Toast.LENGTH_SHORT).show();
+        });
 
-        btnGoogleLogin.setOnClickListener(view-> Toast.makeText(this,"Tính năng đang được phát triển", Toast.LENGTH_SHORT).show());
+        btnGoogleLogin.setOnClickListener(view->
+                Toast.makeText(this,"Tính năng đang được phát triển", Toast.LENGTH_SHORT).show());
 
-        btnFacebookLogin.setOnClickListener(view-> Toast.makeText(this,"Tính năng đang được phát triển", Toast.LENGTH_SHORT).show());
+        btnFacebookLogin.setOnClickListener(view->
+                Toast.makeText(this,"Tính năng đang được phát triển", Toast.LENGTH_SHORT).show());
     }
+
 }

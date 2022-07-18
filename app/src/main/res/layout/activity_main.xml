@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/application_slogan"
-        android:textColor="@color/colorTextWhite"
+        android:textColor="@color/white"
         android:textStyle="bold"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

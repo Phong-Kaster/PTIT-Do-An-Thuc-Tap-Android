@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.search.SearchActivity">
+
+    <LinearLayout
+        android:background="@color/colorTheme"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageButton
+            android:id="@+id/searchActivityButtonGoBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/background_button_back"
+            android:src="@drawable/ic_arrow_back"
+            tools:ignore="ContentDescription" />
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent"/>
+
+        <EditText
+            android:drawableStart="@drawable/ic_search"
+            android:textSize="10sp"
+            android:textColor="@color/colorTextBlack"
+            android:background="@drawable/background_rounded_corner"
+            android:hint="@string/what_do_you_want_to_search_today"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            tools:ignore="SmallSp" />
+
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="match_parent"/>
+        <ImageButton
+            android:id="@+id/searchActivityButtonCart"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/background_button_back"
+            android:src="@drawable/ic_cart_baseline"
+            tools:ignore="ContentDescription" />
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent"/>
+
+        <ImageButton
+            android:id="@+id/searchActivityButtonFilter"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/background_button_back"
+            android:src="@drawable/ic_filter"
+            tools:ignore="ContentDescription" />
+
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:paddingTop="10dp"
+        android:paddingStart="25dp"
+        android:id="@+id/searchActivityRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="RtlSymmetry" />
+
+</LinearLayout>

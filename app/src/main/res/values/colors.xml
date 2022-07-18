@@ -20,4 +20,17 @@
     <color name="colorInputBackground">#ECEEF0</color>
     <color name="colorTransparentWhite">#cccccc</color>
     <color name="colorIconBackground">#F9FAFB</color>
+
+    <color name="colorBottomNavigationMenu">@color/white</color>
+    <color name="colorButtomNavigationMenuPressed">#1D3A70</color>
+    <color name="colorButtomNavigationMenuEnable">#8D8F97</color>
+
+
+    <color name="colorRed">#FC0303</color>
+    <color name="colorGreen">#43A047</color>
+    <color name="colorYellow">#fb3</color>
+    <color name="colorBlue">#2196F3</color>
+    <color name="colorOrange">#FF5722</color>
+
+    <color name="colorBackgroundImageButton">#E5E7EB</color>
 </resources>

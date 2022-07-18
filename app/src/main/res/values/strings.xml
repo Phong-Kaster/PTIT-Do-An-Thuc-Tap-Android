@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">DoAnThucTap</string>
-    <string name="application_slogan">Mua hết ở Wa-hoo</string>
+    <string name="application_name">Wahoo</string>
+    <string name="application_slogan">Mua hết ở Wahoo</string>
     <string name="login">Đăng nhập</string>
     <string name="application_avatar">Ảnh đại diện ứng dụng</string>
     <string name="email">E-mail</string>
@@ -14,4 +15,30 @@
     <string name="does_have_an_account">Chưa có tài khoản</string>
     <string name="create_account">Tạo mới tài khoản</string>
     <string name="loading">Loading...</string>
+    <string name="ok">OK</string>
+    <string name="add_account_infor_successfully">Thêm thông tin tài khoản thành công!</string>
+    <string name="success">Success!</string>
+    <string name="cancel">Cancel</string>
+    <string name="attention">Chú ý</string>
+    <string name="login_successfully">Đăng nhập thành công</string>
+    <string name="oops_there_is_an_issue">Đã xảy ra sự cố, hãy thử lại</string>
+    <string name="home">Trang chủ</string>
+    <string name="category">Danh mục</string>
+    <string name="personality">Cá nhân</string>
+    <string name="cart">Giỏ hàng</string>
+    <string name="are_you_sure_about_that">Bạn có chắc chắn không ?</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="what_do_you_want_to_search_today">Hôm nay bạn muốn tìm gì ?</string>
+    <string name="gaming">Gaming</string>
+    <string name="student">Sinh viên</string>
+    <string name="office">Văn phòng</string>
+    <string name="graphic">Đồ họa</string>
+    <string name="what_does_we_have_today">Hôm nay có gì hot ?</string>
+    <string name="product_default_name">Asus ROG G512 RTX3070</string>
+    <string name="product_default_price">14.000.000 đ</string>
+    <string name="product_default_remaining">Còn: 10</string>
+    <string name="out_of_stock">Hết hàng</string>
+    <string name="lightweight">Mỏng nhẹ</string>
+    <string name="filter">Lọc</string>
 </resources>

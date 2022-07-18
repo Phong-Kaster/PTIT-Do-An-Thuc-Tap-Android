@@ -43,7 +43,6 @@ public class LoginViewModel extends ViewModel {
         Call<LoginResponse> container = api.login( username, password);
 
         /*Step 3*/
-        System.out.println("ALO");
         container.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse( Call<LoginResponse> call, Response<LoginResponse> response) {

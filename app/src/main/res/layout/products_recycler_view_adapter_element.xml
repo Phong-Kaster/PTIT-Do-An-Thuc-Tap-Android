@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/productLayout"
+    android:padding="3dp"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/productAvatar"
+        android:layout_width="150dp"
+        android:layout_height="160dp"
+        android:layout_gravity="start"
+        android:src="@drawable/product_default_avatar" />
+
+    <TextView
+        android:id="@+id/productName"
+        android:layout_gravity="center"
+        android:gravity="start"
+        android:textSize="10sp"
+        android:textColor="@color/colorTextBlack"
+        android:text="@string/product_default_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="SmallSp" />
+
+
+
+    <TextView
+        android:id="@+id/productPrice"
+        android:textColor="@color/colorRed"
+        android:textSize="8sp"
+        android:text="@string/product_default_price"
+        android:layout_gravity="start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:textSize="6sp"
+        android:gravity="start"
+        android:id="@+id/productRemaining"
+        android:text="@string/product_default_remaining"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="SmallSp" />
+</LinearLayout>

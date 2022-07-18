@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorTheme"
+    android:orientation="vertical"
+    tools:context=".activity.home.HomeFragment">
+
+    <!-- APPLICATION NAME & BUTTON CART | PERSONALITY -->
+    <LinearLayout
+        android:paddingTop="40dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="RtlSymmetry">
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_gravity="start"
+            android:paddingStart="30dp"
+            android:text="@string/application_name"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:ignore="RtlSymmetry" />
+
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnCart"
+            android:background="@drawable/background_image_button"
+            android:src="@drawable/ic_cart_baseline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Space
+            android:layout_width="15dp"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:layout_marginEnd="20dp"
+            android:id="@+id/btnPersonality"
+            android:background="@drawable/background_image_button"
+            android:src="@drawable/ic_personality_baseline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <!--SEARCH VIEW-->
+
+
+    <!--SLIDER-->
+<!--    <androidx.appcompat.widget.SearchView-->
+<!--        android:theme="@style/SearchViewStyle"-->
+<!--        android:id="@+id/homeFragmentSearchView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="20dp"-->
+<!--        android:background="@drawable/background_rounded_corner"-->
+<!--        android:focusable="false"-->
+<!--        android:iconifiedByDefault="false"-->
+<!--        android:paddingStart="10dp"-->
+<!--        app:defaultQueryHint="@string/what_do_you_want_to_search_today"-->
+<!--        app:iconifiedByDefault="false"-->
+<!--        tools:ignore="RtlSymmetry" />-->
+
+    <EditText
+        android:id="@+id/homeFragmentSearchView"
+        android:drawableStart="@drawable/ic_search"
+        android:hint="@string/what_do_you_want_to_search_today"
+        android:textSize="12sp"
+        android:padding="10sp"
+        android:focusable="false"
+        android:layout_margin="20dp"
+        android:background="@drawable/background_rounded_corner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="RtlSymmetry" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/background_rounded_corner">
+
+                <!-- photo slider -->
+                <com.denzcoskun.imageslider.ImageSlider
+                    android:id="@+id/homeFragmentImageSlider"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:iss_auto_cycle="true"
+                    app:iss_delay="0"
+                    app:iss_period="3000"
+                    tools:ignore="MissingClass" />
+
+            </androidx.cardview.widget.CardView>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <!-- 5 COMMON DEMAND IN USE -->
+            <HorizontalScrollView
+                android:scrollbars="none"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/background_rounded_corner"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- GAMING -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageButton
+                            android:background="@drawable/background_button_gaming"
+                            android:src="@drawable/ic_game"
+                            style="@style/style_button_demand" />
+
+                        <TextView
+                            style="@style/style_text_view_demand_button"
+                            android:text="@string/gaming"
+                            tools:ignore="SmallSp" />
+
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent" />
+
+                    <!-- STUDENT -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageButton
+                            style="@style/style_button_demand"
+                            android:background="@drawable/background_button_student"
+                            android:src="@drawable/ic_student" />
+
+                        <TextView
+                            style="@style/style_text_view_demand_button"
+                            android:text="@string/student"
+                            tools:ignore="SmallSp" />
+
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent" />
+
+                    <!-- OFFICE -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageButton
+                            style="@style/style_button_demand"
+                            android:background="@drawable/background_button_office"
+                            android:src="@drawable/ic_business" />
+
+                        <TextView
+                            style="@style/style_text_view_demand_button"
+                            android:text="@string/office"
+                            tools:ignore="SmallSp" />
+
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent" />
+
+                    <!-- GRAPHIC -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageButton
+                            style="@style/style_button_demand"
+                            android:background="@drawable/background_button_graphic"
+                            android:src="@drawable/ic_graphic" />
+
+                        <TextView
+                            style="@style/style_text_view_demand_button"
+                            android:text="@string/graphic"
+                            tools:ignore="SmallSp" />
+
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent" />
+
+                    <!-- LIGHT-WEIGHT -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageButton
+                            style="@style/style_button_demand"
+                            android:background="@drawable/background_button_lightweight"
+                            android:src="@drawable/ic_lightweight" />
+
+                        <TextView
+                            style="@style/style_text_view_demand_button"
+                            android:text="@string/lightweight"
+                            tools:ignore="SmallSp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="25dp"
+                android:text="@string/what_does_we_have_today"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:ignore="RtlSymmetry" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/homeFragmentRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/background_rounded_corner"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>
