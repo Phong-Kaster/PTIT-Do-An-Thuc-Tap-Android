@@ -2,18 +2,20 @@ package com.example.doanthuctap.activity.home;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.MenuItem;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.doanthuctap.R;
 import com.example.doanthuctap.helper.Dialog;
+import com.example.doanthuctap.viewModel.home.HomeFragmentViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * this is the home activity of the application
@@ -28,6 +30,7 @@ public class HomeActivity extends AppCompatActivity {
     private Dialog dialog;
     private BottomNavigationView bottomNavigationView;
     private Fragment fragment = null;
+    private HomeFragmentViewModel homeFragmentViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,9 +62,7 @@ public class HomeActivity extends AppCompatActivity {
             super.onBackPressed();
             finish();
         });
-        dialog.btnCancel.setOnClickListener(view->{
-            dialog.close();
-        });
+        dialog.btnCancel.setOnClickListener(view-> dialog.close());
     }
 
     /**
@@ -74,33 +75,31 @@ public class HomeActivity extends AppCompatActivity {
 
     private void setupComponent(){
         bottomNavigationView = findViewById(R.id.bottomNavigationMenu);
+        homeFragmentViewModel = new ViewModelProvider(this).get(HomeFragmentViewModel.class);
     }
 
     @SuppressLint("NonConstantResourceId")
     private void setupEvent(){
         /*set up event when users click on item in bottom navigation view*/
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        bottomNavigationView.setOnItemSelectedListener(item -> {
 
-                switch (item.getItemId()){
-                    case R.id.shortcutHome:
-                        fragment = new HomeFragment();
-                        break;
-                    case R.id.shortcutCategory:
-                        fragment = new CategoryFragment();
-                        break;
-                    case R.id.shortcutCart:
-                        fragment = new CartFragment();
-                        break;
-                    case R.id.shortcutPersonality:
-                        fragment = new PersonalityFragment();
-                        break;
-                }
-
-                enableFragment(fragment);
-                return true;
+            switch (item.getItemId()){
+                case R.id.shortcutHome:
+                    fragment = new HomeFragment();
+                    break;
+                case R.id.shortcutCategory:
+                    fragment = new CategoryFragment();
+                    break;
+                case R.id.shortcutCart:
+                    fragment = new CartFragment();
+                    break;
+                case R.id.shortcutPersonality:
+                    fragment = new PersonalityFragment();
+                    break;
             }
+
+            enableFragment(fragment);
+            return true;
         });
     }
 
@@ -137,5 +136,10 @@ public class HomeActivity extends AppCompatActivity {
         /*Step 4*/
         transaction.replace(R.id.frameLayout, fragment, "myFragment");
         transaction.commit();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 }

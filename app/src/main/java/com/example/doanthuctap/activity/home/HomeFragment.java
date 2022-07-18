@@ -2,12 +2,15 @@ package com.example.doanthuctap.activity.home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
@@ -40,6 +43,15 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private LoadingScreen loadingScreen;
 
+    /*5 buttons when are pressed will send a corresponding keyword to search activity*/
+    private AppCompatImageButton buttonDemandGaming;
+    private AppCompatImageButton buttonDemandOffice;
+    private AppCompatImageButton buttonDemandDesign;
+    private AppCompatImageButton buttonDemandLightweight;
+    private AppCompatImageButton buttonDemandStudent;
+
+    private List<ProductClient> objects = new ArrayList<>();
+    private Map<String, String> parameters = new HashMap<>();
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +70,22 @@ public class HomeFragment extends Fragment {
         setupViewModel();
         setupScreen();
         setupEvent();
+
+
+
         return view;
+    }
+
+    /**
+     * @author Phong-Kaster
+     *
+     */
+    @Override
+    public void onResume() {
+        super.onResume();
+        //objects.clear();
+        viewModel.getProducts(parameters);
+
     }
 
     /**
@@ -72,6 +99,12 @@ public class HomeFragment extends Fragment {
         recyclerView = view.findViewById(R.id.homeFragmentRecyclerView);
 
         loadingScreen = new LoadingScreen(getActivity());
+
+        buttonDemandDesign = view.findViewById(R.id.homeFragmentButtonDesign);
+        buttonDemandGaming = view.findViewById(R.id.homeFragmentButtonGaming);
+        buttonDemandLightweight = view.findViewById(R.id.homeFragmentButtonLightweight);
+        buttonDemandOffice = view.findViewById(R.id.homeFragmentButtonOffice);
+        buttonDemandStudent = view.findViewById(R.id.homeFragmentButtonStudent);
     }
 
     private void setupViewModel(){
@@ -86,8 +119,9 @@ public class HomeFragment extends Fragment {
             int result = productsResponse.getResult();
 
             if( result == 1){
-                List<ProductClient> list = productsResponse.getData();
-                setupRecyclerView(list);
+                objects.clear();
+                objects.addAll( productsResponse.getData() );
+                setupRecyclerView(objects);
             }
             else{
                 Toast.makeText(requireContext(), getString(R.string.oops_there_is_an_issue), Toast.LENGTH_SHORT).show();
@@ -95,16 +129,16 @@ public class HomeFragment extends Fragment {
         });
 
         /*loading screen when data is being gotten*/
-        viewModel.getAnimation().observe((LifecycleOwner) requireContext(), aBoolean -> {
-            if( aBoolean )
-            {
-                loadingScreen.start();
-            }
-            else
-            {
-                loadingScreen.stop();
-            }
-        });
+//        viewModel.getAnimation().observe((LifecycleOwner) requireContext(), aBoolean -> {
+//            if( aBoolean )
+//            {
+//                loadingScreen.start();
+//            }
+//            else
+//            {
+//                loadingScreen.stop();
+//            }
+//        });
     }
 
     /**
@@ -133,6 +167,7 @@ public class HomeFragment extends Fragment {
         /*******************SEARCH VIEW*******************/
         searchView.setOnClickListener(view->{
             Intent intent = new Intent(requireActivity(), SearchActivity.class);
+            intent.putExtra("demand","");
             startActivity(intent);
             //requireActivity().finish();
         });
@@ -140,6 +175,36 @@ public class HomeFragment extends Fragment {
         /*******************IMAGE SLIDER*******************/
         imageSlider.setItemClickListener(i -> Toast.makeText(requireContext(), "Item " + i + " is selected", Toast.LENGTH_SHORT).show());
 
+        /******************* 5 DEMAND BUTTONS*******************/
+        buttonDemandLightweight.setOnClickListener(view -> {
+            Intent intent = new Intent(requireActivity(), SearchActivity.class);
+            intent.putExtra("demand", "lightweight");
+            startActivity(intent);
+        });
+
+        buttonDemandStudent.setOnClickListener(view -> {
+            Intent intent = new Intent(requireActivity(), SearchActivity.class);
+            intent.putExtra("demand", "student");
+            startActivity(intent);
+        });
+
+        buttonDemandOffice.setOnClickListener(view -> {
+            Intent intent = new Intent(requireActivity(), SearchActivity.class);
+            intent.putExtra("demand", "office");
+            startActivity(intent);
+        });
+
+        buttonDemandDesign.setOnClickListener(view -> {
+            Intent intent = new Intent(requireActivity(), SearchActivity.class);
+            intent.putExtra("demand", "design");
+            startActivity(intent);
+        });
+
+        buttonDemandGaming.setOnClickListener(view -> {
+            Intent intent = new Intent(requireActivity(), SearchActivity.class);
+            intent.putExtra("demand", "gaming");
+            startActivity(intent);
+        });
     }
 
 

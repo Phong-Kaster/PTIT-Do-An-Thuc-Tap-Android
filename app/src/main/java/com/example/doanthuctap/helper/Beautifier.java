@@ -53,7 +53,6 @@ public class Beautifier {
         int position = rand.nextInt(avatarMax - avatarMin + 1) + avatarMin;
 
         String output = avatars[position];
-        System.out.println("generateRandomAvatar position: " + position);
         return output;
     }
 }

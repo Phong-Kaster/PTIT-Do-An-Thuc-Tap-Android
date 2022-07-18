@@ -135,6 +135,7 @@
                         android:orientation="vertical">
 
                         <androidx.appcompat.widget.AppCompatImageButton
+                            android:id="@+id/homeFragmentButtonGaming"
                             android:background="@drawable/background_button_gaming"
                             android:src="@drawable/ic_game"
                             style="@style/style_button_demand" />
@@ -157,6 +158,7 @@
                         android:orientation="vertical">
 
                         <androidx.appcompat.widget.AppCompatImageButton
+                            android:id="@+id/homeFragmentButtonStudent"
                             style="@style/style_button_demand"
                             android:background="@drawable/background_button_student"
                             android:src="@drawable/ic_student" />
@@ -179,6 +181,7 @@
                         android:orientation="vertical">
 
                         <androidx.appcompat.widget.AppCompatImageButton
+                            android:id="@+id/homeFragmentButtonOffice"
                             style="@style/style_button_demand"
                             android:background="@drawable/background_button_office"
                             android:src="@drawable/ic_business" />
@@ -201,6 +204,7 @@
                         android:orientation="vertical">
 
                         <androidx.appcompat.widget.AppCompatImageButton
+                            android:id="@+id/homeFragmentButtonDesign"
                             style="@style/style_button_demand"
                             android:background="@drawable/background_button_graphic"
                             android:src="@drawable/ic_graphic" />
@@ -223,6 +227,7 @@
                         android:orientation="vertical">
 
                         <androidx.appcompat.widget.AppCompatImageButton
+                            android:id="@+id/homeFragmentButtonLightweight"
                             style="@style/style_button_demand"
                             android:background="@drawable/background_button_lightweight"
                             android:src="@drawable/ic_lightweight" />

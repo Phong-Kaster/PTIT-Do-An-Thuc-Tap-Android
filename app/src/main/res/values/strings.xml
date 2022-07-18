@@ -18,7 +18,7 @@
     <string name="ok">OK</string>
     <string name="add_account_infor_successfully">Thêm thông tin tài khoản thành công!</string>
     <string name="success">Success!</string>
-    <string name="cancel">Cancel</string>
+    <string name="cancel">Hủy bỏ</string>
     <string name="attention">Chú ý</string>
     <string name="login_successfully">Đăng nhập thành công</string>
     <string name="oops_there_is_an_issue">Đã xảy ra sự cố, hãy thử lại</string>
@@ -41,4 +41,23 @@
     <string name="out_of_stock">Hết hàng</string>
     <string name="lightweight">Mỏng nhẹ</string>
     <string name="filter">Lọc</string>
+    <string name="confirm">Xác nhận</string>
+    <string name="product_filter">Lọc sản phẩm</string>
+    <string name="complete">Hoàn tất</string>
+    <string name="manufacturer">Nhà sản xuất</string>
+    <string name="price">Giá</string>
+    <string name="screen_size">Kích thước màn hình</string>
+    <string name="cpu">CPU</string>
+    <string name="graphic_card">Card đồ họa</string>
+    <string name="demand">Nhu cầu</string>
+    <string name="priceFrom">Gía từ</string>
+    <string name="priceTo">Đến giá</string>
+    <string name="to">đến</string>
+    <string name="screen_size_13_inch">13 Inch</string>
+    <string name="screen_size_15_6_inch">15.6 Inch</string>
+    <string name="screen_size_14_inch">14 Inch</string>
+    <string name="screen_size_17_3_inch">17.3 Inch</string>
+    <string name="cpu_core_i3">Core i3</string>
+    <string name="cpu_core_i5">Core i5</string>
+    <string name="cpu_core_i7">Core i7</string>
 </resources>

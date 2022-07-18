@@ -58,7 +58,6 @@ public class ClientProductsRepository {
         Retrofit service = HTTPService.getInstance();
         HTTPRequest api = service.create(HTTPRequest.class);
 
-
         /*Step 2*/
         Call<ProductsResponse> container = api.getProducts(parameters);
 

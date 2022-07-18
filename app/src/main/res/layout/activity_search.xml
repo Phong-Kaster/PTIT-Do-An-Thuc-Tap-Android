@@ -25,9 +25,10 @@
             android:layout_width="10dp"
             android:layout_height="match_parent"/>
 
-        <EditText
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchActivitySearchView"
             android:drawableStart="@drawable/ic_search"
-            android:textSize="10sp"
+            android:textSize="8sp"
             android:textColor="@color/colorTextBlack"
             android:background="@drawable/background_rounded_corner"
             android:hint="@string/what_do_you_want_to_search_today"
