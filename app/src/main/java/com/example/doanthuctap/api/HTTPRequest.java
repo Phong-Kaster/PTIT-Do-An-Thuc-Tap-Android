@@ -1,6 +1,8 @@
 package com.example.doanthuctap.api;
 
+import com.example.doanthuctap.container.GetLatestOrderResponse;
 import com.example.doanthuctap.container.LoginResponse;
+import com.example.doanthuctap.container.ProductByIdResponse;
 import com.example.doanthuctap.container.ProductsResponse;
 import com.example.doanthuctap.container.ProfileResponse;
 import com.example.doanthuctap.container.TestResponse;
@@ -12,6 +14,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.HeaderMap;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
@@ -45,7 +48,16 @@ public interface HTTPRequest {
     @GET("products")
     Call<ProductsResponse> getProducts(@QueryMap Map<String, String> parameters);
 
+    @GET("products/{id}")
+    Call<ProductByIdResponse> getProductById(@Path("id") String id);
+
     @GET("test")
     Call<TestResponse> getTest();
 
+
+    /**
+     * get latest order with headers
+     */
+    @GET("orders/")
+    Call<GetLatestOrderResponse> getLatestOrder(@HeaderMap Map<String, String> headers);
 }

@@ -2,6 +2,7 @@ package com.example.doanthuctap.recyclerviewadapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.doanthuctap.R;
+import com.example.doanthuctap.activity.product.ProductInformationActivity;
 import com.example.doanthuctap.container.ProductsResponse;
 import com.example.doanthuctap.helper.Beautifier;
 import com.example.doanthuctap.model.ProductClient;
@@ -48,7 +50,7 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
 
         String avatar = product.getAvatar().length() > 0 ?
                 product.getAvatar() : context.getString(R.drawable.product_default_avatar);
-
+        int id = product.getId();
         String name =       Beautifier.shortenName(product.getName());
         String price =      Beautifier.formatNumber(product.getPrice()) + "đ";
         String remaining = product.getRemaining() > 0 ?
@@ -56,7 +58,7 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
                 context.getString(R.string.out_of_stock);
 
 //        holder.productAvatar.setBackgroundResource(R.drawable.product_default_avatar);
-
+        /*sau nay co server public thi se ko dung cai nay nua*/
         String temporaryAvatar = Beautifier.generateRandomAvatar();
 
         Picasso.get().load(temporaryAvatar).into(holder.productAvatar);
@@ -64,7 +66,11 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
         holder.productPrice.setText(price);
         holder.productRemaining.setText(remaining);
         holder.productLayout.setOnClickListener(view->{
-            Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(context, ProductInformationActivity.class);
+            intent.putExtra("productId", String.valueOf(id) );
+            /*gui kem cai anh dang load bang internet, sau nay co server public thi ko can nua*/
+            intent.putExtra("temporaryAvatar", temporaryAvatar);
+            context.startActivity(intent);
         });
     }
 

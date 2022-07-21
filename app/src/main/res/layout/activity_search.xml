@@ -17,6 +17,8 @@
             android:id="@+id/searchActivityButtonGoBack"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:minHeight="20dp"
+            android:minWidth="20dp"
             android:background="@drawable/background_button_back"
             android:src="@drawable/ic_arrow_back"
             tools:ignore="ContentDescription" />
@@ -28,6 +30,8 @@
         <androidx.appcompat.widget.SearchView
             android:id="@+id/searchActivitySearchView"
             android:drawableStart="@drawable/ic_search"
+            android:minWidth="100dp"
+            android:maxWidth="240dp"
             android:textSize="8sp"
             android:textColor="@color/colorTextBlack"
             android:background="@drawable/background_rounded_corner"
@@ -64,7 +68,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:paddingTop="10dp"
-        android:paddingStart="25dp"
+        android:paddingStart="20dp"
         android:id="@+id/searchActivityRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

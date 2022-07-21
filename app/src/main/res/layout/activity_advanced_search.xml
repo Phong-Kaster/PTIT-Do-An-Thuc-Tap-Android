@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".activity.search.AdvancedSearchActivity">
 
 
@@ -39,6 +39,7 @@
                         <Spinner
                             android:id="@+id/advancedSearchSpinnerManufacturer"
                             android:padding="10dp"
+                            android:background="@drawable/customized_spinner"
                             android:layout_marginStart="20dp"
                             android:layout_marginEnd="20dp"
                             android:layout_width="match_parent"
@@ -60,12 +61,13 @@
                             android:layout_height="wrap_content" >
 
                                 <EditText
+                                    android:id="@+id/advancedSearchPriceFrom"
+                                    android:layout_width="60dp"
+                                    android:layout_height="wrap_content"
                                     android:hint="@string/priceFrom"
+                                    android:inputType="numberDecimal"
                                     android:maxHeight="120dp"
                                     android:textSize="10sp"
-                                    android:id="@+id/advancedSearchPriceFrom"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
                                     tools:ignore="SmallSp" />
 
                                 <Space
@@ -83,12 +85,13 @@
                                     android:layout_height="match_parent"/>
 
                                 <EditText
+                                    android:id="@+id/advancedSearchPriceTo"
+                                    android:layout_width="60dp"
+                                    android:layout_height="wrap_content"
                                     android:hint="@string/priceTo"
+                                    android:inputType="numberDecimal"
                                     android:maxHeight="120dp"
                                     android:textSize="10sp"
-                                    android:id="@+id/advancedSearchPriceTo"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
                                     tools:ignore="SmallSp" />
 
                         </LinearLayout>
@@ -99,26 +102,31 @@
                             style="@style/advanced_search_text_view" />
                         <!--checkbox-->
                         <RadioGroup
+                            android:id="@+id/radioGroupScreenSize"
                             android:paddingStart="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             tools:ignore="RtlSymmetry">
                                 <androidx.appcompat.widget.AppCompatRadioButton
+                                    android:button="@drawable/customized_radio_button_2"
                                     android:id="@+id/advancedSearchCheckBox13inch"
                                     android:text="@string/screen_size_13_inch"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"/>
                                 <androidx.appcompat.widget.AppCompatRadioButton
+                                    android:button="@drawable/customized_radio_button_2"
                                     android:id="@+id/advancedSearchCheckBox14inch"
                                     android:text="@string/screen_size_14_inch"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"/>
                                 <androidx.appcompat.widget.AppCompatRadioButton
+                                    android:button="@drawable/customized_radio_button_2"
                                     android:id="@+id/advancedSearchCheckBox156inch"
                                     android:text="@string/screen_size_15_6_inch"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"/>
                                 <androidx.appcompat.widget.AppCompatRadioButton
+                                    android:button="@drawable/customized_radio_button_2"
                                     android:id="@+id/advancedSearchCheckBox173inch"
                                     android:text="@string/screen_size_17_3_inch"
                                     android:layout_width="match_parent"
@@ -130,6 +138,7 @@
                             android:text="@string/cpu"
                             style="@style/advanced_search_text_view" />
                         <RadioGroup
+                            android:id="@+id/radioGroupCpu"
                             android:paddingStart="15dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -160,6 +169,7 @@
                             style="@style/advanced_search_text_view" />
                         <Spinner
                             android:id="@+id/advancedSearchSpinnerGraphicCard"
+                            android:background="@drawable/customized_spinner"
                             android:padding="10dp"
                             android:layout_marginStart="20dp"
                             android:layout_marginEnd="20dp"
@@ -173,6 +183,7 @@
                         <Spinner
                             android:id="@+id/advancedSearchSpinnerDemand"
                             android:padding="10dp"
+                            android:background="@drawable/customized_spinner"
                             android:layout_marginStart="20dp"
                             android:layout_marginEnd="20dp"
                             android:layout_width="match_parent"
@@ -217,7 +228,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@drawable/background_button_advanced_search_cancel"
-                    android:text="@string/cancel"
+                    android:text="@string/reset"
                     android:textColor="@color/colorBlue"
                     android:textSize="10sp"
                     tools:ignore="SmallSp" />

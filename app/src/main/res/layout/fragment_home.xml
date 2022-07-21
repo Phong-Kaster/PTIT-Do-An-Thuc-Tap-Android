@@ -10,7 +10,7 @@
 
     <!-- APPLICATION NAME & BUTTON CART | PERSONALITY -->
     <LinearLayout
-        android:paddingTop="40dp"
+        android:paddingTop="30dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

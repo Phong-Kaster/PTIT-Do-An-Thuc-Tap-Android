@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground"
+    tools:context=".activity.product.ProductInformationActivity">
+    <!-- HEADER -->
+    <RelativeLayout
+        android:id="@+id/productInforHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:orientation="horizontal"
+        android:paddingTop="5dp">
+
+        <ImageButton
+            android:id="@+id/productInforButtonBack"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/background_button_product_infor"
+            android:src="@drawable/ic_arrow_back" />
+
+        <ImageButton
+            android:id="@+id/productInforButtonCart"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/background_button_product_infor"
+            android:src="@drawable/ic_cart_outline" />
+
+    </RelativeLayout>
+
+
+    <!-- CONTENT -->
+    <ScrollView
+        android:id="@+id/productInforScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/productInforHeader"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/footer"
+        android:layout_marginStart="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+<!--             CARD VIEW-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:background="@drawable/background_rounded_corner">
+
+                <!-- photo slider -->
+                <com.denzcoskun.imageslider.ImageSlider
+                    android:id="@+id/productInforImageSlider"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:ignore="MissingClass" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!-- NAME -->
+            <TextView
+                android:id="@+id/productInforName"
+                android:padding="10dp"
+                android:textSize="14sp"
+                android:textColor="@color/colorTextBlack"
+                android:text="@string/product_default_name_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+            <!-- PRICE -->
+            <TextView
+                android:id="@+id/productInforPrice"
+                android:text="@string/product_default_price"
+                android:textColor="@color/colorRed"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:paddingStart="10dp"
+                android:paddingBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="RtlSymmetry" />
+
+            <!-- REMAINING -->
+            <TextView
+                android:id="@+id/productInforRemaining"
+                android:textSize="12sp"
+                android:paddingStart="15dp"
+                android:text="@string/product_default_remaining"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="RtlSymmetry" />
+
+
+            <!-- specifications -->
+            <TextView
+                android:text="@string/specifications"
+                style="@style/product_infor_text_view" />
+
+            <!-- specifications - manufacturer -->
+            <LinearLayout
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                tools:ignore="RtlSymmetry">
+
+                <TextView
+                    style="@style/product_infor_text_view_specification"
+                    android:text="@string/manufacturer_2"
+                    app:drawableStartCompat="@drawable/ic_circle"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/productInforManufacturer"
+                    style="@style/product_infor_text_view_specification"
+                    android:paddingStart="10dp"
+                    android:text="@string/acer" />
+
+            </LinearLayout>
+
+            <!-- specifications - screen_side -->
+            <LinearLayout
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                tools:ignore="RtlSymmetry">
+
+                <TextView
+                    style="@style/product_infor_text_view_specification"
+                    android:text="@string/screen_size_2"
+                    app:drawableStartCompat="@drawable/ic_circle" />
+
+                <TextView
+                    android:id="@+id/productInforScreenSize"
+                    style="@style/product_infor_text_view_specification"
+                    android:paddingStart="10dp"
+                    android:text="@string/screen_size_13_inch" />
+
+            </LinearLayout>
+
+            <!-- specifications - cpu -->
+            <LinearLayout
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                tools:ignore="RtlSymmetry">
+
+                <TextView
+                    style="@style/product_infor_text_view_specification"
+                    android:text="@string/cpu_2"
+                    app:drawableStartCompat="@drawable/ic_circle" />
+
+                <TextView
+                    android:id="@+id/productInforCPU"
+                    style="@style/product_infor_text_view_specification"
+                    android:paddingStart="10dp"
+                    android:text="@string/cpu_core_i5" />
+
+            </LinearLayout>
+
+            <!-- specifications - ram -->
+            <LinearLayout
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                tools:ignore="RtlSymmetry">
+
+                <TextView
+                    style="@style/product_infor_text_view_specification"
+                    android:text="@string/ram_2"
+                    app:drawableStartCompat="@drawable/ic_circle" />
+
+                <TextView
+                    android:id="@+id/productInforRam"
+                    style="@style/product_infor_text_view_specification"
+                    android:paddingStart="10dp"
+                    android:text="@string/screen_size_13_inch" />
+
+            </LinearLayout>
+
+            <!-- specifications - graphic card -->
+            <LinearLayout
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                tools:ignore="RtlSymmetry">
+
+                <TextView
+                    style="@style/product_infor_text_view_specification"
+                    android:text="@string/graphic_card_2"
+                    app:drawableStartCompat="@drawable/ic_circle" />
+
+                <TextView
+                    android:id="@+id/productInforGraphicCard"
+                    style="@style/product_infor_text_view_specification"
+                    android:paddingStart="10dp"
+                    android:text="@string/product_default_graphic_card" />
+
+            </LinearLayout>
+
+            <!-- specifications - ROM -->
+            <LinearLayout
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                tools:ignore="RtlSymmetry">
+
+                <TextView
+                    style="@style/product_infor_text_view_specification"
+                    android:text="@string/rom"
+                    app:drawableStartCompat="@drawable/ic_circle" />
+
+                <TextView
+                    android:id="@+id/productInforROM"
+                    style="@style/product_infor_text_view_specification"
+                    android:paddingStart="10dp"
+                    android:text="@string/product_default_rom" />
+
+            </LinearLayout>
+
+            <!-- specifications - Demand -->
+            <LinearLayout
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                tools:ignore="RtlSymmetry">
+
+                <TextView
+                    style="@style/product_infor_text_view_specification"
+                    android:text="@string/suitable_for_demand"
+                    app:drawableStartCompat="@drawable/ic_circle" />
+
+                <TextView
+                    android:id="@+id/productInforDemand"
+                    style="@style/product_infor_text_view_specification"
+                    android:paddingStart="10dp"
+                    android:text="@string/gaming" />
+
+            </LinearLayout>
+
+            <!-- CONTENT -->
+            <TextView
+                style="@style/product_infor_text_view"
+                android:text="@string/content" />
+
+            <TextView
+                android:id="@+id/productInforContent"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:textSize="12sp"
+                android:text="@string/product_default_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <!-- SIMILAR PRODUCTS -->
+            <TextView
+                style="@style/product_infor_text_view"
+                android:text="@string/similar_products"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/productInforSimilarProducts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <!-- FOOTER -->
+    <LinearLayout
+        android:id="@+id/footer"
+        android:gravity="center"
+        android:background="@color/colorBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
+        android:paddingTop="10dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/productInforButtonReview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@color/colorBackground"
+            android:drawableTop="@drawable/ic_comment"
+            android:maxWidth="150dp"
+            android:minWidth="100dp"
+            android:text="@string/review"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="8sp"
+            tools:ignore="SmallSp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/productInforButtonAddToCart"
+            android:layout_width="100dp"
+            android:minWidth="100dp"
+            android:maxWidth="150dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/background_button_product_info_add_to_cart"
+            android:text="@string/Add_to_cart"
+            android:textColor="@color/white"
+            android:textSize="8sp"
+            tools:ignore="SmallSp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/productInforButtonBuy"
+            android:layout_width="100dp"
+            android:minWidth="100dp"
+            android:layout_weight="3"
+            android:maxWidth="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/background_button_product_info_buy_now"
+            android:text="@string/Buy_now"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            tools:ignore="SmallSp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

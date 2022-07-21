@@ -1,10 +1,6 @@
 package com.example.doanthuctap.activity.authentication;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -12,8 +8,12 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.doanthuctap.R;
-import com.example.doanthuctap.container.LoginResponse;
+import com.example.doanthuctap.activity.home.HomeActivity;
 import com.example.doanthuctap.helper.Dialog;
 import com.example.doanthuctap.helper.GlobalVariable;
 import com.example.doanthuctap.helper.LoadingScreen;
@@ -98,6 +98,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 /*hien thi thong bao la dang nhap thanh cong*/
                 Toast.makeText(this, getString(R.string.login_successfully), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                startActivity(intent);
             }
             else{
                 dialog.announce();

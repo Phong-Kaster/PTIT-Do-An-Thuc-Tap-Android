@@ -46,6 +46,7 @@ public class SearchActivity extends AppCompatActivity {
     private String demand = "";// this "demand" keyword maybe send from homeFragment to this activity.
 
 
+
     /*this private final variable is used to start another activity for result*/
     private final ActivityResultLauncher<Intent> startAdvancedSearchActivityForResult = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -53,7 +54,18 @@ public class SearchActivity extends AppCompatActivity {
                 if (result.getResultCode() == Activity.RESULT_OK) {
                     Intent data = result.getData();
                     assert data != null;
-                    Toast.makeText(this, data.getStringExtra("hallo"), Toast.LENGTH_SHORT).show();
+
+                    parameters.put("manufacturer",data.getStringExtra("manufacturer") );
+                    parameters.put("priceFrom",data.getStringExtra("priceFrom") );
+                    parameters.put("priceTo",data.getStringExtra("priceTo") );
+                    parameters.put("screenSize",data.getStringExtra("screenSize") );
+                    parameters.put("cpu",data.getStringExtra("cpu") );
+                    parameters.put("graphicCard", data.getStringExtra("graphicCard") );
+                    parameters.put("demand",data.getStringExtra("demand") );
+
+                    viewModel.getProducts(parameters);
+
+                    //Toast.makeText(this, data.getStringExtra("hallo"), Toast.LENGTH_SHORT).show();
                 }
                 else if( result.getResultCode() == Activity.RESULT_CANCELED){
                     Toast.makeText(this, R.string.complete, Toast.LENGTH_SHORT).show();
@@ -116,16 +128,16 @@ public class SearchActivity extends AppCompatActivity {
         });
 
         /*trigger animation*/
-        viewModel.getAnimation().observe(this, aBoolean -> {
-            if( aBoolean)
-            {
-                loadingScreen.start();
-            }
-            else
-            {
-                loadingScreen.stop();
-            }
-        });
+//        viewModel.getAnimation().observe(this, aBoolean -> {
+//            if(aBoolean && objects.size() == 0)
+//            {
+//                loadingScreen.start();
+//            }
+//            else
+//            {
+//                loadingScreen.stop();
+//            }
+//        });
     }
 
     /**
