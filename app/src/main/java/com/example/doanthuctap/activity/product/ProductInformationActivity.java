@@ -3,6 +3,7 @@ package com.example.doanthuctap.activity.product;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -10,6 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,8 +24,12 @@ import android.widget.Toast;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.example.doanthuctap.MainActivity;
 import com.example.doanthuctap.R;
+import com.example.doanthuctap.activity.home.CartFragment;
+import com.example.doanthuctap.activity.home.HomeActivity;
 import com.example.doanthuctap.container.GetLatestOrderResponse;
+import com.example.doanthuctap.container.ModifyOrderContentResponse;
 import com.example.doanthuctap.container.ProductByIdResponse;
 import com.example.doanthuctap.container.ProductsResponse;
 import com.example.doanthuctap.helper.Beautifier;
@@ -34,6 +41,7 @@ import com.example.doanthuctap.model.Product;
 import com.example.doanthuctap.model.ProductClient;
 import com.example.doanthuctap.recyclerviewadapter.ProductsRecyclerViewAdapter;
 import com.example.doanthuctap.viewModel.product.ProductInformationViewModel;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.squareup.picasso.Picasso;
 
@@ -58,6 +66,7 @@ public class ProductInformationActivity extends AppCompatActivity implements Add
     private RecyclerView recyclerView;
 
 
+    private String orderId;
     private String productId;
     private String temporaryAvatar;/*sau nay co server public thi se ko dung cai nay nua*/
     private ProductInformationViewModel viewModel;
@@ -75,13 +84,14 @@ public class ProductInformationActivity extends AppCompatActivity implements Add
     private AppCompatButton buttonAddToCart;
     private AppCompatButton buttonBuyNow;
     private AppCompatButton buttonReview;
-
+    private ImageButton buttonCart;
 
     private int productQuantity = 1;// for add to cart modal bottom sheet
     private int totalAmount = 0;// for add to cart modal bottom sheet
     private Product product;// the product is gotten from viewModel
 
     private GlobalVariable globalVariable;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,7 +104,6 @@ public class ProductInformationActivity extends AppCompatActivity implements Add
         setupComponent();
         setupViewModel();
         setupEvent();
-
     }
 
     @Override
@@ -121,15 +130,17 @@ public class ProductInformationActivity extends AppCompatActivity implements Add
         txtDemand = findViewById(R.id.productInforDemand);
         txtContent = findViewById(R.id.productInforContent);
         recyclerView = findViewById(R.id.productInforSimilarProducts);
+        recyclerView.setNestedScrollingEnabled(false);
 
         dialog = new Dialog(this);
         loadingScreen = new LoadingScreen(this);
 
-        buttonBack = findViewById(R.id.productInforButtonBack);
+//        buttonBack = findViewById(R.id.productInforButtonBack);
         buttonAddToCart = findViewById(R.id.productInforButtonAddToCart);
         buttonReview = findViewById(R.id.productInforButtonReview);
 
         globalVariable = (GlobalVariable) this.getApplication();
+//        buttonCart = findViewById(R.id.productInforButtonCart);
     }
 
     private void setupViewModel()
@@ -137,6 +148,7 @@ public class ProductInformationActivity extends AppCompatActivity implements Add
         /*Step 1 - declare*/
         viewModel = new ViewModelProvider(this).get(ProductInformationViewModel.class);
         viewModel.instantiate();
+
 
         /*Step 2 - get product by id*/
         viewModel.getProductById(productId);
@@ -182,13 +194,30 @@ public class ProductInformationActivity extends AppCompatActivity implements Add
             }
         });
 
-        /*Step 4 - get latest order of authUser*/
+
+        /*Step 4 - get latest order of authUser in the first time to create a new one
+        * if there is no order. It create a new order with long order-id: f61ae2e1-e93e-4842-b1de-15780f219681
+        * the second time helps us to get the order have been just created, and now
+        * we could get short order-id: f61ae2e1-e93e-48*/
         Map<String, String> headers = globalVariable.getHeaders();
         viewModel.getLatestOrder(headers);
-        viewModel.getLatestOrderWithAuthUser().observe(this, new Observer<GetLatestOrderResponse>() {
-            @Override
-            public void onChanged(GetLatestOrderResponse getLatestOrderResponse) {
-                System.out.println("ORDER ID: " + getLatestOrderResponse.getData().getId());
+        viewModel.getLatestOrderWithAuthUser().observe(this, getLatestOrderResponse -> {
+            int result = getLatestOrderResponse.getResult();
+            if( result == 1)
+            {
+                orderId = getLatestOrderResponse.getData().getId();
+                //System.out.println("viewModel - get latest order - orderId: " + getLatestOrderResponse.getData().getId());
+            }
+        });
+
+        /*Final Step - get animation*/
+        viewModel.getAnimation().observe(this, aBoolean -> {
+            if( aBoolean){
+                loadingScreen.start();
+            }
+            else
+            {
+                loadingScreen.stop();
             }
         });
     }
@@ -242,13 +271,15 @@ public class ProductInformationActivity extends AppCompatActivity implements Add
 
     private void setupEvent()
     {
-        buttonBack.setOnClickListener(view->finish());
-        buttonAddToCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openAddToCartSheet();
-            }
-        });
+//        buttonBack.setOnClickListener(view->finish());
+//        buttonAddToCart.setOnClickListener(view -> openAddToCartSheet());
+//        buttonCart.setOnClickListener(view->{
+//            FragmentManager manager = getFragmentManager();
+//            FragmentTransaction transaction = manager.beginTransaction();
+//            transaction.add(R.id.frameLayout, CartFragment ,"myFragment");
+//            transaction.addToBackStack(null);
+//            transaction.commit();
+//        });
     }
 
     private void setupRecyclerView(List<ProductClient> objects)
@@ -304,6 +335,7 @@ public class ProductInformationActivity extends AppCompatActivity implements Add
 
 
         /*Step 4 - handle users click button increase|decrease quantity */
+        /*add To Cart Fragment - add product's quantity*/
         buttonAdd.setOnClickListener(view -> {
             productQuantity++;
             totalAmount = productQuantity*product.getPrice();
@@ -314,7 +346,7 @@ public class ProductInformationActivity extends AppCompatActivity implements Add
             txtQuantity.setText(quantity);
             txtTotalAmount.setText(totalAmountValue);
         });
-
+        /*add To Cart Fragment - minus product's quantity*/
         buttonMinus.setOnClickListener(view -> {
             if( productQuantity > 1)
             {
@@ -328,9 +360,39 @@ public class ProductInformationActivity extends AppCompatActivity implements Add
                 txtTotalAmount.setText(totalAmountValue);
             }
         });
-
+        /*add To Cart Fragment - button confirm*/
         buttonConfirm.setOnClickListener(view->{
+            //System.out.println("add To Cart Fragment - button confirm - orderId: " + orderId);
+            /*send request to API - /orders/{id}*/
+            //orderId = Beautifier.shortenOrderId(orderId);
+            viewModel.modifyOrderContent(orderId, productId, txtQuantity.getText().toString());
+            /*listen for response data*/
+            dialog.announce();
+            viewModel.getOrderContent().observe(this, modifyOrderContentResponse -> {
+                int result = modifyOrderContentResponse.getResult();
+                sheet.cancel();
 
+                String title = getString(R.string.success);
+                String msg = getString(R.string.add_to_cart_successfully);
+                int icon = R.drawable.ic_check;
+
+                if(result == 0)
+                {
+                    title = getString(R.string.fail);
+                    msg = modifyOrderContentResponse.getMsg();
+                    icon = R.drawable.ic_close;
+                }
+
+
+                dialog.show(title, msg, icon);
+
+            });
+
+            /*put dialog.btnOK outside viewModel to guarantee the button works as expected*/
+            dialog.btnOK.setOnClickListener(view1 ->{
+                dialog.close();
+            });
+            /*end listen for response data*/
         });
     }
 }

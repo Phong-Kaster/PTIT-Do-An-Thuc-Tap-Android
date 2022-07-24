@@ -1,14 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground"
     tools:context=".activity.home.CategoryFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:background="@color/colorTheme"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/categoryFragmentSearchView"
+            android:drawableStart="@drawable/ic_search"
+            android:layout_weight="5"
+            android:minWidth="100dp"
+            android:maxWidth="240dp"
+            android:textSize="8sp"
+            android:textColor="@color/colorTextBlack"
+            android:background="@drawable/background_rounded_corner"
+            android:hint="@string/what_do_you_want_to_search_today"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            tools:ignore="SmallSp" />
+
+        <ImageButton
+            android:id="@+id/categoryFragmentButtonCart"
+            android:layout_weight="0.5"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/background_button_back"
+            android:src="@drawable/ic_cart_baseline"
+            tools:ignore="ContentDescription" />
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/categoryFragmentButtonFilter"-->
+<!--            android:layout_weight="0.5"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:background="@drawable/background_button_back"-->
+<!--            android:src="@drawable/ic_filter"-->
+<!--            tools:ignore="ContentDescription" />-->
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:paddingTop="5dp"
+        android:paddingStart="5dp"
+        android:background="@color/colorBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="CATEGORY FRAGMENT" />
+        tools:ignore="RtlSymmetry">
 
-</FrameLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/categoryFragmentCategoriesRecyclerView"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/categoryFragmentProductsRecyclerView"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+</LinearLayout>

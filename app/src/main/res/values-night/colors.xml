@@ -15,10 +15,11 @@
     <color name="colorTextWhite">#8D8F97</color>
     <color name="colorTextBlack">@color/white</color>
     <color name="colorTextSupport">#8D8F97</color>
+    <color name="colorTextDialog">@color/white</color>
 
     <color name="colorInputBackground">#515155</color>
     <color name="colorTransparentWhite">#cccccc</color>
-    <color name="colorIconBackground">#d7d9e0</color>
+    <color name="colorIconBackground">#515155</color>
 
     <color name="colorBottomNavigationMenu">#2D313D</color>
     <color name="colorButtomNavigationMenuPressed">#ffffff</color>

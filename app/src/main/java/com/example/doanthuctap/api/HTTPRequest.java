@@ -1,7 +1,10 @@
 package com.example.doanthuctap.api;
 
+import com.example.doanthuctap.container.CategoriesResponse;
 import com.example.doanthuctap.container.GetLatestOrderResponse;
+import com.example.doanthuctap.container.GetProductsWithCategoryIDResponse;
 import com.example.doanthuctap.container.LoginResponse;
+import com.example.doanthuctap.container.ModifyOrderContentResponse;
 import com.example.doanthuctap.container.ProductByIdResponse;
 import com.example.doanthuctap.container.ProductsResponse;
 import com.example.doanthuctap.container.ProfileResponse;
@@ -60,4 +63,23 @@ public interface HTTPRequest {
      */
     @GET("orders/")
     Call<GetLatestOrderResponse> getLatestOrder(@HeaderMap Map<String, String> headers);
+
+    /**
+     * modify order content
+     */
+    @FormUrlEncoded
+    @POST("orders/{id}")
+    Call<ModifyOrderContentResponse> modifyOrderContent(@Path("id") String orderId,
+                                                        @Field("product_id") String productId,
+                                                        @Field("quantity") String quantity);
+
+    /**
+     * get all categories and their information
+     */
+    @GET("categories")
+    Call<CategoriesResponse> getCategories();
+
+
+    @GET("categories/{id}")
+    Call<GetProductsWithCategoryIDResponse> getProductsWithCategoryID(@Path("id") int id);
 }

@@ -55,4 +55,19 @@ public class Beautifier {
         String output = avatars[position];
         return output;
     }
+
+    /**
+     * @author Phong-Kaster
+     * shorten order id
+     * For example: 5b9ad00c-b622-4bc6-9640-d6b02157abac => 5b9ad00c-b622-4b
+     */
+    public static String shortenOrderId(String input)
+    {
+        if( input.length() < 16 )
+        {
+            return input;
+        }
+        String output = input.substring(0, 16);
+        return output;
+    }
 }

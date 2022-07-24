@@ -44,7 +44,7 @@ public class SearchActivity extends AppCompatActivity {
     private final Map<String, String> parameters = new HashMap<>();
     private final List<ProductClient> objects = new ArrayList<>();
     private String demand = "";// this "demand" keyword maybe send from homeFragment to this activity.
-
+    private String search = "";
 
 
     /*this private final variable is used to start another activity for result*/
@@ -79,6 +79,7 @@ public class SearchActivity extends AppCompatActivity {
 
         /*this "demand" keyword maybe send from homeFragment to this activity.*/
         demand = getIntent().getStringExtra("demand").trim();
+        search = getIntent().getStringExtra("search").trim();
 
         setupComponent();
         setupViewModel();
@@ -111,6 +112,7 @@ public class SearchActivity extends AppCompatActivity {
         /*setup parameter to query*/
         Map<String, String> parameters =new HashMap<>();
         parameters.put("demand",demand);
+        parameters.put("search", search);
         viewModel.getProducts(parameters);
 
 

@@ -30,7 +30,7 @@
 
 
         <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/btnCart"
+            android:id="@+id/homeFragmentButtonCart"
             android:background="@drawable/background_image_button"
             android:src="@drawable/ic_cart_baseline"
             android:layout_width="wrap_content"
@@ -42,7 +42,7 @@
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:layout_marginEnd="20dp"
-            android:id="@+id/btnPersonality"
+            android:id="@+id/homeFragmentButtonPersonality"
             android:background="@drawable/background_image_button"
             android:src="@drawable/ic_personality_baseline"
             android:layout_width="wrap_content"

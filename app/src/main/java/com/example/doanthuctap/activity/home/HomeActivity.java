@@ -9,11 +9,13 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.doanthuctap.MainActivity;
 import com.example.doanthuctap.R;
 import com.example.doanthuctap.helper.Dialog;
 import com.example.doanthuctap.viewModel.home.HomeFragmentViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,15 +29,23 @@ import java.util.Map;
  */
 public class HomeActivity extends AppCompatActivity {
 
+
     private Dialog dialog;
     private BottomNavigationView bottomNavigationView;
     private Fragment fragment = null;
     private HomeFragmentViewModel homeFragmentViewModel;
+
+    public static WeakReference<HomeActivity> weakActivity;
+    // etc..
+    public static HomeActivity getmInstanceActivity() {
+        return weakActivity.get();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        weakActivity = new WeakReference<>(HomeActivity.this);
 
         setupComponent();
         setupVariable();
@@ -46,6 +56,8 @@ public class HomeActivity extends AppCompatActivity {
         fragment = new HomeFragment();
         enableFragment(fragment);
     }
+
+
 
 
     /**

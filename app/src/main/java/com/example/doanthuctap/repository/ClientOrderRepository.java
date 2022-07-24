@@ -6,11 +6,13 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.doanthuctap.api.HTTPRequest;
 import com.example.doanthuctap.api.HTTPService;
 import com.example.doanthuctap.container.GetLatestOrderResponse;
+import com.example.doanthuctap.container.ModifyOrderContentResponse;
 import com.example.doanthuctap.container.ProductsResponse;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -22,6 +24,7 @@ public class ClientOrderRepository {
     private static ClientOrderRepository instance;
     private MutableLiveData<GetLatestOrderResponse> objects;
     private static MutableLiveData<Boolean> animation;
+    private MutableLiveData<ModifyOrderContentResponse> contentObjects;
 
     public MutableLiveData<GetLatestOrderResponse> getObjects() {
         if( objects == null )
@@ -48,6 +51,15 @@ public class ClientOrderRepository {
             animation = new MutableLiveData<>();
         }
         return animation;
+    }
+
+    public MutableLiveData<ModifyOrderContentResponse> getContentObjects()
+    {
+        if( contentObjects == null)
+        {
+            contentObjects = new MutableLiveData<>();
+        }
+        return  contentObjects;
     }
 
     public MutableLiveData<GetLatestOrderResponse> getLatestOrder(Map<String, String> headers){
@@ -105,5 +117,82 @@ public class ClientOrderRepository {
         });
 
         return objects;
+    }
+
+    public MutableLiveData<ModifyOrderContentResponse> modifyOrderContent(String orderId, String productId, String quantity)
+    {
+        if(contentObjects == null){
+            contentObjects = new MutableLiveData<>();
+        }
+        if(animation == null )
+        {
+            animation = new MutableLiveData<>();
+        }
+        animation.setValue(true);
+
+
+        /*Step 1 - create api connection */
+        Retrofit service = HTTPService.getInstance();
+        HTTPRequest api = service.create(HTTPRequest.class);
+
+
+        /*Step 2 */
+        if(orderId.length() < 16)
+        {
+            System.out.println("ClientOrderRepository - modifyOrderContent - error: orderId < 16");
+            return null;
+        }
+        if(productId.length() < 1)
+        {
+            System.out.println("ClientOrderRepository - modifyOrderContent - error: productId < 1");
+            return null;
+        }
+        if(Integer.parseInt(quantity) < 1)
+        {
+            System.out.println("ClientOrderRepository - modifyOrderContent - error: quantity < 1");
+            return null;
+        }
+
+
+        Call<ModifyOrderContentResponse> container = api.modifyOrderContent(orderId, productId, quantity);
+
+
+        /*Step 3*/
+        container.enqueue(new Callback<ModifyOrderContentResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<ModifyOrderContentResponse> call,
+                                   @NonNull Response<ModifyOrderContentResponse> response) {
+                if(response.isSuccessful())
+                {
+                    ModifyOrderContentResponse content = response.body();
+                    assert content != null;
+//                    System.out.println("ClientOrderRepository-modifyOrderContent-result: " + content.getResult());
+//                    System.out.println("ClientOrderRepository-modifyOrderContent-msg: " + content.getMsg());
+//                    System.out.println("ClientOrderRepository-modifyOrderContent-total: " + content.getTotal());
+                    contentObjects.setValue(content);
+                    animation.setValue(false);
+                }
+                if(response.errorBody() != null) {
+                    try {
+                        JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        System.out.println( jObjError );
+                    } catch (Exception e) {
+                        System.out.println( e.getMessage() );
+                    }
+
+                    contentObjects.setValue(null);
+                    animation.setValue(false);
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<ModifyOrderContentResponse> call,
+                                  @NonNull Throwable t) {
+                System.out.println("ClientOrderRepository - throwable: " + t.getMessage());
+                animation.setValue(false);
+            }
+        });
+
+        return contentObjects;
     }
 }

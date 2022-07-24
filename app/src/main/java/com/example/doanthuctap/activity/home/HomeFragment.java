@@ -27,6 +27,7 @@ import com.example.doanthuctap.helper.LoadingScreen;
 import com.example.doanthuctap.model.ProductClient;
 import com.example.doanthuctap.recyclerviewadapter.ProductsRecyclerViewAdapter;
 import com.example.doanthuctap.viewModel.home.HomeFragmentViewModel;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,6 +53,9 @@ public class HomeFragment extends Fragment {
 
     private List<ProductClient> objects = new ArrayList<>();
     private Map<String, String> parameters = new HashMap<>();
+
+    private AppCompatImageButton buttonCart;
+    private AppCompatImageButton buttonPersonality;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,6 +109,9 @@ public class HomeFragment extends Fragment {
         buttonDemandLightweight = view.findViewById(R.id.homeFragmentButtonLightweight);
         buttonDemandOffice = view.findViewById(R.id.homeFragmentButtonOffice);
         buttonDemandStudent = view.findViewById(R.id.homeFragmentButtonStudent);
+
+        buttonCart = view.findViewById(R.id.homeFragmentButtonCart);
+        buttonPersonality = view.findViewById(R.id.homeFragmentButtonPersonality);
     }
 
     private void setupViewModel(){
@@ -168,6 +175,7 @@ public class HomeFragment extends Fragment {
         searchView.setOnClickListener(view->{
             Intent intent = new Intent(requireActivity(), SearchActivity.class);
             intent.putExtra("demand","");
+            intent.putExtra("search","");
             startActivity(intent);
             //requireActivity().finish();
         });
@@ -185,25 +193,43 @@ public class HomeFragment extends Fragment {
         buttonDemandStudent.setOnClickListener(view -> {
             Intent intent = new Intent(requireActivity(), SearchActivity.class);
             intent.putExtra("demand", "student");
+            intent.putExtra("search","");
             startActivity(intent);
         });
 
         buttonDemandOffice.setOnClickListener(view -> {
             Intent intent = new Intent(requireActivity(), SearchActivity.class);
             intent.putExtra("demand", "office");
+            intent.putExtra("search","");
             startActivity(intent);
         });
 
         buttonDemandDesign.setOnClickListener(view -> {
             Intent intent = new Intent(requireActivity(), SearchActivity.class);
             intent.putExtra("demand", "design");
+            intent.putExtra("search","");
             startActivity(intent);
         });
 
         buttonDemandGaming.setOnClickListener(view -> {
             Intent intent = new Intent(requireActivity(), SearchActivity.class);
             intent.putExtra("demand", "gaming");
+            intent.putExtra("search","");
             startActivity(intent);
+        });
+
+        /*BUTTON CART*/
+        buttonCart.setOnClickListener(view->{
+            BottomNavigationView bottomNavigationView;
+            bottomNavigationView = (BottomNavigationView) requireActivity().findViewById(R.id.bottomNavigationMenu);
+            bottomNavigationView.setSelectedItemId(R.id.shortcutCart);
+        });
+
+        /*BUTTON PERSONALITY*/
+        buttonPersonality.setOnClickListener(view->{
+            BottomNavigationView bottomNavigationView;
+            bottomNavigationView = (BottomNavigationView) requireActivity().findViewById(R.id.bottomNavigationMenu);
+            bottomNavigationView.setSelectedItemId(R.id.shortcutPersonality);
         });
     }
 

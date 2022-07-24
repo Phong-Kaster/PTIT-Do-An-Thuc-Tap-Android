@@ -21,22 +21,22 @@
         android:orientation="horizontal"
         android:paddingTop="5dp">
 
-        <ImageButton
-            android:id="@+id/productInforButtonBack"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="10dp"
-            android:background="@drawable/background_button_product_infor"
-            android:src="@drawable/ic_arrow_back" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/productInforButtonBack"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:background="@drawable/background_button_product_infor"-->
+<!--            android:src="@drawable/ic_arrow_back" />-->
 
-        <ImageButton
-            android:id="@+id/productInforButtonCart"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/background_button_product_infor"
-            android:src="@drawable/ic_cart_outline" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/productInforButtonCart"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:background="@drawable/background_button_product_infor"-->
+<!--            android:src="@drawable/ic_cart_outline" />-->
 
     </RelativeLayout>
 

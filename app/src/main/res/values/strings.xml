@@ -88,4 +88,7 @@
     <string name="review">Bình luận</string>
     <string name="quantity">Số lượng</string>
     <string name="one">1</string>
+    <string name="add_to_cart_successfully">Thêm vào giỏ hàng thành công</string>
+    <string name="fail">Thất bại</string>
+    <string name="can_not_find_match_products">Không tìm thấy sản phẩm tương ứng</string>
 </resources>

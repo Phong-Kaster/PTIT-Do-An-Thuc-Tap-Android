@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.doanthuctap.container.GetLatestOrderResponse;
+import com.example.doanthuctap.container.ModifyOrderContentResponse;
 import com.example.doanthuctap.container.ProductByIdResponse;
 import com.example.doanthuctap.container.ProductsResponse;
 import com.example.doanthuctap.model.ProductClient;
@@ -13,15 +14,28 @@ import com.example.doanthuctap.repository.ClientProductsRepository;
 import java.util.Map;
 
 public class ProductInformationViewModel extends ViewModel {
+
+
+
+
+
+
+
+
+
+
+    private MutableLiveData<ModifyOrderContentResponse> orderContent;
+    public MutableLiveData<ModifyOrderContentResponse> getOrderContent() {
+        if( orderContent == null )
+        {
+            orderContent = new MutableLiveData<>();
+        }
+        return orderContent;
+    }
+
+
+
     private MutableLiveData<ProductByIdResponse> objects;
-    private MutableLiveData<Boolean> animation;
-
-    private ClientProductsRepository productRepository;
-    private MutableLiveData<ProductsResponse> similarProducts;
-
-    private MutableLiveData<GetLatestOrderResponse> latestOrder;
-    private ClientOrderRepository orderRepository;
-
     public MutableLiveData<ProductByIdResponse> getObjects() {
         if( objects == null)
         {
@@ -31,6 +45,8 @@ public class ProductInformationViewModel extends ViewModel {
         return objects;
     }
 
+
+    private MutableLiveData<Boolean> animation;
     public MutableLiveData<Boolean> getAnimation(){
         if( animation == null)
         {
@@ -40,6 +56,8 @@ public class ProductInformationViewModel extends ViewModel {
         return animation;
     }
 
+
+    private MutableLiveData<ProductsResponse> similarProducts;
     public MutableLiveData<ProductsResponse> getSimilarProducts()
     {
         if( similarProducts == null)
@@ -51,6 +69,7 @@ public class ProductInformationViewModel extends ViewModel {
     }
 
 
+    private MutableLiveData<GetLatestOrderResponse> latestOrder;
     public MutableLiveData<GetLatestOrderResponse> getLatestOrderWithAuthUser(){
         if( latestOrder == null)
         {
@@ -60,6 +79,9 @@ public class ProductInformationViewModel extends ViewModel {
         return latestOrder;
     }
 
+
+    private ClientOrderRepository orderRepository;
+    private ClientProductsRepository productRepository;
     public void instantiate(){
         if( productRepository == null ){
             productRepository = ClientProductsRepository.getInstance();
@@ -81,6 +103,12 @@ public class ProductInformationViewModel extends ViewModel {
 
     public void getLatestOrder(Map<String, String> headers){
         latestOrder = orderRepository.getLatestOrder(headers);
+        animation = orderRepository.getAnimation();
+    }
+
+    public void modifyOrderContent(String orderId, String productId, String quantity)
+    {
+        orderContent = orderRepository.modifyOrderContent(orderId, productId, quantity);
         animation = orderRepository.getAnimation();
     }
 }

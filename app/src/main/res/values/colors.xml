@@ -15,7 +15,7 @@
     <color name="colorTextWhite">@color/white</color>
     <color name="colorTextBlack">#FF000000</color>
     <color name="colorTextSupport">#8D8F97</color>
-
+    <color name="colorTextDialog">#2196F3</color>
 
     <color name="colorInputBackground">#ECEEF0</color>
     <color name="colorTransparentWhite">#cccccc</color>
