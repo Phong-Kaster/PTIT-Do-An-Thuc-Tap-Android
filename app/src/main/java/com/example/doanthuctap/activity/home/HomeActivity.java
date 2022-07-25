@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.doanthuctap.MainActivity;
 import com.example.doanthuctap.R;
 import com.example.doanthuctap.helper.Dialog;
+import com.example.doanthuctap.helper.GlobalVariable;
 import com.example.doanthuctap.viewModel.home.HomeFragmentViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -127,22 +128,22 @@ public class HomeActivity extends AppCompatActivity {
 
 
         /*Step 2*/
-//        Map<String, String > headers = ((GlobalVariable)getApplication()).getHeaders();
-//        String accessToken = headers.get("Authorization");
-//        String contentType = headers.get("Content-Type");
+        Map<String, String > headers = ((GlobalVariable)getApplication()).getHeaders();
+        String accessToken = headers.get("Authorization");
+        String contentType = headers.get("Content-Type");
 //
 //        User AuthUser = ((GlobalVariable)getApplication()).getAuthUser();
 //        SiteSettings appInfo = ((GlobalVariable)getApplication()).getAppInfo();
 
 
         /*Step 3*/
-//        Bundle bundle = new Bundle();
-//
-//        bundle.putString("accessToken", accessToken);
-//        bundle.putString("contentType", contentType);
+        Bundle bundle = new Bundle();
+
+        bundle.putString("accessToken", accessToken);
+        bundle.putString("contentType", contentType);
 //        bundle.putParcelable("AuthUser", AuthUser);
 //        bundle.putParcelable("appInfo", appInfo);
-//        fragment.setArguments(bundle);
+        fragment.setArguments(bundle);
 
 
         /*Step 4*/

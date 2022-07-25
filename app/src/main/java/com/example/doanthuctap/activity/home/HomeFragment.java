@@ -101,6 +101,7 @@ public class HomeFragment extends Fragment {
         searchView = view.findViewById(R.id.homeFragmentSearchView);
         imageSlider = view.findViewById(R.id.homeFragmentImageSlider);
         recyclerView = view.findViewById(R.id.homeFragmentRecyclerView);
+        //recyclerView.setNestedScrollingEnabled(false);
 
         loadingScreen = new LoadingScreen(getActivity());
 
@@ -171,7 +172,7 @@ public class HomeFragment extends Fragment {
      * handle event when users click on button
      */
     private void setupEvent(){
-        /*******************SEARCH VIEW*******************/
+        /*SEARCH VIEW*/
         searchView.setOnClickListener(view->{
             Intent intent = new Intent(requireActivity(), SearchActivity.class);
             intent.putExtra("demand","");
@@ -180,10 +181,10 @@ public class HomeFragment extends Fragment {
             //requireActivity().finish();
         });
 
-        /*******************IMAGE SLIDER*******************/
+        /*IMAGE SLIDER*/
         imageSlider.setItemClickListener(i -> Toast.makeText(requireContext(), "Item " + i + " is selected", Toast.LENGTH_SHORT).show());
 
-        /******************* 5 DEMAND BUTTONS*******************/
+        /* 5 DEMAND BUTTONS*/
         buttonDemandLightweight.setOnClickListener(view -> {
             Intent intent = new Intent(requireActivity(), SearchActivity.class);
             intent.putExtra("demand", "lightweight");
@@ -221,14 +222,14 @@ public class HomeFragment extends Fragment {
         /*BUTTON CART*/
         buttonCart.setOnClickListener(view->{
             BottomNavigationView bottomNavigationView;
-            bottomNavigationView = (BottomNavigationView) requireActivity().findViewById(R.id.bottomNavigationMenu);
+            bottomNavigationView = requireActivity().findViewById(R.id.bottomNavigationMenu);
             bottomNavigationView.setSelectedItemId(R.id.shortcutCart);
         });
 
         /*BUTTON PERSONALITY*/
         buttonPersonality.setOnClickListener(view->{
             BottomNavigationView bottomNavigationView;
-            bottomNavigationView = (BottomNavigationView) requireActivity().findViewById(R.id.bottomNavigationMenu);
+            bottomNavigationView =  requireActivity().findViewById(R.id.bottomNavigationMenu);
             bottomNavigationView.setSelectedItemId(R.id.shortcutPersonality);
         });
     }

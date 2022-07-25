@@ -1,14 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorBackground"
     tools:context=".activity.home.CartFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- HEADER -->
+    <LinearLayout
+        android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="CART FRAGMENT" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:orientation="vertical"
+        android:paddingBottom="5dp">
 
-</FrameLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="@string/my_cart"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="16sp"
+            android:padding="10dp"
+            android:textStyle="bold"
+            app:drawableStartCompat="@drawable/ic_cart_blue" />
+
+        <TextView
+            android:padding="10dp"
+            android:textColor="@color/colorTextBlack"
+            android:background="@color/colorBackgroundClickOnVoucher"
+            android:text="@string/click_on_voucher"
+            android:textSize="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:drawableStartCompat="@drawable/ic_shipping"
+            tools:ignore="SmallSp" />
+
+    </LinearLayout>
+
+
+    <!-- CONTENT -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_below="@id/header"
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/footer"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- ORDER CONTENT -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:background="@drawable/background_order_content_recycler_view"
+                android:id="@+id/cartFragmentOrderContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                tools:ignore="RtlSymmetry" />
+
+            <!-- SIMILAR PRODUCT -->
+            <TextView
+                android:id="@+id/textViewYouMayBeLike"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/you_maybe_like"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="10sp"
+                tools:ignore="SmallSp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cartFragmentSimilarProducts"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/background_order_content_recycler_view"
+                android:padding="15dp"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView >
+
+
+
+    <!-- FOOTER -->
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorBackground"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingEnd="5dp"
+        android:paddingBottom="70dp"
+        tools:ignore="RtlSymmetry">
+
+        <!-- TOTAL AMOUNT + SHIPPING FEE -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingStart="10dp"
+            tools:ignore="RtlSymmetry">
+
+            <!-- TOTAL AMOUNT -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total_amount"
+                    android:textColor="@color/colorTextBlack"
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/product_default_price"
+                    android:textColor="@color/colorRed"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+
+            <!-- SHIPPING FEE -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/shipping_fee"
+                    android:textSize="8sp"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/zero_vnd"
+                    android:textColor="@color/colorRed"
+                    android:textSize="8sp"
+                    tools:ignore="SmallSp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cartFragmentButtonConfirmCart"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/background_button_confirm_cart"
+            android:maxWidth="150dp"
+            android:text="@string/confirm_cart"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            tools:ignore="SmallSp" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

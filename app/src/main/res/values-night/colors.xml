@@ -31,5 +31,7 @@
     <color name="colorBlue">#2196F3</color>
     <color name="colorOrange">#FF5722</color>
 
+    <color name="colorBackgroundClickOnVoucher">#FFEE58</color>
+
     <color name="colorBackgroundImageButton">#E5E7EB</color>
 </resources>

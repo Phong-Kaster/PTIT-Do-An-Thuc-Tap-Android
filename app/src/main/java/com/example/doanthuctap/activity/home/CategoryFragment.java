@@ -227,10 +227,10 @@ public class CategoryFragment extends Fragment implements CategoriesRecyclerView
                     products = getProductsWithCategoryIDResponse.getProducts();
                     setupProductsRecyclerView(products);
                 }
-                else
-                {
-                    Toast.makeText(getContext(), getString(R.string.can_not_find_match_products), Toast.LENGTH_SHORT).show();
-                }
+//                else
+//                {
+//                    Toast.makeText(getContext(), getString(R.string.can_not_find_match_products), Toast.LENGTH_SHORT).show();
+//                }
             });
         }
     }

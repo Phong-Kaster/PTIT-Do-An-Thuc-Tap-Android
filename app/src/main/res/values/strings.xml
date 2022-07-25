@@ -91,4 +91,11 @@
     <string name="add_to_cart_successfully">Thêm vào giỏ hàng thành công</string>
     <string name="fail">Thất bại</string>
     <string name="can_not_find_match_products">Không tìm thấy sản phẩm tương ứng</string>
+    <string name="total_amount">Tổng cộng:</string>
+    <string name="shipping_fee">Phí vận chuyển:</string>
+    <string name="zero_vnd">0đ</string>
+    <string name="my_cart">Giỏ hàng của bạn</string>
+    <string name="confirm_cart">Thanh toán</string>
+    <string name="you_maybe_like">Có thể bạn sẽ thích</string>
+    <string name="click_on_voucher">Nhấn vào mục Mã giảm giá ở cuối trang để hưởng miễn phí vận chuyển bạn nhé</string>
 </resources>

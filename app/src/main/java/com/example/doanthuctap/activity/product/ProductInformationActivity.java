@@ -272,7 +272,7 @@ public class ProductInformationActivity extends AppCompatActivity implements Add
     private void setupEvent()
     {
 //        buttonBack.setOnClickListener(view->finish());
-//        buttonAddToCart.setOnClickListener(view -> openAddToCartSheet());
+        buttonAddToCart.setOnClickListener(view -> openAddToCartSheet());
 //        buttonCart.setOnClickListener(view->{
 //            FragmentManager manager = getFragmentManager();
 //            FragmentTransaction transaction = manager.beginTransaction();
