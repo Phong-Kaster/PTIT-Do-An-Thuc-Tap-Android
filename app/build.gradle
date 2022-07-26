@@ -55,4 +55,6 @@ dependencies {
     // picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
 
+    // https://github.com/xabaras/RecyclerViewSwipeDecorator
+    implementation 'com.github.xabaras:RecyclerViewSwipeDecorator:1.3'
 }

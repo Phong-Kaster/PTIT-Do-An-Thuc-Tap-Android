@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.doanthuctap.container.GetLatestOrderResponse;
+import com.example.doanthuctap.container.ModifyOrderContentResponse;
 import com.example.doanthuctap.container.ProductsResponse;
 import com.example.doanthuctap.repository.ClientOrderRepository;
 import com.example.doanthuctap.repository.ClientProductsRepository;
@@ -68,4 +69,22 @@ public class CartFragmentViewModel extends ViewModel {
         products = productsRepository.getProducts(parameters);
     }
 
+
+    /**
+     * modify order response data;
+     */
+    private MutableLiveData<ModifyOrderContentResponse> modifyOrderContentData;
+    public MutableLiveData<ModifyOrderContentResponse> getModifyOrderContentData()
+    {
+        if( modifyOrderContentData == null )
+        {
+            modifyOrderContentData = new MutableLiveData<>();
+        }
+        return modifyOrderContentData;
+    }
+
+    public void modifyOrderContent(String orderId, String productId, String quantity )
+    {
+        modifyOrderContentData = orderRepository.modifyOrderContent(orderId, productId, quantity);
+    }
 }

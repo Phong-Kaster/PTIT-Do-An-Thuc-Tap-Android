@@ -147,9 +147,9 @@ public class ClientOrderRepository {
             System.out.println("ClientOrderRepository - modifyOrderContent - error: productId < 1");
             return null;
         }
-        if(Integer.parseInt(quantity) < 1)
+        if(Integer.parseInt(quantity) < 0)
         {
-            System.out.println("ClientOrderRepository - modifyOrderContent - error: quantity < 1");
+            System.out.println("ClientOrderRepository - modifyOrderContent - error: quantity < 0");
             return null;
         }
 
