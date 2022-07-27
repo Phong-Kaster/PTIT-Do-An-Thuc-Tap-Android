@@ -25,6 +25,16 @@ public class User {
     private String lastName;
 
 
+    @SerializedName("phone")
+    @Expose
+    private String phone;
+
+
+    @SerializedName("address")
+    @Expose
+    private String address;
+
+
     @SerializedName("role")
     @Expose
     private String role;
@@ -84,5 +94,13 @@ public class User {
 
     public String getUpdateAt() {
         return updateAt;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getAddress() {
+        return address;
     }
 }

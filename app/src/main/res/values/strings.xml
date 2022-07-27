@@ -14,7 +14,7 @@
     <string name="or">Hoặc</string>
     <string name="does_have_an_account">Chưa có tài khoản</string>
     <string name="create_account">Tạo mới tài khoản</string>
-    <string name="loading">Loading...</string>
+    <string name="loading">Loading…</string>
     <string name="ok">OK</string>
     <string name="add_account_infor_successfully">Thêm thông tin tài khoản thành công!</string>
     <string name="success">Success!</string>
@@ -87,6 +87,7 @@
     <string name="suitable_for_demand">Phù hợp cho nhu cầu:</string>
     <string name="review">Bình luận</string>
     <string name="quantity">Số lượng</string>
+    <string name="quantity_2">Số lượng:</string>
     <string name="one">1</string>
     <string name="add_to_cart_successfully">Thêm vào giỏ hàng thành công</string>
     <string name="fail">Thất bại</string>
@@ -98,5 +99,15 @@
     <string name="confirm_cart">Thanh toán</string>
     <string name="you_maybe_like">Có thể bạn sẽ thích</string>
     <string name="click_on_voucher">Nhấn vào mục Mã giảm giá ở cuối trang để hưởng miễn phí vận chuyển bạn nhé</string>
-    <string name="there_is_nothing_in_your_cart">Hông có gì trong giỏ hết...\n Lướt Wahoo, lựa hàng ngay đi</string>
+    <string name="there_is_nothing_in_your_cart">Hông có gì trong giỏ hết…\n Lướt Wahoo, lựa hàng ngay đi</string>
+    <string name="checkout">Thanh toán</string>
+    <string name="nguyen_thanh_phone">Nguyễn Thành Phong</string>
+    <string name="default_phone">0366253623</string>
+    <string name="default_address">31/33 đường 19, Thạnh Mỹ Lợi, Quận 2, TP.HCM, Việt Nam</string>
+    <string name="delivery_address">Địa chỉ giao hàng</string>
+    <string name="shipping_options">Hình thức giao hàng</string>
+    <string name="standard">Tiêu chuẩn</string>
+    <string name="rapid">Siêu tốc</string>
+    <string name="economical">Tiết kiệm</string>
+    <string name="x1">x1</string>
 </resources>

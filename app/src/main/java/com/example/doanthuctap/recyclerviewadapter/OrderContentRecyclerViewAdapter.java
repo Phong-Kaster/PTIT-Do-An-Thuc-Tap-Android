@@ -80,15 +80,24 @@ public class OrderContentRecyclerViewAdapter extends RecyclerView.Adapter<OrderC
 //        });
 
         holder.buttonAdd.setOnClickListener(view -> {
+            //Toast.makeText(context, "Add", Toast.LENGTH_SHORT).show();
             /*send price to update total amount in cart fragment*/
-            callback.onClickButtonQuantity("add", content.getPrice());
+            callback.onClickButtonQuantity("add", content.getProductId(), valueQuantity, content.getPrice());
 
             /*update current element's view*/
             valueQuantity++;
             holder.quantity.setText(String.valueOf(valueQuantity));
         });
         holder.buttonMinus.setOnClickListener(view->{
-            callback.onClickButtonQuantity("minus", content.getPrice());
+            //Toast.makeText(context, "Minus", Toast.LENGTH_SHORT).show();
+            if( valueQuantity > 1)
+            {
+                callback.onClickButtonQuantity("minus", content.getProductId(), valueQuantity, content.getPrice());
+                Toast.makeText(context, "Minus", Toast.LENGTH_SHORT).show();
+                /*update current element's view*/
+                valueQuantity--;
+                holder.quantity.setText(String.valueOf(valueQuantity));
+            }
         });
 
     }
@@ -101,26 +110,21 @@ public class OrderContentRecyclerViewAdapter extends RecyclerView.Adapter<OrderC
 
     protected static class ViewHolder extends RecyclerView.ViewHolder{
 
-        private LinearLayout parentLayout;
         private ImageView avatar;
         private TextView name;
         private TextView price;
         private AppCompatImageButton buttonAdd;
         private AppCompatImageButton buttonMinus;
         private TextView quantity;
-        private int valueQuantity = 1;
-        //private OrderContentRecyclerViewAdapter.Callback callback;
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             setupComponent(itemView);
-//            setupEvent();
         }
 
         private void setupComponent(View itemView)
         {
-            parentLayout = itemView.findViewById(R.id.orderContentParentLayout);
             avatar = itemView.findViewById(R.id.orderContentAvatar);
             name = itemView.findViewById(R.id.orderContentName);
             price = itemView.findViewById(R.id.orderContentPrice);
@@ -129,21 +133,6 @@ public class OrderContentRecyclerViewAdapter extends RecyclerView.Adapter<OrderC
             quantity = itemView.findViewById(R.id.orderContentQuantity);
         }
 
-//        private void setupEvent()
-//        {
-//            buttonAdd.setOnClickListener(view -> {
-//                valueQuantity++;
-//                quantity.setText(String.valueOf(valueQuantity));
-//            });
-//
-//            buttonMinus.setOnClickListener(view -> {
-//                if( valueQuantity > 1)
-//                {
-//                    valueQuantity--;
-//                    quantity.setText(String.valueOf(valueQuantity));
-//                }
-//            });
-//        }
     }
 
     public interface Callback
@@ -152,6 +141,6 @@ public class OrderContentRecyclerViewAdapter extends RecyclerView.Adapter<OrderC
         * when users change quantity of a product, this function
         * update total amount in cart fragment
         * */
-        void onClickButtonQuantity(String action, int price);
+        void onClickButtonQuantity(String action, int productId, int quantity, int price);
     }
 }

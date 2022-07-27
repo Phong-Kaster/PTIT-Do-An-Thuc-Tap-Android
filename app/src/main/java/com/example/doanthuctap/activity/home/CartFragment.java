@@ -1,18 +1,21 @@
 package com.example.doanthuctap.activity.home;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -22,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.doanthuctap.R;
+import com.example.doanthuctap.activity.cart.CartCheckoutActivity;
 import com.example.doanthuctap.container.GetLatestOrderResponse;
 import com.example.doanthuctap.container.ModifyOrderContentResponse;
 import com.example.doanthuctap.container.ProductsResponse;
@@ -91,6 +95,7 @@ public class CartFragment extends Fragment implements OrderContentRecyclerViewAd
         setupComponent(view);
         setupViewModel();
         setupScreen();
+        setupEvent();
         return view;
     }
 
@@ -105,6 +110,9 @@ public class CartFragment extends Fragment implements OrderContentRecyclerViewAd
         loadingScreen = new LoadingScreen(requireActivity());
         txtNothingInCart = view.findViewById(R.id.textNothingInCart);
         txtTotalAmount = view.findViewById(R.id.cartFragmentTotalAmount);
+
+
+        buttonConfirmCart = view.findViewById(R.id.cartFragmentButtonConfirmCart);
     }
 
     @SuppressLint("SetTextI18n")
@@ -181,6 +189,16 @@ public class CartFragment extends Fragment implements OrderContentRecyclerViewAd
         txtTotalAmount.setText(String.valueOf(totalAmount));
     }
 
+
+    @SuppressLint("NotifyDataSetChanged")
+    private void setupEvent()
+    {
+        buttonConfirmCart.setOnClickListener(view ->{
+            Intent intent = new Intent(requireActivity(), CartCheckoutActivity.class);
+            startActivity(intent);
+        });
+    }
+
     /**
      * @author Phong-Kaster
      * set up order content recycler view
@@ -222,6 +240,7 @@ public class CartFragment extends Fragment implements OrderContentRecyclerViewAd
      * @author Phong-Kaster
      * Swipe from right to left to eradicate a transaction
      * */
+    @SuppressLint({"NotifyDataSetChanged", "SetTextI18n"})
     private void swipeToDelete(RecyclerView recycleView, OrderContentRecyclerViewAdapter adapter, List<GetLatestOrderResponseContent> products)
     {
         /*Step 1*/
@@ -236,7 +255,7 @@ public class CartFragment extends Fragment implements OrderContentRecyclerViewAd
                         return false;
                     }
 
-                    @SuppressLint("NotifyDataSetChanged")
+
                     @Override
                     public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
                         //Remove swiped item from list and notify the RecyclerView
@@ -273,7 +292,7 @@ public class CartFragment extends Fragment implements OrderContentRecyclerViewAd
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onClickButtonQuantity(String action, int price) {
+    public void onClickButtonQuantity(String action, int productId, int quantity, int price) {
 
         if( price < 0 || action.length() < 1 || totalAmount == 0)
         {
@@ -284,15 +303,15 @@ public class CartFragment extends Fragment implements OrderContentRecyclerViewAd
         if( "add".equals(action) )
         {
             totalAmount = totalAmount + price;// sum current total amount with intPrice
+            System.out.println("cart fragment - quantity: " + quantity);
+            viewModel.modifyOrderContent(orderId, String.valueOf(productId), String.valueOf(quantity+1) );
         }
         else if( "minus".equals(action) )
         {
             totalAmount = totalAmount - price;
+            System.out.println("cart fragment - quantity: " + quantity);
+            viewModel.modifyOrderContent(orderId, String.valueOf(productId), String.valueOf(quantity-1));
         }
-
-
-
-
 
         txtTotalAmount.setText( Beautifier.formatNumber(totalAmount) + "đ" );
     }

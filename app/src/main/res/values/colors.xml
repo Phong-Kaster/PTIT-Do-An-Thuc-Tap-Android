@@ -34,4 +34,6 @@
     <color name="colorBackgroundClickOnVoucher">#FFEE58</color>
 
     <color name="colorBackgroundImageButton">#E5E7EB</color>
+
+    <color name="colorSeparator">#e6e6e6</color>
 </resources>

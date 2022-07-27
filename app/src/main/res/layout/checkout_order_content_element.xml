@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:padding="20dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/checkoutAvatar"
+        android:src="@drawable/product_default_avatar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"/>
+
+    <LinearLayout
+        android:paddingStart="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="RtlSymmetry">
+
+        <TextView
+            android:paddingTop="5dp"
+            android:layout_weight="2"
+            android:id="@+id/checkoutName"
+            android:textSize="12sp"
+            android:textColor="@color/colorTextBlack"
+            android:text="@string/product_default_name"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:paddingEnd="40dp"
+                android:id="@+id/checkoutPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:gravity="bottom"
+                android:text="@string/product_default_price"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                tools:ignore="SmallSp" />
+
+            <TextView
+                android:paddingEnd="10dp"
+                android:textSize="10sp"
+                android:textColor="@color/colorTextBlack"
+                android:text="@string/quantity_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="SmallSp" />
+
+
+            <TextView
+                android:textSize="10sp"
+                android:id="@+id/checkoutQuantity"
+                android:textStyle="bold"
+                android:textColor="@color/colorTextBlack"
+                android:text="@string/x1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="SmallSp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
