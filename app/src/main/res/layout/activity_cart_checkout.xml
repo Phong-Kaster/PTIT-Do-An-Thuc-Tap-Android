@@ -62,19 +62,21 @@
 
             <!--ORDER RECEIVER -->
             <LinearLayout
-                android:padding="10dp"
+                android:id="@+id/checkoutReceiverInformation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorBackground"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="10dp">
 
                 <!-- RECEIVER NAME -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:drawablePadding="5dp"
                     android:text="@string/delivery_address"
                     android:textColor="@color/colorTextBlack"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textStyle="bold"
                     app:drawableStartCompat="@drawable/ic_location" />
 
@@ -128,19 +130,20 @@
 
             <!-- SHIPPING OPTION -->
             <TextView
-                android:paddingTop="10dp"
-                android:paddingStart="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingTop="10dp"
+                android:drawablePadding="5dp"
                 android:text="@string/shipping_options"
                 android:textColor="@color/colorTextBlack"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 app:drawableStartCompat="@drawable/ic_shipping" />
 
             <RadioGroup
                 android:paddingStart="10dp"
-                android:id="@+id/checkoutShippingOptions"
+                android:id="@+id/checkoutActivityShippingOptions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
 
@@ -171,8 +174,20 @@
                     android:textColor="@color/colorTextBlack"
                     android:textSize="10sp"
                     tools:ignore="SmallSp" />
-
             </RadioGroup>
+
+            <TextView
+                android:id="@+id/checkoutShippingDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingStart="20dp"
+                android:paddingBottom="10dp"
+                android:text="@string/default_shipping_date"
+                android:textColor="@color/colorGreen"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                tools:ignore="SmallSp" />
 
             <View
                 android:layout_width="match_parent"
@@ -184,6 +199,106 @@
                 android:id="@+id/checkoutOrderContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/colorSeparator"/>
+
+            <!-- INVOICE -->
+            <TextView
+                android:drawablePadding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/invoice"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:drawableStartCompat="@drawable/ic_monetization" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp"/>
+
+            <!-- MERCHANDISE SUBTOTAL -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:paddingStart="20dp"
+                    android:text="@string/merchandise_subtotal"
+                    android:textColor="@color/colorTextBlack"
+                    android:textSize="12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/checkoutMerchandiseSubtotal"
+                    android:text="@string/product_default_price"
+                    android:textColor="@color/colorTextBlack"
+                    android:textSize="12sp"
+                    android:gravity="end"
+                    android:paddingEnd="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <!-- SHIPPING FEE -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:paddingStart="20dp"
+                    android:text="@string/shipping_fee"
+                    android:textColor="@color/colorTextBlack"
+                    android:textSize="12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/checkoutShippingFee"
+                    android:text="@string/zero_vnd"
+                    android:textColor="@color/colorTextBlack"
+                    android:textSize="12sp"
+                    android:gravity="end"
+                    android:paddingEnd="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <!-- TOTAL -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:paddingStart="20dp"
+                    android:text="@string/total_amount"
+                    android:textColor="@color/colorTextBlack"
+                    android:textSize="12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/checkoutTotal"
+                    android:text="@string/product_default_price"
+                    android:textColor="@color/colorTextBlack"
+                    android:textSize="12sp"
+                    android:gravity="end"
+                    android:paddingEnd="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -218,7 +333,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -235,33 +350,6 @@
                     android:text="@string/product_default_price"
                     android:textColor="@color/colorRed"
                     android:textSize="12sp" />
-
-            </LinearLayout>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="5dp" />
-
-            <!-- SHIPPING FEE -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/shipping_fee"
-                    android:textSize="8sp"
-                    tools:ignore="SmallSp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/zero_vnd"
-                    android:textColor="@color/colorRed"
-                    android:textSize="8sp"
-                    tools:ignore="SmallSp" />
 
             </LinearLayout>
 

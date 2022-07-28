@@ -5,6 +5,7 @@ import com.example.doanthuctap.container.GetLatestOrderResponse;
 import com.example.doanthuctap.container.GetProductsWithCategoryIDResponse;
 import com.example.doanthuctap.container.LoginResponse;
 import com.example.doanthuctap.container.ModifyOrderContentResponse;
+import com.example.doanthuctap.container.ModifyReceiverResponse;
 import com.example.doanthuctap.container.ProductByIdResponse;
 import com.example.doanthuctap.container.ProductsResponse;
 import com.example.doanthuctap.container.ProfileResponse;
@@ -80,6 +81,24 @@ public interface HTTPRequest {
     Call<CategoriesResponse> getCategories();
 
 
+    /**
+     *
+     * @param id is the cateogory's id
+     * @return GetProductsWithCategoryIDResponse
+     */
     @GET("categories/{id}")
     Call<GetProductsWithCategoryIDResponse> getProductsWithCategoryID(@Path("id") int id);
+
+    /**
+     * modify receiver information
+     * @param id is the order's id
+     * @return ModifyReceiverResponse
+     */
+    @FormUrlEncoded
+    @POST("order-information/{id}")
+    Call<ModifyReceiverResponse> modifyReceiverInformation(@Path("id") String id,
+                                                           @Field("receiver_phone") String receiverPhone,
+                                                           @Field("receiver_address") String receiverAddress,
+                                                           @Field("receiver_name") String receiverName,
+                                                           @Field("description") String description);
 }

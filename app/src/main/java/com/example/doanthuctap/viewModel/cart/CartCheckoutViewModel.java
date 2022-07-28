@@ -26,6 +26,18 @@ public class CartCheckoutViewModel extends ViewModel {
     }
 
 
+    private MutableLiveData<Boolean> animation;
+    public MutableLiveData<Boolean> getAnimation()
+    {
+        if( animation == null)
+        {
+            animation = new MutableLiveData<>();
+        }
+
+        return animation;
+    }
+
+
     private ClientOrderRepository orderRepository;
     public void instanticate()
     {
@@ -38,5 +50,6 @@ public class CartCheckoutViewModel extends ViewModel {
     public void getLatestOrderInformation(Map<String, String> headers)
     {
         latestOrder = orderRepository.getLatestOrder(headers);
+        animation = orderRepository.getAnimation();
     }
 }

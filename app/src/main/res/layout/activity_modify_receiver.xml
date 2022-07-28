@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.cart.ModifyReceiverActivity">
+
+    <!-- HEADER -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:background="@color/colorTheme"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageButton
+            android:id="@+id/modifyReceiverButtonGoBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:minHeight="20dp"
+            android:minWidth="20dp"
+            android:background="@drawable/background_button_back"
+            android:src="@drawable/ic_arrow_back"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:paddingTop="5dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="@string/delivery_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/modifyReceiverUsername"
+            style="@style/input_style"
+            android:drawableStart="@drawable/ic_receiver_name"
+            android:hint="@string/receiver_name"
+            android:inputType="text"
+            android:text="@string/nguyen_thanh_phone"
+            android:textColor="@color/colorTextBlack" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp"/>
+
+        <EditText
+            android:id="@+id/modifyReceiverPhone"
+            style="@style/input_style"
+            android:drawableStart="@drawable/ic_phone"
+            android:hint="@string/phone"
+            android:text="@string/default_phone"
+            android:inputType="phone"
+            android:textColor="@color/colorTextBlack"
+            tools:ignore="TextFields" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp"/>
+
+        <EditText
+            android:id="@+id/modifyReceiverAddress"
+            style="@style/input_style"
+            android:drawableStart="@drawable/ic_receiver_address"
+            android:hint="@string/address"
+            android:text="@string/default_address"
+            android:inputType="textPostalAddress"
+            android:textColor="@color/colorTextBlack"
+            tools:ignore="TextFields" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/modifyReceiverButtonSave"
+            style="@style/button_style"
+            android:layout_gravity="center"
+            android:text="@string/save" />
+    </LinearLayout>
+
+</LinearLayout>

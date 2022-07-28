@@ -51,12 +51,12 @@
 
                 <EditText
                     android:id="@+id/txtUsername"
-                    android:inputType="textEmailAddress"
-                    android:text="@string/username"
-                    android:textColor="@color/black"
+                    style="@style/input_style"
                     android:drawableStart="@drawable/mail"
                     android:hint="@string/email"
-                    style="@style/input_style" />
+                    android:inputType="textEmailAddress"
+                    android:text="@string/username"
+                    android:textColor="@color/black" />
 
                 <Space
                     android:layout_width="match_parent"

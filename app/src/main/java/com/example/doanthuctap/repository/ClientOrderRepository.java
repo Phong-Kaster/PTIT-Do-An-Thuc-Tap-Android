@@ -7,6 +7,7 @@ import com.example.doanthuctap.api.HTTPRequest;
 import com.example.doanthuctap.api.HTTPService;
 import com.example.doanthuctap.container.GetLatestOrderResponse;
 import com.example.doanthuctap.container.ModifyOrderContentResponse;
+import com.example.doanthuctap.container.ModifyReceiverResponse;
 import com.example.doanthuctap.container.ProductsResponse;
 
 import org.json.JSONException;
@@ -21,11 +22,23 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class ClientOrderRepository {
-    private static ClientOrderRepository instance;
-    private MutableLiveData<GetLatestOrderResponse> objects;
-    private static MutableLiveData<Boolean> animation;
-    private MutableLiveData<ModifyOrderContentResponse> contentObjects;
 
+
+
+
+
+
+    private MutableLiveData<ModifyReceiverResponse> receiverObjects;
+    public MutableLiveData<ModifyReceiverResponse> getReceiverObjects()
+    {
+        if( receiverObjects == null )
+        {
+            receiverObjects = new MutableLiveData<>();
+        }
+        return receiverObjects;
+    }
+
+    private MutableLiveData<GetLatestOrderResponse> objects;
     public MutableLiveData<GetLatestOrderResponse> getObjects() {
         if( objects == null )
         {
@@ -38,6 +51,7 @@ public class ClientOrderRepository {
      * public static getInstance() method.
      * @return instance of Clients Products Repository
      */
+    private static ClientOrderRepository instance;
     public static ClientOrderRepository getInstance(){
         if( instance == null){
             instance = new ClientOrderRepository();
@@ -46,6 +60,7 @@ public class ClientOrderRepository {
         return instance;
     }
 
+    private static MutableLiveData<Boolean> animation;
     public MutableLiveData<Boolean> getAnimation(){
         if( animation == null ){
             animation = new MutableLiveData<>();
@@ -53,6 +68,8 @@ public class ClientOrderRepository {
         return animation;
     }
 
+
+    private MutableLiveData<ModifyOrderContentResponse> contentObjects;
     public MutableLiveData<ModifyOrderContentResponse> getContentObjects()
     {
         if( contentObjects == null)
@@ -194,5 +211,96 @@ public class ClientOrderRepository {
         });
 
         return contentObjects;
+    }
+
+    public MutableLiveData<ModifyReceiverResponse> modifyReceiverOrder(String orderId,
+                                                                       String receiverPhone,
+                                                                       String receiverAddress,
+                                                                       String receiverName,
+                                                                       String description)
+    {
+        if( receiverObjects == null )
+        {
+            receiverObjects = new MutableLiveData<>();
+        }
+
+        if(animation == null )
+        {
+            animation = new MutableLiveData<>();
+        }
+        animation.setValue(true);
+
+
+        /*Step 1 - create api connection */
+        Retrofit service = HTTPService.getInstance();
+        HTTPRequest api = service.create(HTTPRequest.class);
+
+
+        /*Step 2 - check input*/
+        if( orderId.length() < 15)
+        {
+            System.out.println("Client Order Repository - modifyReceiverOrder - orderId < 15 characters ");
+            return null;
+        }
+
+        if( receiverPhone.length() < 1 )
+        {
+            System.out.println("Client Order Repository - modifyReceiverOrder - receiverPhone.length < 1");
+            return null;
+        }
+
+        if( receiverAddress.length() < 1)
+        {
+            System.out.println("Client Order Repository - modifyReceiverOrder - receiverAddress.length < 1");
+            return null;
+        }
+
+        if( receiverName.length() < 1 )
+        {
+            System.out.println("Client Order Repository - modifyReceiverOrder - receiverAddress.length < 1");
+            return null;
+        }
+
+
+        /*Step 3*/
+        Call<ModifyReceiverResponse> container = api.modifyReceiverInformation(orderId, receiverPhone, receiverAddress, receiverName, description);
+        container.enqueue(new Callback<ModifyReceiverResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<ModifyReceiverResponse> call,
+                                   @NonNull Response<ModifyReceiverResponse> response) {
+                if(response.isSuccessful())
+                {
+                    ModifyReceiverResponse content = response.body();
+                    assert content != null;
+                    System.out.println("ClientOrderRepository-modifyOrderContent-result: " + content.getResult());
+                    System.out.println("ClientOrderRepository-modifyOrderContent-msg: " + content.getMsg());
+//                    System.out.println("ClientOrderRepository-modifyOrderContent-total: " + content.getTotal());
+                    receiverObjects.setValue(content);
+                    animation.setValue(false);
+                }
+                if(response.errorBody() != null) {
+                    try {
+                        JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        System.out.println( jObjError );
+                    } catch (Exception e) {
+                        System.out.println( e.getMessage() );
+                    }
+
+                    contentObjects.setValue(null);
+                    animation.setValue(false);
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<ModifyReceiverResponse> call,
+                                  @NonNull Throwable t) {
+                System.out.println("ClientOrderRepository - throwable: " + t.getMessage());
+                animation.setValue(false);
+            }
+        });
+
+
+
+        return receiverObjects;
     }
 }

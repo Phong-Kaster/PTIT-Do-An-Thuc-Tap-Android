@@ -110,4 +110,11 @@
     <string name="rapid">Siêu tốc</string>
     <string name="economical">Tiết kiệm</string>
     <string name="x1">x1</string>
+    <string name="invoice">Hóa đơn</string>
+    <string name="merchandise_subtotal">Tiền hàng:</string>
+    <string name="default_shipping_date">Nhận hàng từ ngày 28-07 đến 30-07</string>
+    <string name="receiver_name">Tên người nhận</string>
+    <string name="address">Địa chỉ</string>
+    <string name="phone">Số điện thoại</string>
+    <string name="save">Lưu lại</string>
 </resources>

@@ -1,7 +1,15 @@
 package com.example.doanthuctap.helper;
 
+import android.annotation.SuppressLint;
+
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
+import java.util.TimeZone;
 
 /**
  * @author Phong-Kaster
@@ -69,5 +77,59 @@ public class Beautifier {
         }
         String output = input.substring(0, 16);
         return output;
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    public static String generateShippingDate(int input)
+    {
+        String output = "";
+
+        /*fromDate*/
+        Calendar fromDate = Calendar.getInstance();
+        fromDate.setTimeZone(TimeZone.getTimeZone("Asia/Ho_Chi_Minh"));
+
+        /*toDate*/
+        Calendar toDate = Calendar.getInstance();
+        toDate.setTimeZone(TimeZone.getTimeZone("Asia/Ho_Chi_Minh"));
+
+        int shippingEconomical = 2131231333;
+        int shippingStandard = 2131231334;
+        int shippingRapid = 2131231335;
+
+
+        if( input == shippingEconomical )
+        {
+            fromDate.add(Calendar.DATE, 2);
+            fromDate.add(Calendar.DATE, 5);
+            output = "Nhận hàng từ " + convertCalendarToString(fromDate) +
+                    " đến " + convertCalendarToString(toDate);
+        }
+        else if( input == shippingStandard )
+        {
+            fromDate.add(Calendar.DATE, 2);
+            toDate.add(Calendar.DATE, 4);
+
+            output = "Nhận hàng từ " + convertCalendarToString(fromDate) +
+                    " đến " + convertCalendarToString(toDate);
+        }
+        else if( input == shippingRapid )
+        {
+            output = "Nhận hàng trước 11h ngày mai";
+        }
+
+
+        return output;
+    }
+
+    /**
+     * @author Phong-Kaster
+     *
+     * @param cal
+     * @return String date
+     * for example converCalendarToString( today ) => 28/07 in String.
+     */
+    public static String convertCalendarToString(Calendar cal) {
+        return "" + cal.get(Calendar.DATE) + "/" +
+                (cal.get(Calendar.MONTH) + 1);
     }
 }
