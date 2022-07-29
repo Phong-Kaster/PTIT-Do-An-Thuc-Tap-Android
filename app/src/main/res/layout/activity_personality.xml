@@ -77,7 +77,7 @@
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/homeFragmentButtonGaming"
                     style="@style/style_button_demand"
-                    android:background="@drawable/background_button_lightweight"
+                    android:background="@drawable/background_button_gaming"
                     android:src="@drawable/ic_to_pay" />
 
                 <TextView
@@ -100,7 +100,7 @@
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/homeFragmentButtonStudent"
                     style="@style/style_button_demand"
-                    android:background="@drawable/background_button_graphic"
+                    android:background="@drawable/background_button_student"
                     android:src="@drawable/ic_packed" />
 
                 <TextView
@@ -123,7 +123,7 @@
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/homeFragmentButtonOffice"
                     style="@style/style_button_demand"
-                    android:background="@drawable/background_button_student"
+                    android:background="@drawable/background_button_office"
                     android:src="@drawable/ic_being_transported" />
 
                 <TextView
@@ -146,7 +146,7 @@
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/homeFragmentButtonDesign"
                     style="@style/style_button_demand"
-                    android:background="@drawable/background_button_office"
+                    android:background="@drawable/background_button_graphic"
                     android:src="@drawable/ic_done" />
 
                 <TextView
@@ -169,12 +169,12 @@
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/homeFragmentButtonLightweight"
                     style="@style/style_button_demand"
-                    android:background="@drawable/background_button_gaming"
-                    android:src="@drawable/ic_cancel" />
+                    android:background="@drawable/background_button_lightweight"
+                    android:src="@drawable/ic_lightweight" />
 
                 <TextView
                     style="@style/style_text_view_demand_button"
-                    android:text="@string/cancel"
+                    android:text="@string/lightweight"
                     tools:ignore="SmallSp" />
 
             </LinearLayout>
@@ -183,15 +183,5 @@
 
     </HorizontalScrollView>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@color/colorSeparator"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:padding="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/personalitySettings"
-        android:divider="@color/colorButtomNavigationMenuEnable"/>
 </LinearLayout>

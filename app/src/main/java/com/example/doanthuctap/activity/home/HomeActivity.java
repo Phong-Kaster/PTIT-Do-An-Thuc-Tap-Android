@@ -42,6 +42,9 @@ public class HomeActivity extends AppCompatActivity {
         return weakActivity.get();
     }
 
+    private final int cartFragment = 2131231184;
+    private boolean isCartFragment = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +54,7 @@ public class HomeActivity extends AppCompatActivity {
         setupComponent();
         setupVariable();
         setupEvent();
+
 
 
         /*by default, home fragment is the first screen users interact*/
@@ -95,7 +99,7 @@ public class HomeActivity extends AppCompatActivity {
     private void setupEvent(){
         /*set up event when users click on item in bottom navigation view*/
         bottomNavigationView.setOnItemSelectedListener(item -> {
-
+            isCartFragment = false;
             switch (item.getItemId()){
                 case R.id.shortcutHome:
                     fragment = new HomeFragment();
@@ -104,6 +108,7 @@ public class HomeActivity extends AppCompatActivity {
                     fragment = new CategoryFragment();
                     break;
                 case R.id.shortcutCart:
+                    isCartFragment = true;
                     fragment = new CartFragment();
                     break;
                 case R.id.shortcutPersonality:
@@ -151,8 +156,37 @@ public class HomeActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+    /**
+     * if users click on cart fragment but now they don't have any product in their cart
+     * Continually, users click similar products and choose one product.
+     * As soon as they press button back, cart is reloaded automatically
+     */
     @Override
     protected void onResume() {
         super.onResume();
+        if( isCartFragment )
+        {
+            BottomNavigationView bottomNavigationView;
+            bottomNavigationView = findViewById(R.id.bottomNavigationMenu);
+            bottomNavigationView.setSelectedItemId(R.id.shortcutCart);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    private void refreshFragment()
+    {
+        FragmentManager manager = getSupportFragmentManager();
+        @SuppressLint("ResourceType") Fragment currentFragment = manager.findFragmentById(2131231187);
+
+
+
+        manager.beginTransaction()
+                .detach(currentFragment)
+                .attach(currentFragment)
+                .commit();
     }
 }

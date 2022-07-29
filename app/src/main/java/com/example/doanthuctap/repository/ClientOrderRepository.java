@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.doanthuctap.api.HTTPRequest;
 import com.example.doanthuctap.api.HTTPService;
+import com.example.doanthuctap.container.ConfirmOrderResponse;
 import com.example.doanthuctap.container.GetLatestOrderResponse;
 import com.example.doanthuctap.container.ModifyOrderContentResponse;
 import com.example.doanthuctap.container.ModifyReceiverResponse;
@@ -22,11 +23,6 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class ClientOrderRepository {
-
-
-
-
-
 
     private MutableLiveData<ModifyReceiverResponse> receiverObjects;
     public MutableLiveData<ModifyReceiverResponse> getReceiverObjects()
@@ -213,11 +209,12 @@ public class ClientOrderRepository {
         return contentObjects;
     }
 
-    public MutableLiveData<ModifyReceiverResponse> modifyReceiverOrder(String orderId,
+    public MutableLiveData<ModifyReceiverResponse> modifyOrderInformation(String orderId,
                                                                        String receiverPhone,
                                                                        String receiverAddress,
                                                                        String receiverName,
-                                                                       String description)
+                                                                       String description,
+                                                                       String total)
     {
         if( receiverObjects == null )
         {
@@ -237,33 +234,38 @@ public class ClientOrderRepository {
 
 
         /*Step 2 - check input*/
-        if( orderId.length() < 15)
-        {
-            System.out.println("Client Order Repository - modifyReceiverOrder - orderId < 15 characters ");
-            return null;
-        }
-
-        if( receiverPhone.length() < 1 )
-        {
-            System.out.println("Client Order Repository - modifyReceiverOrder - receiverPhone.length < 1");
-            return null;
-        }
-
-        if( receiverAddress.length() < 1)
-        {
-            System.out.println("Client Order Repository - modifyReceiverOrder - receiverAddress.length < 1");
-            return null;
-        }
-
-        if( receiverName.length() < 1 )
-        {
-            System.out.println("Client Order Repository - modifyReceiverOrder - receiverAddress.length < 1");
-            return null;
-        }
+//        if( orderId.length() < 15)
+//        {
+//            System.out.println("Client Order Repository - modifyReceiverOrder - orderId < 15 characters ");
+//            return null;
+//        }
+//
+//        if( receiverPhone.length() < 1 )
+//        {
+//            System.out.println("Client Order Repository - modifyReceiverOrder - receiverPhone.length < 1");
+//            return null;
+//        }
+//
+//        if( receiverAddress.length() < 1)
+//        {
+//            System.out.println("Client Order Repository - modifyReceiverOrder - receiverAddress.length < 1");
+//            return null;
+//        }
+//
+//        if( receiverName.length() < 1 )
+//        {
+//            System.out.println("Client Order Repository - modifyReceiverOrder - receiverAddress.length < 1");
+//            return null;
+//        }
 
 
         /*Step 3*/
-        Call<ModifyReceiverResponse> container = api.modifyReceiverInformation(orderId, receiverPhone, receiverAddress, receiverName, description);
+        Call<ModifyReceiverResponse> container = api.modifyOrderInformation(orderId,
+                                                                            receiverPhone,
+                                                                            receiverAddress,
+                                                                            receiverName,
+                                                                            description,
+                                                                            total);
         container.enqueue(new Callback<ModifyReceiverResponse>() {
             @Override
             public void onResponse(@NonNull Call<ModifyReceiverResponse> call,
@@ -272,8 +274,8 @@ public class ClientOrderRepository {
                 {
                     ModifyReceiverResponse content = response.body();
                     assert content != null;
-                    System.out.println("ClientOrderRepository-modifyOrderContent-result: " + content.getResult());
-                    System.out.println("ClientOrderRepository-modifyOrderContent-msg: " + content.getMsg());
+                    System.out.println("ClientOrderRepository-modify order information-result: " + content.getResult());
+                    System.out.println("ClientOrderRepository-modify order information-msg: " + content.getMsg());
 //                    System.out.println("ClientOrderRepository-modifyOrderContent-total: " + content.getTotal());
                     receiverObjects.setValue(content);
                     animation.setValue(false);
@@ -302,5 +304,75 @@ public class ClientOrderRepository {
 
 
         return receiverObjects;
+    }
+
+
+
+    /**
+     * get order confirm response
+     * */
+    private MutableLiveData<ConfirmOrderResponse> confirmOrderResponse;
+    public MutableLiveData<ConfirmOrderResponse> confirmOrder(String id, String orderStatus)
+    {
+        if( confirmOrderResponse == null )
+        {
+            confirmOrderResponse = new MutableLiveData<>();
+        }
+
+        if(animation == null )
+        {
+            animation = new MutableLiveData<>();
+        }
+        animation.setValue(true);
+
+        /*Step 1 - create api connection */
+        Retrofit service = HTTPService.getInstance();
+        HTTPRequest api = service.create(HTTPRequest.class);
+
+
+        String orderNextStatus = orderStatus.equals("processing") ? "verified" : "cancel";
+
+
+        /*Step 2 - call api*/
+        Call<ConfirmOrderResponse> container = api.confirmOrder(id, orderNextStatus);
+
+
+        /*Step 3 - */
+        container.enqueue(new Callback<ConfirmOrderResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<ConfirmOrderResponse> call,
+                                   @NonNull Response<ConfirmOrderResponse> response) {
+                if(response.isSuccessful())
+                {
+                    ConfirmOrderResponse content = response.body();
+                    assert content != null;
+                    System.out.println("ClientOrderRepository-confirmOrder-result: " + content.getResult());
+                    System.out.println("ClientOrderRepository-confirmOrder-msg: " + content.getMsg());
+//                    System.out.println("ClientOrderRepository-modifyOrderContent-total: " + content.getTotal());
+                    confirmOrderResponse.setValue(content);
+                    animation.setValue(false);
+                }
+                if(response.errorBody() != null) {
+                    try {
+                        JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        System.out.println( jObjError );
+                    } catch (Exception e) {
+                        System.out.println( e.getMessage() );
+                    }
+
+                    confirmOrderResponse.setValue(null);
+                    animation.setValue(false);
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<ConfirmOrderResponse> call,
+                                  @NonNull Throwable t) {
+                System.out.println("ClientOrderRepository - throwable: " + t.getMessage());
+                animation.setValue(false);
+            }
+        });
+
+        return confirmOrderResponse;
     }
 }

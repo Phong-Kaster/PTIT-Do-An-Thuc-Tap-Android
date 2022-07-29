@@ -99,8 +99,8 @@ public class Beautifier {
 
         if( input == shippingEconomical )
         {
-            fromDate.add(Calendar.DATE, 2);
-            fromDate.add(Calendar.DATE, 5);
+            fromDate.add(Calendar.DATE, 3);
+            toDate.add(Calendar.DATE, 6);
             output = "Nhận hàng từ " + convertCalendarToString(fromDate) +
                     " đến " + convertCalendarToString(toDate);
         }

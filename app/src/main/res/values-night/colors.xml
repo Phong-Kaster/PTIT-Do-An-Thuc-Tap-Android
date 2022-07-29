@@ -34,4 +34,6 @@
     <color name="colorBackgroundClickOnVoucher">#FFEE58</color>
 
     <color name="colorBackgroundImageButton">#E5E7EB</color>
+
+    <color name="colorBackgroundSettingAvatar">#d7d9e0</color>
 </resources>

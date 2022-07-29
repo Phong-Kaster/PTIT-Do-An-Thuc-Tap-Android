@@ -137,16 +137,6 @@ public class HomeFragment extends Fragment {
         });
 
         /*loading screen when data is being gotten*/
-//        viewModel.getAnimation().observe((LifecycleOwner) requireContext(), aBoolean -> {
-//            if( aBoolean )
-//            {
-//                loadingScreen.start();
-//            }
-//            else
-//            {
-//                loadingScreen.stop();
-//            }
-//        });
     }
 
     /**

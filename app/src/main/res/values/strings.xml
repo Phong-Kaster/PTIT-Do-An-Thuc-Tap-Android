@@ -17,7 +17,7 @@
     <string name="loading">Loading…</string>
     <string name="ok">OK</string>
     <string name="add_account_infor_successfully">Thêm thông tin tài khoản thành công!</string>
-    <string name="success">Success!</string>
+    <string name="success">Thành công!</string>
     <string name="cancel">Hủy bỏ</string>
     <string name="attention">Chú ý</string>
     <string name="login_successfully">Đăng nhập thành công</string>
@@ -117,4 +117,21 @@
     <string name="address">Địa chỉ</string>
     <string name="phone">Số điện thoại</string>
     <string name="save">Lưu lại</string>
+    <string name="are_you_sure_about_placing_order">Bạn có chắc chắn muốn đặt hàng không?</string>
+    <string name="checkout_successfully">Đặt hàng thành công</string>
+    <string name="thank_you_for_using_wahoo">Cảm ơn bạn đã mua hàng tại Wahoo</string>
+    <string name="please_prepare_enough_money_on_delivery_date">Vui lòng chuẩn bị số tiền tương ứng vào ngày giao hàng</string>
+    <string name="pretend_delivery_date">Ngày giao hàng dự kiến:</string>
+    <string name="for_more_information_about_your_order"><![CDATA[Để biết thêm chi tiết về trạng thái đơn hàng của bạn, vui lòng chọn Tài khoản > Đơn hàng của tôi]]></string>
+    <string name="watch_order">Xem đơn hàng</string>
+    <string name="default_delivery_date">Ngày 28–7 đến 31–8</string>
+    <string name="update_personal_information">Cập nhật thông tin cá nhân</string>
+    <string name="to_pay">Chờ thanh toán</string>
+    <string name="packed">Đã đóng gói</string>
+    <string name="being_transported">Đang vận chuyển</string>
+    <string name="done">Hoàn tất</string>
+    <string name="all_orders">Tất cả hóa đơn</string>
+    <string name="dark_mode">Chế độ ban đêm</string>
+    <string name="personal_information">Thông tin cá nhân</string>
+    <string name="language">Ngôn ngữ</string>
 </resources>

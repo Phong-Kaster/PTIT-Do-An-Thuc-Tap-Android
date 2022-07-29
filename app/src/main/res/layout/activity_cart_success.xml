@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.cart.CartSuccessActivity">
+
+    <!-- HEADER -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:background="@color/colorTheme"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/checkoutActivityButtonGoBack"-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:minHeight="20dp"-->
+<!--            android:minWidth="20dp"-->
+<!--            android:background="@drawable/background_button_back"-->
+<!--            android:src="@drawable/ic_arrow_back"-->
+<!--            tools:ignore="ContentDescription" />-->
+
+        <TextView
+            android:paddingTop="5dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="@string/checkout_successfully"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+
+    <ImageView
+        android:src="@drawable/ic_clock"
+        android:layout_gravity="center"
+        android:layout_width="36dp"
+        android:layout_height="36dp"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <TextView
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textColor="#4CAF50"
+        android:text="@string/thank_you_for_using_wahoo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/colorSeparator"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingStart="20sp"
+        android:paddingEnd="20sp"
+        android:text="@string/please_prepare_enough_money_on_delivery_date"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="14sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <TextView
+        android:id="@+id/cartSuccessTotal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/product_default_price"
+        android:textColor="@color/colorRed"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:ignore="SmallSp" />
+
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+
+    <LinearLayout
+        android:paddingBottom="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/pretend_delivery_date"
+            android:textColor="@color/colorTextBlack"
+            android:paddingStart="20dp"
+            android:paddingEnd="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/cartSuccessDeliveryDate"
+            android:textSize="11sp"
+            android:text="@string/default_delivery_date"
+            android:textColor="@color/colorTextBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/colorSeparator"/>
+
+
+    <TextView
+        android:paddingTop="10sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:paddingStart="20sp"
+        android:paddingEnd="20sp"
+        android:text="@string/for_more_information_about_your_order"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="14sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonWatchOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/background_button_watch_order"
+        android:padding="10dp"
+        android:text="@string/watch_order"
+        android:textColor="@color/colorBlue"
+        android:textSize="12sp" />
+
+</LinearLayout>

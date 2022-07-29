@@ -45,7 +45,7 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/modifyReceiverUsername"
+            android:id="@+id/modifyReceiverName"
             style="@style/input_style"
             android:drawableStart="@drawable/ic_receiver_name"
             android:hint="@string/receiver_name"

@@ -53,9 +53,11 @@ public class ModifyReceiverViewModel extends ViewModel {
                                     String receiverPhone,
                                     String receiverAddress,
                                     String receiverName,
-                                    String description)
+                                    String description,
+                                    String total)
     {
-        response = orderRepository.modifyReceiverOrder(orderId, receiverPhone, receiverAddress, receiverName, description);
+        response = orderRepository.modifyOrderInformation(orderId, receiverPhone,
+                receiverAddress, receiverName, description, total);
         animation = orderRepository.getAnimation();
     }
 }

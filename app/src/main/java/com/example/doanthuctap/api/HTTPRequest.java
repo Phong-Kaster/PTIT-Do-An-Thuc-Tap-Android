@@ -1,6 +1,7 @@
 package com.example.doanthuctap.api;
 
 import com.example.doanthuctap.container.CategoriesResponse;
+import com.example.doanthuctap.container.ConfirmOrderResponse;
 import com.example.doanthuctap.container.GetLatestOrderResponse;
 import com.example.doanthuctap.container.GetProductsWithCategoryIDResponse;
 import com.example.doanthuctap.container.LoginResponse;
@@ -20,6 +21,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.HeaderMap;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
 
@@ -96,9 +98,16 @@ public interface HTTPRequest {
      */
     @FormUrlEncoded
     @POST("order-information/{id}")
-    Call<ModifyReceiverResponse> modifyReceiverInformation(@Path("id") String id,
+    Call<ModifyReceiverResponse> modifyOrderInformation(@Path("id") String id,
                                                            @Field("receiver_phone") String receiverPhone,
                                                            @Field("receiver_address") String receiverAddress,
                                                            @Field("receiver_name") String receiverName,
-                                                           @Field("description") String description);
+                                                           @Field("description") String description,
+                                                           @Field("total") String total);
+
+
+    @FormUrlEncoded
+    @PUT("orders/{id}")
+    Call<ConfirmOrderResponse> confirmOrder(@Path("id") String id,
+                                            @Field("status") String status);
 }

@@ -3,7 +3,9 @@ package com.example.doanthuctap.viewModel.cart;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.doanthuctap.container.ConfirmOrderResponse;
 import com.example.doanthuctap.container.GetLatestOrderResponse;
+import com.example.doanthuctap.container.ModifyReceiverResponse;
 import com.example.doanthuctap.model.GetLatestOrderResponseContent;
 import com.example.doanthuctap.repository.ClientOrderRepository;
 
@@ -50,6 +52,39 @@ public class CartCheckoutViewModel extends ViewModel {
     public void getLatestOrderInformation(Map<String, String> headers)
     {
         latestOrder = orderRepository.getLatestOrder(headers);
+        animation = orderRepository.getAnimation();
+    }
+
+    private MutableLiveData<ConfirmOrderResponse> confirmOrderResponse;
+    public MutableLiveData<ConfirmOrderResponse> getConfirmOrderResponse()
+    {
+        if( confirmOrderResponse == null)
+        {
+            confirmOrderResponse = new MutableLiveData<>();
+        }
+        return confirmOrderResponse;
+    }
+
+    public void confirmOrder(String orderId, String orderStatus)
+    {
+        confirmOrderResponse = orderRepository.confirmOrder(orderId, orderStatus);
+        animation = orderRepository.getAnimation();
+    }
+
+    private MutableLiveData<ModifyReceiverResponse> modifyOrderInformationResponse;
+    public void modifyOrderInformation(String orderId,
+                                    String receiverPhone,
+                                    String receiverAddress,
+                                    String receiverName,
+                                    String description,
+                                    String total)
+    {
+        if( modifyOrderInformationResponse == null )
+        {
+            modifyOrderInformationResponse = new MutableLiveData<>();
+        }
+        modifyOrderInformationResponse = orderRepository.modifyOrderInformation(orderId, receiverPhone,
+                receiverAddress, receiverName, description, total);
         animation = orderRepository.getAnimation();
     }
 }

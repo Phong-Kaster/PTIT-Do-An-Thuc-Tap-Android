@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -136,6 +137,7 @@ public class CartFragment extends Fragment implements OrderContentRecyclerViewAd
                 /*hide and show text and order content*/
                 txtNothingInCart.setVisibility(View.GONE);
                 orderContentRecyclerView.setVisibility(View.VISIBLE);
+                buttonConfirmCart.setEnabled(true);
 
 
                 /*get order id*/
@@ -150,6 +152,7 @@ public class CartFragment extends Fragment implements OrderContentRecyclerViewAd
             }
             else
             {
+                buttonConfirmCart.setEnabled(false);
                 txtNothingInCart.setVisibility(View.VISIBLE);
                 orderContentRecyclerView.setVisibility(View.GONE);
             }
@@ -303,16 +306,24 @@ public class CartFragment extends Fragment implements OrderContentRecyclerViewAd
         if( "add".equals(action) )
         {
             totalAmount = totalAmount + price;// sum current total amount with intPrice
-            System.out.println("cart fragment - quantity: " + quantity);
             viewModel.modifyOrderContent(orderId, String.valueOf(productId), String.valueOf(quantity+1) );
         }
         else if( "minus".equals(action) )
         {
             totalAmount = totalAmount - price;
-            System.out.println("cart fragment - quantity: " + quantity);
             viewModel.modifyOrderContent(orderId, String.valueOf(productId), String.valueOf(quantity-1));
         }
 
         txtTotalAmount.setText( Beautifier.formatNumber(totalAmount) + "đ" );
+    }
+
+    private void refreshFragment()
+    {
+        FragmentManager manager = requireActivity().getSupportFragmentManager();
+        Fragment currentFragment = manager.findFragmentById(R.id.frameLayout);
+        manager.beginTransaction()
+                .detach(currentFragment)
+                .attach(currentFragment)
+                .commit();
     }
 }
