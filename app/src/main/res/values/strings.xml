@@ -134,4 +134,17 @@
     <string name="dark_mode">Chế độ ban đêm</string>
     <string name="personal_information">Thông tin cá nhân</string>
     <string name="language">Ngôn ngữ</string>
+    <string name="order_identifier">Mã đơn hàng:</string>
+    <string name="default_order_id">ce50316d5a6a46</string>
+    <string name="placed_order_date">Ngày đặt hàng:</string>
+    <string name="default_placed_order_date">31-07-2022</string>
+    <string name="status">Trạng thái:</string>
+    <string name="buy_again">Mua lại</string>
+    <string name="unknown">Không xác định</string>
+    <string name="verified">Đã xác nhận</string>
+    <string name="order_information">Chi tiết hóa đơn</string>
+    <string name="order_content">Nội dung đơn hàng</string>
+    <string name="description">Mô tả</string>
+    <string name="provisional_calculation">Tạm tính:</string>
+    <string name="VAT_included_if_any">Đã bao gồm VAT nếu có</string>
 </resources>

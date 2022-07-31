@@ -6,15 +6,14 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.doanthuctap.api.HTTPRequest;
 import com.example.doanthuctap.api.HTTPService;
 import com.example.doanthuctap.container.ConfirmOrderResponse;
+import com.example.doanthuctap.container.GetAllOrdersResponse;
 import com.example.doanthuctap.container.GetLatestOrderResponse;
+import com.example.doanthuctap.container.GetOrderByIdResponse;
 import com.example.doanthuctap.container.ModifyOrderContentResponse;
 import com.example.doanthuctap.container.ModifyReceiverResponse;
-import com.example.doanthuctap.container.ProductsResponse;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -45,7 +44,6 @@ public class ClientOrderRepository {
 
     /**
      * public static getInstance() method.
-     * @return instance of Clients Products Repository
      */
     private static ClientOrderRepository instance;
     public static ClientOrderRepository getInstance(){
@@ -75,6 +73,9 @@ public class ClientOrderRepository {
         return  contentObjects;
     }
 
+    /**
+     * get information of the latest order
+     */
     public MutableLiveData<GetLatestOrderResponse> getLatestOrder(Map<String, String> headers){
         if(objects == null){
             objects = new MutableLiveData<>();
@@ -132,6 +133,9 @@ public class ClientOrderRepository {
         return objects;
     }
 
+    /**
+     * modify content of an order
+     */
     public MutableLiveData<ModifyOrderContentResponse> modifyOrderContent(String orderId, String productId, String quantity)
     {
         if(contentObjects == null){
@@ -167,7 +171,7 @@ public class ClientOrderRepository {
         }
 
 
-        Call<ModifyOrderContentResponse> container = api.modifyOrderContent(orderId, productId, quantity);
+        Call<ModifyOrderContentResponse> container = api.modifyOrderContent(orderId, productId, quantity, "orderContent");
 
 
         /*Step 3*/
@@ -209,6 +213,9 @@ public class ClientOrderRepository {
         return contentObjects;
     }
 
+    /**
+     * modify information of an order
+     */
     public MutableLiveData<ModifyReceiverResponse> modifyOrderInformation(String orderId,
                                                                        String receiverPhone,
                                                                        String receiverAddress,
@@ -265,7 +272,7 @@ public class ClientOrderRepository {
                                                                             receiverAddress,
                                                                             receiverName,
                                                                             description,
-                                                                            total);
+                                                                            total,"orderInformation");
         container.enqueue(new Callback<ModifyReceiverResponse>() {
             @Override
             public void onResponse(@NonNull Call<ModifyReceiverResponse> call,
@@ -374,5 +381,126 @@ public class ClientOrderRepository {
         });
 
         return confirmOrderResponse;
+    }
+
+
+    /**
+     * get all orders of an user
+     */
+    private MutableLiveData<GetAllOrdersResponse> allOrdersResponse;
+    public MutableLiveData<GetAllOrdersResponse> getAllOrders(Map<String, String> headers, Map<String, String> parameters)
+    {
+        if( allOrdersResponse == null )
+        {
+            allOrdersResponse = new MutableLiveData<>();
+        }
+
+        if(animation == null )
+        {
+            animation = new MutableLiveData<>();
+        }
+        animation.setValue(true);
+
+
+        /*Step 1 - create api connection */
+        Retrofit service = HTTPService.getInstance();
+        HTTPRequest api = service.create(HTTPRequest.class);
+
+
+        /*Step 3*/
+        Call<GetAllOrdersResponse> container = api.getAllOrders(headers, parameters);
+        container.enqueue(new Callback<GetAllOrdersResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<GetAllOrdersResponse> call,
+                                   @NonNull Response<GetAllOrdersResponse> response) {
+                if(response.isSuccessful())
+                {
+                    GetAllOrdersResponse content = response.body();
+                    assert content != null;
+                    allOrdersResponse.setValue(content);
+                    animation.setValue(false);
+                }
+                if(response.errorBody() != null) {
+                    try {
+                        JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        System.out.println( jObjError );
+                    } catch (Exception e) {
+                        System.out.println( e.getMessage() );
+                    }
+
+                    contentObjects.setValue(null);
+                    animation.setValue(false);
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<GetAllOrdersResponse> call,
+                                  @NonNull Throwable t) {
+                System.out.println("ClientOrderRepository - throwable: " + t.getMessage());
+                animation.setValue(false);
+            }
+        });
+
+
+
+        return allOrdersResponse;
+    }
+
+    /**
+     * get order by id
+     */
+    private MutableLiveData<GetOrderByIdResponse> orderByIdResponse;
+    public MutableLiveData<GetOrderByIdResponse> getOrderByID(String orderId, Map<String, String> headers)
+    {
+        if( orderByIdResponse == null )
+        {
+            orderByIdResponse = new MutableLiveData<>();
+        }
+        if(animation == null )
+        {
+            animation = new MutableLiveData<>();
+        }
+        animation.setValue(true);
+
+        /*Step 1 - create api connection */
+        Retrofit service = HTTPService.getInstance();
+        HTTPRequest api = service.create(HTTPRequest.class);
+
+
+        /*Step 3*/
+        Call<GetOrderByIdResponse> container = api.getOrderByID(orderId, headers);
+        container.enqueue(new Callback<GetOrderByIdResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<GetOrderByIdResponse> call,
+                                   @NonNull Response<GetOrderByIdResponse> response) {
+                if(response.isSuccessful())
+                {
+                    GetOrderByIdResponse content = response.body();
+                    assert content != null;
+                    orderByIdResponse.setValue(content);
+                    animation.setValue(false);
+                }
+                if(response.errorBody() != null) {
+                    try {
+                        JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        System.out.println( jObjError );
+                    } catch (Exception e) {
+                        System.out.println( e.getMessage() );
+                    }
+
+                    orderByIdResponse.setValue(null);
+                    animation.setValue(false);
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<GetOrderByIdResponse> call,
+                                  @NonNull Throwable t) {
+                System.out.println("ClientOrderRepository - throwable: " + t.getMessage());
+                animation.setValue(false);
+            }
+        });
+
+        return orderByIdResponse;
     }
 }

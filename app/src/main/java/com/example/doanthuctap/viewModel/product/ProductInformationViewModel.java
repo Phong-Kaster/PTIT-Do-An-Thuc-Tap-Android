@@ -15,15 +15,6 @@ import java.util.Map;
 
 public class ProductInformationViewModel extends ViewModel {
 
-
-
-
-
-
-
-
-
-
     private MutableLiveData<ModifyOrderContentResponse> orderContent;
     public MutableLiveData<ModifyOrderContentResponse> getOrderContent() {
         if( orderContent == null )

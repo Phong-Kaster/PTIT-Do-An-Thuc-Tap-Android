@@ -2,7 +2,9 @@ package com.example.doanthuctap.api;
 
 import com.example.doanthuctap.container.CategoriesResponse;
 import com.example.doanthuctap.container.ConfirmOrderResponse;
+import com.example.doanthuctap.container.GetAllOrdersResponse;
 import com.example.doanthuctap.container.GetLatestOrderResponse;
+import com.example.doanthuctap.container.GetOrderByIdResponse;
 import com.example.doanthuctap.container.GetProductsWithCategoryIDResponse;
 import com.example.doanthuctap.container.LoginResponse;
 import com.example.doanthuctap.container.ModifyOrderContentResponse;
@@ -60,21 +62,40 @@ public interface HTTPRequest {
     @GET("test")
     Call<TestResponse> getTest();
 
-
+    /*-------------------------------------------------------------------*/
+    /*--------------------------- ORDER ---------------------------------*/
+    /*-------------------------------------------------------------------*/
     /**
      * get latest order with headers
      */
-    @GET("orders/")
+    @GET("latest-order/")
     Call<GetLatestOrderResponse> getLatestOrder(@HeaderMap Map<String, String> headers);
 
     /**
      * modify order content
      */
     @FormUrlEncoded
-    @POST("orders/{id}")
+    @POST("order/{id}")
     Call<ModifyOrderContentResponse> modifyOrderContent(@Path("id") String orderId,
                                                         @Field("product_id") String productId,
-                                                        @Field("quantity") String quantity);
+                                                        @Field("quantity") String quantity,
+                                                        @Field("action") String action);
+
+    /**
+     * modify receiver information
+     * @param id is the order's id
+     * @return ModifyReceiverResponse
+     */
+    @FormUrlEncoded
+    @POST("order/{id}")
+    Call<ModifyReceiverResponse> modifyOrderInformation(@Path("id") String id,
+                                                        @Field("receiver_phone") String receiverPhone,
+                                                        @Field("receiver_address") String receiverAddress,
+                                                        @Field("receiver_name") String receiverName,
+                                                        @Field("description") String description,
+                                                        @Field("total") String total,
+                                                        @Field("action") String action);
+
 
     /**
      * get all categories and their information
@@ -91,23 +112,24 @@ public interface HTTPRequest {
     @GET("categories/{id}")
     Call<GetProductsWithCategoryIDResponse> getProductsWithCategoryID(@Path("id") int id);
 
-    /**
-     * modify receiver information
-     * @param id is the order's id
-     * @return ModifyReceiverResponse
-     */
-    @FormUrlEncoded
-    @POST("order-information/{id}")
-    Call<ModifyReceiverResponse> modifyOrderInformation(@Path("id") String id,
-                                                           @Field("receiver_phone") String receiverPhone,
-                                                           @Field("receiver_address") String receiverAddress,
-                                                           @Field("receiver_name") String receiverName,
-                                                           @Field("description") String description,
-                                                           @Field("total") String total);
 
+
+
+    /**
+     * get all orders of a user
+     * @return get all orders response
+     */
+    @GET("orders")
+    Call<GetAllOrdersResponse> getAllOrders(@HeaderMap Map<String, String> headers,
+                                            @QueryMap Map<String, String> parameters);
 
     @FormUrlEncoded
     @PUT("orders/{id}")
     Call<ConfirmOrderResponse> confirmOrder(@Path("id") String id,
                                             @Field("status") String status);
+
+
+    @GET("order/{id}")
+    Call<GetOrderByIdResponse> getOrderByID(@Path("id") String id,
+                                            @HeaderMap Map<String, String> headers);
 }

@@ -15,11 +15,11 @@ public class Order {
 
     @SerializedName("receiver_phone")
     @Expose
-    private Object receiverPhone;
+    private String receiverPhone;
 
     @SerializedName("receiver_address")
     @Expose
-    private Object receiverAddress;
+    private String receiverAddress;
 
     @SerializedName("receiver_name")
     @Expose
@@ -53,11 +53,11 @@ public class Order {
         return userId;
     }
 
-    public Object getReceiverPhone() {
+    public String getReceiverPhone() {
         return receiverPhone;
     }
 
-    public Object getReceiverAddress() {
+    public String getReceiverAddress() {
         return receiverAddress;
     }
 

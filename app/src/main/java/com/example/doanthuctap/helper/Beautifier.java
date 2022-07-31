@@ -1,6 +1,9 @@
 package com.example.doanthuctap.helper;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+
+import com.example.doanthuctap.R;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -8,6 +11,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 import java.util.TimeZone;
 
@@ -80,7 +84,7 @@ public class Beautifier {
     }
 
     @SuppressLint("SimpleDateFormat")
-    public static String generateShippingDate(int input)
+    public static String generateShippingDate(String input, Context context)
     {
         String output = "";
 
@@ -92,19 +96,19 @@ public class Beautifier {
         Calendar toDate = Calendar.getInstance();
         toDate.setTimeZone(TimeZone.getTimeZone("Asia/Ho_Chi_Minh"));
 
-        int shippingEconomical = 2131231333;
-        int shippingStandard = 2131231334;
-        int shippingRapid = 2131231335;
+        String economical = context.getResources().getString(R.string.economical);// tiết kiệm - economical
+        String standard = context.getResources().getString(R.string.standard);// tiêu chuẩn - standard
+        String rapid = context.getResources().getString(R.string.rapid);// siêu tốc - rapid
 
 
-        if( input == shippingEconomical )
+        if( input.equals(economical ) )
         {
             fromDate.add(Calendar.DATE, 3);
             toDate.add(Calendar.DATE, 6);
             output = "Nhận hàng từ " + convertCalendarToString(fromDate) +
                     " đến " + convertCalendarToString(toDate);
         }
-        else if( input == shippingStandard )
+        else if(input.equals(standard))
         {
             fromDate.add(Calendar.DATE, 2);
             toDate.add(Calendar.DATE, 4);
@@ -112,7 +116,7 @@ public class Beautifier {
             output = "Nhận hàng từ " + convertCalendarToString(fromDate) +
                     " đến " + convertCalendarToString(toDate);
         }
-        else if( input == shippingRapid )
+        else if(input.equals(rapid))
         {
             output = "Nhận hàng trước 11h ngày mai";
         }
@@ -131,5 +135,75 @@ public class Beautifier {
     public static String convertCalendarToString(Calendar cal) {
         return "" + cal.get(Calendar.DATE) + "/" +
                 (cal.get(Calendar.MONTH) + 1);
+    }
+
+
+    /**
+     * @author Phong-Kaster
+     * convert server-side date to application date
+     * for example 2022-05-12 -> 12-05-2022
+     * */
+    public static String convertStringToReadableDate(String input)
+    {
+        if( input.length() == 0)
+        {
+            Date date = new Date();
+            @SuppressLint("SimpleDateFormat") SimpleDateFormat forrmatter =
+                    new SimpleDateFormat("yyyy-MM-dd");
+            return forrmatter.format(date);
+        }
+        String day = input.substring(8,10);
+        String month = input.substring(5,7);
+        String year = input.substring(0,4);
+
+        return day + "-" + month + "-" + year;
+    }
+
+    /**
+     * @author Phong-Kaster
+     * @param input is the current status of the order
+     * @return readable status depend on language vn/en
+     */
+    public static String convertStatusToReadableStatus(Context context, String input)
+    {
+        String output = "";
+
+        String processing = context.getString(R.string.to_pay);
+        String verified = context.getString(R.string.verified);
+        String packed = context.getString(R.string.packed);
+        String beingTransported = context.getString(R.string.being_transported);
+        String delivery = context.getString(R.string.done);
+        String cancel = context.getString(R.string.cancel);
+
+
+        if( input.toLowerCase().equals("processing") )
+        {
+            output = processing;
+        }
+        else if(input.equals("verified") )
+        {
+            output = verified;
+        }
+        else if( input.equals("packed"))
+        {
+            output = packed;
+        }
+        else if( input.equals("being transported") )
+        {
+            output = beingTransported;
+        }
+        else if( input.equals("delivery") )
+        {
+            output = delivery;
+        }
+        else if( input.equals("cancel") )
+        {
+            output = cancel;
+        }
+        else
+        {
+            output = context.getString(R.string.unknown);
+        }
+        return output;
     }
 }

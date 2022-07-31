@@ -3,44 +3,36 @@ package com.example.doanthuctap.activity.cart;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatRadioButton;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.doanthuctap.R;
-import com.example.doanthuctap.container.ConfirmOrderResponse;
-import com.example.doanthuctap.container.GetLatestOrderResponse;
 import com.example.doanthuctap.helper.Beautifier;
 import com.example.doanthuctap.helper.Dialog;
 import com.example.doanthuctap.helper.GlobalVariable;
 import com.example.doanthuctap.helper.LoadingScreen;
 import com.example.doanthuctap.model.GetLatestOrderResponseContent;
 import com.example.doanthuctap.recyclerviewadapter.CheckoutOrderContentRecyclerViewAdapter;
-import com.example.doanthuctap.recyclerviewadapter.ProductsRecyclerViewAdapter;
 import com.example.doanthuctap.viewModel.cart.CartCheckoutViewModel;
 
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * this activity shows order information before placing the order
+ */
 public class CartCheckoutActivity extends AppCompatActivity {
 
-    final static int shippingEconomical = 2131231333;
-    final static int shippingStandard = 2131231334;
-    final static int shippingRapid = 2131231335;
 
     private CheckoutOrderContentRecyclerViewAdapter adapter;
     private RecyclerView recyclerView;
@@ -156,8 +148,13 @@ public class CartCheckoutActivity extends AppCompatActivity {
                 receiverName = response.getData().getReceiverName().trim();
                 receiverPhone = response.getData().getReceiverPhone().toString().trim();
                 orderStatus = response.getData().getStatus();
-                description = Beautifier.generateShippingDate(shippingEconomical);
                 total = response.getData().getTotal();
+
+
+                /*generate a default description*/
+                String input = getString(R.string.economical);
+                description = Beautifier.generateShippingDate(input, this);
+
 
                 /*set value up to view*/
                 txtReceiverAddress.setText( receiverAddress  );
@@ -199,36 +196,57 @@ public class CartCheckoutActivity extends AppCompatActivity {
 
 
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "NonConstantResourceId"})
     private void setupEvent()
     {
         /*BUTTON BACK*/
         buttonBack.setOnClickListener(view->finish());
 
         /*RADIO GROUP*/
-        String shippingMessage = Beautifier.generateShippingDate(shippingEconomical);
-        txtShippingDate.setText( shippingMessage );
+        /*RADIO GROUP - Step 1 - generate a default description*/
+        String input = this.getString(R.string.economical);
+        String deliveryMessage = Beautifier.generateShippingDate( input, this );
+        txtShippingDate.setText( deliveryMessage );
+
+
+        /*listen radio button clicked to generate corresponding message*/
         radioGroupShippingOptions.setOnCheckedChangeListener((radioGroup, position) -> {
-            String content =  Beautifier.generateShippingDate(position);
+
+            /*RADIO GROUP - Step 2 - we have to know which radio button is clicked !*/
+            AppCompatRadioButton radioButton = radioGroup.findViewById(position);
+            String radioButtonMessage = radioButton.getText().toString().trim();
+
+
+            /*RADIO GROUP - Step 3 - generate description based on radio button clicked*/
+            String content =  Beautifier.generateShippingDate(radioButtonMessage, this);
             txtShippingDate.setText(content);
-            description = content;// delivery message: Giao hàng trước 11h ngày mai
+            description = content;// description: Giao hàng trước 11h ngày mai
 
 
-            /*depend on position to determine shipping fee*/
-            switch (position) {
-                case shippingEconomical:
-                    shippingFee = 0;
-                    break;
-                case shippingStandard:
-                    shippingFee = 20000;
-                    break;
-                case shippingRapid:
-                    shippingFee = 50000;
-                    break;
-                default:
-                    shippingFee = 0;
-                    break;
+            /*RADIO GROUP - Step 4 - calculate shipping fee*/
+            String economical = getString(R.string.economical);// tiết kiệm - economical
+            String standard = getString(R.string.standard);// tiêu chuẩn - standard
+            String rapid = getString(R.string.rapid);// siêu tốc - rapid
+
+            if( radioButtonMessage.equals(economical) )
+            {
+                shippingFee = 0;
             }
+            else if( radioButtonMessage.equals(standard))
+            {
+                shippingFee = 20000;
+            }
+            else if( radioButtonMessage.equals(rapid))
+            {
+                shippingFee = 50000;
+            }
+            else
+            {
+                shippingFee = 0;
+            }
+
+
+            /*Step 4 - show up*/
             total = merchandiseTotal + shippingFee;
             txtShippingFee.setText( Beautifier.formatNumber(shippingFee) + "đ" );
             totalAmount.setText( Beautifier.formatNumber(total) + "đ" );
@@ -244,7 +262,7 @@ public class CartCheckoutActivity extends AppCompatActivity {
             intent.putExtra("receiverPhone", receiverPhone );
             intent.putExtra("receiverName", receiverName );
             intent.putExtra("description", description );
-            intent.putExtra("total", total);
+            intent.putExtra("total", String.valueOf(total));
             startActivity(intent);
         });
 
@@ -296,5 +314,12 @@ public class CartCheckoutActivity extends AppCompatActivity {
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(manager);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
     }
 }

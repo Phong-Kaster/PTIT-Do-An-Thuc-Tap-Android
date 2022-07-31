@@ -38,10 +38,6 @@ public class CheckoutOrderContentRecyclerViewAdapter extends RecyclerView.Adapte
         View view = LayoutInflater
                 .from(parent.getContext())
                 .inflate(R.layout.checkout_order_content_element, parent, false);
-
-
-
-
         return new CheckoutOrderContentRecyclerViewAdapter.ViewHolder(view);
     }
 

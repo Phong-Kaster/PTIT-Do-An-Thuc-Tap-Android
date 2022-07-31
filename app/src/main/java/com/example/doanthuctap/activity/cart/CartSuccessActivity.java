@@ -10,6 +10,9 @@ import android.widget.Toast;
 import com.example.doanthuctap.R;
 import com.example.doanthuctap.helper.Beautifier;
 
+/**
+ * this activity shows one order placed successfully
+ */
 public class CartSuccessActivity extends AppCompatActivity {
 
     private String total = "";

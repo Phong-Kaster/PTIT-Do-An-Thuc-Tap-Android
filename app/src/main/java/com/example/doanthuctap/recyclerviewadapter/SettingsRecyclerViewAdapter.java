@@ -1,6 +1,7 @@
 package com.example.doanthuctap.recyclerviewadapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.doanthuctap.R;
+import com.example.doanthuctap.activity.personality.OrdersActivity;
 import com.example.doanthuctap.model.Setting;
 
 import java.util.ArrayList;
@@ -63,7 +65,21 @@ public class SettingsRecyclerViewAdapter extends RecyclerView.Adapter<SettingsRe
             holder.leftIcon.setImageResource( element.getIcon() );
             holder.name.setText( element.getTitle() );
             holder.layout.setOnClickListener(view ->{
-                Toast.makeText(context,"settings", Toast.LENGTH_SHORT).show();
+                switch (element.getId())
+                {
+                    case "orders":
+                        context.startActivity(new Intent(context, OrdersActivity.class));
+                        break;
+                    case "darkMode":
+                        context.startActivity(new Intent(context, OrdersActivity.class));
+                        break;
+                    case "profile":
+                        context.startActivity(new Intent(context, OrdersActivity.class));
+                        break;
+                    case "language":
+                        context.startActivity(new Intent(context, OrdersActivity.class));
+                        break;
+                }
             });
         }
     }
