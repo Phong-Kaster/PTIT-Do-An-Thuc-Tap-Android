@@ -120,24 +120,23 @@
                     android:background="@drawable/button_login_with_social_account"
                     android:paddingVertical="15dp"
                     android:paddingHorizontal="60dp"
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
 
-                <Space
-                    android:layout_width="10dp"
-                    android:layout_height="match_parent"/>
+<!--                <Space-->
+<!--                    android:layout_width="10dp"-->
+<!--                    android:layout_height="match_parent"/>-->
 
-                <ImageButton
-                    android:id="@+id/btnFacebookLogin"
-                    android:src="@drawable/facebook"
-                    android:background="@drawable/button_login_with_social_account"
-                    android:paddingVertical="15dp"
-                    android:paddingHorizontal="60dp"
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+<!--                <ImageButton-->
+<!--                    android:id="@+id/btnFacebookLogin"-->
+<!--                    android:src="@drawable/facebook"-->
+<!--                    android:background="@drawable/button_login_with_social_account"-->
+<!--                    android:paddingVertical="15dp"-->
+<!--                    android:paddingHorizontal="60dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"/>-->
             </LinearLayout>
 
             <Space

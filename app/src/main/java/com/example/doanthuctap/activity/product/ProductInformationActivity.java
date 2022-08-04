@@ -26,6 +26,7 @@ import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.doanthuctap.MainActivity;
 import com.example.doanthuctap.R;
+import com.example.doanthuctap.activity.cart.CartCheckoutActivity;
 import com.example.doanthuctap.activity.home.CartFragment;
 import com.example.doanthuctap.activity.home.HomeActivity;
 import com.example.doanthuctap.container.GetLatestOrderResponse;
@@ -138,6 +139,8 @@ public class ProductInformationActivity extends AppCompatActivity implements Add
 //        buttonBack = findViewById(R.id.productInforButtonBack);
         buttonAddToCart = findViewById(R.id.productInforButtonAddToCart);
         buttonReview = findViewById(R.id.productInforButtonReview);
+        buttonBuyNow = findViewById(R.id.productInforButtonBuyNow);
+
 
         globalVariable = (GlobalVariable) this.getApplication();
 //        buttonCart = findViewById(R.id.productInforButtonCart);
@@ -280,6 +283,15 @@ public class ProductInformationActivity extends AppCompatActivity implements Add
 //            transaction.addToBackStack(null);
 //            transaction.commit();
 //        });
+
+        /*Step 5 - button buy now*/
+        buttonBuyNow.setOnClickListener(view->{
+            /*put a product into the order*/
+            viewModel.modifyOrderContent(orderId, productId, "1");
+            Intent intent = new Intent(this, CartCheckoutActivity.class);
+            startActivity(intent);
+            finish();
+        });
     }
 
     private void setupRecyclerView(List<ProductClient> objects)
@@ -325,9 +337,11 @@ public class ProductInformationActivity extends AppCompatActivity implements Add
         ImageView avatar = addToCart.findViewById(R.id.addToCartProductAvatar);
         AppCompatButton buttonConfirm = addToCart.findViewById(R.id.addToCartButtonConfirm);
 
+
         /*Step 3 - set up modal bottom sheet*/
         String defaultPrice = Beautifier.formatNumber(product.getPrice()) + "đ";
         txtTotalAmount.setText(defaultPrice);
+
 
         /*temporaryAvatar - sau nay co public server thi phai doi thanh product.getAvatar()*/
         Picasso.get().load(temporaryAvatar).into(avatar);
@@ -346,6 +360,7 @@ public class ProductInformationActivity extends AppCompatActivity implements Add
             txtQuantity.setText(quantity);
             txtTotalAmount.setText(totalAmountValue);
         });
+
         /*add To Cart Fragment - minus product's quantity*/
         buttonMinus.setOnClickListener(view -> {
             if( productQuantity > 1)
@@ -360,6 +375,7 @@ public class ProductInformationActivity extends AppCompatActivity implements Add
                 txtTotalAmount.setText(totalAmountValue);
             }
         });
+
         /*add To Cart Fragment - button confirm*/
         buttonConfirm.setOnClickListener(view->{
             //System.out.println("add To Cart Fragment - button confirm - orderId: " + orderId);
@@ -394,5 +410,8 @@ public class ProductInformationActivity extends AppCompatActivity implements Add
             });
             /*end listen for response data*/
         });
+
+
+
     }
 }

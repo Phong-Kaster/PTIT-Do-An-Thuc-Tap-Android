@@ -1,5 +1,7 @@
 package com.example.doanthuctap.viewModel.authentication;
 
+
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -7,7 +9,9 @@ import androidx.lifecycle.ViewModel;
 import com.example.doanthuctap.api.HTTPRequest;
 import com.example.doanthuctap.api.HTTPService;
 import com.example.doanthuctap.container.AuthWithGoogleResponse;
+import com.example.doanthuctap.container.GetOrderByIdResponse;
 import com.example.doanthuctap.container.LoginResponse;
+import com.example.doanthuctap.container.SignUpResponse;
 
 import org.json.JSONObject;
 
@@ -15,56 +19,87 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.http.Field;
 
-public class LoginViewModel extends ViewModel {
-    private MutableLiveData<LoginResponse> object;
+public class SignupViewModel extends ViewModel {
+
+    private MutableLiveData<SignUpResponse> response;
     private MutableLiveData<Boolean> animation;
 
-    /*************** GETTER ******************/
-    public MutableLiveData<LoginResponse> getObjects() {
-        if( object == null ){
-            object = new MutableLiveData<>();
+    public MutableLiveData<SignUpResponse> getResponse() {
+        if(response == null)
+        {
+            response = new MutableLiveData<>();
         }
-        return object;
+        return response;
     }
 
     public MutableLiveData<Boolean> getAnimation() {
-        if( animation == null ){
+        if( animation == null )
+        {
             animation = new MutableLiveData<>();
         }
         return animation;
     }
 
-    /*************** FUNCTION ******************/
-    public void login(String username, String password){
-        animation.setValue(true);
-        /*Step 1*/
+    /**
+     * sign up with email & password
+     * @param email
+     * @param password
+     * @param passwordConfirm
+     * @param firstName
+     * @param lastName
+     */
+    public void signup(String email,
+                       String password,
+                       String passwordConfirm,
+                        String firstName,
+                       String lastName)
+    {
+        if(response == null)
+        {
+            response = new MutableLiveData<>();
+        }
+        if( animation == null )
+        {
+            animation = new MutableLiveData<>();
+        }
+        /*Step 1 - create api connection */
         Retrofit service = HTTPService.getInstance();
         HTTPRequest api = service.create(HTTPRequest.class);
 
-        /*Step 2*/
-        Call<LoginResponse> container = api.login( username, password);
 
         /*Step 3*/
-        container.enqueue(new Callback<LoginResponse>() {
+        Call<SignUpResponse> container = api.signup(email, password, passwordConfirm, firstName, lastName);
+        container.enqueue(new Callback<SignUpResponse>() {
             @Override
-            public void onResponse(@NonNull Call<LoginResponse> call, @NonNull Response<LoginResponse> response) {
-                animation.setValue(false);
-                if(response.isSuccessful())
+            public void onResponse(@NonNull Call<SignUpResponse> call,
+                                   @NonNull Response<SignUpResponse> dataResponse) {
+                if(dataResponse.isSuccessful())
                 {
-                    LoginResponse content = response.body();
+                    SignUpResponse content = dataResponse.body();
                     assert content != null;
-                    object.setValue(content);
-                }else
-                {
-                    object.setValue(null);
+                    response.setValue(content);
+                    animation.setValue(false);
+                }
+                if(dataResponse.errorBody() != null) {
+                    try {
+                        JSONObject jObjError = new JSONObject(dataResponse.errorBody().string());
+                        System.out.println( jObjError );
+                    } catch (Exception e) {
+                        System.out.println( e.getMessage() );
+                    }
+
+                    response.setValue(null);
+                    animation.setValue(false);
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<LoginResponse> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<SignUpResponse> call,
+                                  @NonNull Throwable t) {
+                System.out.println("SignupViewModel - throwable: " + t.getMessage());
                 animation.setValue(false);
-                object.setValue(null);
             }
         });
     }

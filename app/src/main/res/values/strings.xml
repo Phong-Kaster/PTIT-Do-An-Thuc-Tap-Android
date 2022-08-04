@@ -147,4 +147,11 @@
     <string name="description">Mô tả</string>
     <string name="provisional_calculation">Tạm tính:</string>
     <string name="VAT_included_if_any">Đã bao gồm VAT nếu có</string>
+    <string name="signUp">Đăng ký</string>
+    <string name="have_an_account">Đã có tài khoản</string>
+    <string name="last_name">Họ</string>
+    <string name="first_name">Tên</string>
+    <string name="password_confirm">Xác nhận mật khẩu</string>
+    <string name="sign_up_successfully">Đăng ký thành công</string>
+    <string name="login_with_google_successfully">Đăng nhập bằng tài khoản Google thành công</string>
 </resources>

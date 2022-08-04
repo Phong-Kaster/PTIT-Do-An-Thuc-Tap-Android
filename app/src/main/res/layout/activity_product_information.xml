@@ -343,7 +343,7 @@
             tools:ignore="SmallSp" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/productInforButtonBuy"
+            android:id="@+id/productInforButtonBuyNow"
             android:layout_width="100dp"
             android:minWidth="100dp"
             android:layout_weight="3"

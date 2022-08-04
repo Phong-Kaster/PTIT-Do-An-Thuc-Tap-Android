@@ -283,6 +283,7 @@ public class CartCheckoutActivity extends AppCompatActivity {
                 viewModel.getConfirmOrderResponse().observe(CartCheckoutActivity.this, response ->
                 {
                     int result = response.getResult();
+                    System.out.println("cart checkout activity - message: " + response.getMsg());
                     if( result == 0)
                     {
                         dialog.announce();

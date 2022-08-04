@@ -1,5 +1,6 @@
 package com.example.doanthuctap.api;
 
+import com.example.doanthuctap.container.AuthWithGoogleResponse;
 import com.example.doanthuctap.container.CategoriesResponse;
 import com.example.doanthuctap.container.ConfirmOrderResponse;
 import com.example.doanthuctap.container.GetAllOrdersResponse;
@@ -12,6 +13,7 @@ import com.example.doanthuctap.container.ModifyReceiverResponse;
 import com.example.doanthuctap.container.ProductByIdResponse;
 import com.example.doanthuctap.container.ProductsResponse;
 import com.example.doanthuctap.container.ProfileResponse;
+import com.example.doanthuctap.container.SignUpResponse;
 import com.example.doanthuctap.container.TestResponse;
 
 import java.util.Map;
@@ -40,6 +42,19 @@ public interface HTTPRequest {
     @FormUrlEncoded
     @POST("login")
     Call<LoginResponse> login(@Field("email") String username, @Field("password") String password);
+
+    @FormUrlEncoded
+    @POST("login/google")
+    Call<AuthWithGoogleResponse> authWithGoogleAccount(@Field("id_token") String idToken);
+
+
+    @FormUrlEncoded
+    @POST("signup")
+    Call<SignUpResponse> signup(@Field("email") String email,
+                                @Field("password") String password,
+                                @Field("password-confirm") String passwordConfirm,
+                                @Field("first_name") String firstName,
+                                @Field("last_name") String lastName);
 
 
     /**
@@ -124,7 +139,7 @@ public interface HTTPRequest {
                                             @QueryMap Map<String, String> parameters);
 
     @FormUrlEncoded
-    @PUT("orders/{id}")
+    @PUT("order/{id}")
     Call<ConfirmOrderResponse> confirmOrder(@Path("id") String id,
                                             @Field("status") String status);
 

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.authentication.SignUpActivity">
+
+    <TextView
+        style="@style/text_view_color_theme_style"
+        android:text= "@string/create_account"
+        android:textSize="24sp"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        style="@style/text_view_color_normal_style"
+        android:layout_marginStart="20dp"
+        android:textSize="24sp"
+        android:textColor="@color/teal_700"
+        android:textStyle="bold"
+        android:text="@string/application_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <LinearLayout
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/signUpFirstname"
+            android:drawableStart="@drawable/ic_person"
+            android:hint="@string/last_name"
+            style="@style/input_style" />
+
+
+        <EditText
+            android:id="@+id/signUpLastname"
+            android:hint="@string/first_name"
+            android:drawableStart="@drawable/ic_person"
+            android:layout_marginTop="10dp"
+            style="@style/input_style" />
+
+        <EditText
+            android:id="@+id/signUpEmail"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:drawableStart="@drawable/mail"
+            android:layout_marginTop="10dp"
+            style="@style/input_style" />
+
+        <EditText
+            android:id="@+id/signUpPassword"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:drawableStart="@drawable/lock"
+            android:layout_marginTop="10dp"
+            style="@style/input_style" />
+
+        <EditText
+            android:id="@+id/signUpPasswordConfirm"
+            android:hint="@string/password_confirm"
+            android:inputType="textPassword"
+            android:drawableStart="@drawable/lock"
+            android:layout_marginTop="10dp"
+            style="@style/input_style" />
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/signUpButtonSignUp"
+        style="@style/button_style"
+        android:layout_gravity="center"
+        android:text="@string/signUp" />
+
+</LinearLayout>
