@@ -54,134 +54,139 @@
 
     </LinearLayout>
 
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="5dp"-->
+<!--        android:background="@color/colorSeparator"/>-->
+
     <!-- 5 COMMON DEMAND IN USE -->
-    <HorizontalScrollView
-        android:scrollbars="none"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
+<!--    <HorizontalScrollView-->
+<!--        android:scrollbars="none"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="100dp"-->
 
-        android:background="@drawable/background_rounded_corner"
-        android:padding="20dp">
+<!--        android:background="@drawable/background_rounded_corner"-->
+<!--        android:padding="20dp">-->
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
 
-            <!-- GAMING -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+<!--            &lt;!&ndash; GAMING &ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:orientation="vertical">-->
 
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/homeFragmentButtonGaming"
-                    style="@style/style_button_demand"
-                    android:background="@drawable/background_button_lightweight"
-                    android:src="@drawable/ic_to_pay" />
+<!--                <androidx.appcompat.widget.AppCompatImageButton-->
+<!--                    android:id="@+id/personalityFragmentStatusProcessing"-->
+<!--                    style="@style/style_button_demand"-->
+<!--                    android:background="@drawable/background_button_lightweight"-->
+<!--                    android:src="@drawable/ic_to_pay" />-->
 
-                <TextView
-                    style="@style/style_text_view_demand_button"
-                    android:text="@string/to_pay"
-                    tools:ignore="SmallSp" />
+<!--                <TextView-->
+<!--                    style="@style/style_text_view_demand_button"-->
+<!--                    android:text="@string/to_pay"-->
+<!--                    tools:ignore="SmallSp" />-->
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
-            <Space
-                android:layout_width="40dp"
-                android:layout_height="match_parent" />
+<!--            <Space-->
+<!--                android:layout_width="40dp"-->
+<!--                android:layout_height="match_parent" />-->
 
-            <!-- STUDENT -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+<!--            &lt;!&ndash; STUDENT &ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
 
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/homeFragmentButtonStudent"
-                    style="@style/style_button_demand"
-                    android:background="@drawable/background_button_graphic"
-                    android:src="@drawable/ic_packed" />
+<!--                <androidx.appcompat.widget.AppCompatImageButton-->
+<!--                    android:id="@+id/personalityFragmentStatusPacked"-->
+<!--                    style="@style/style_button_demand"-->
+<!--                    android:background="@drawable/background_button_graphic"-->
+<!--                    android:src="@drawable/ic_packed" />-->
 
-                <TextView
-                    style="@style/style_text_view_demand_button"
-                    android:text="@string/packed"
-                    tools:ignore="SmallSp" />
+<!--                <TextView-->
+<!--                    style="@style/style_text_view_demand_button"-->
+<!--                    android:text="@string/packed"-->
+<!--                    tools:ignore="SmallSp" />-->
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
-            <Space
-                android:layout_width="40dp"
-                android:layout_height="match_parent" />
+<!--            <Space-->
+<!--                android:layout_width="40dp"-->
+<!--                android:layout_height="match_parent" />-->
 
-            <!-- OFFICE -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+<!--            &lt;!&ndash; OFFICE &ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
 
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/homeFragmentButtonOffice"
-                    style="@style/style_button_demand"
-                    android:background="@drawable/background_button_student"
-                    android:src="@drawable/ic_being_transported" />
+<!--                <androidx.appcompat.widget.AppCompatImageButton-->
+<!--                    android:id="@+id/personalityFragmentStatusBeingTransported"-->
+<!--                    style="@style/style_button_demand"-->
+<!--                    android:background="@drawable/background_button_student"-->
+<!--                    android:src="@drawable/ic_being_transported" />-->
 
-                <TextView
-                    style="@style/style_text_view_demand_button"
-                    android:text="@string/being_transported"
-                    tools:ignore="SmallSp" />
+<!--                <TextView-->
+<!--                    style="@style/style_text_view_demand_button"-->
+<!--                    android:text="@string/being_transported"-->
+<!--                    tools:ignore="SmallSp" />-->
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
-            <Space
-                android:layout_width="40dp"
-                android:layout_height="match_parent" />
+<!--            <Space-->
+<!--                android:layout_width="40dp"-->
+<!--                android:layout_height="match_parent" />-->
 
-            <!-- GRAPHIC -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+<!--            &lt;!&ndash; GRAPHIC &ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
 
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/homeFragmentButtonDesign"
-                    style="@style/style_button_demand"
-                    android:background="@drawable/background_button_office"
-                    android:src="@drawable/ic_done" />
+<!--                <androidx.appcompat.widget.AppCompatImageButton-->
+<!--                    android:id="@+id/personalityFragmentStatusDelivered"-->
+<!--                    style="@style/style_button_demand"-->
+<!--                    android:background="@drawable/background_button_office"-->
+<!--                    android:src="@drawable/ic_done" />-->
 
-                <TextView
-                    style="@style/style_text_view_demand_button"
-                    android:text="@string/done"
-                    tools:ignore="SmallSp" />
+<!--                <TextView-->
+<!--                    style="@style/style_text_view_demand_button"-->
+<!--                    android:text="@string/done"-->
+<!--                    tools:ignore="SmallSp" />-->
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
-            <Space
-                android:layout_width="40dp"
-                android:layout_height="match_parent" />
+<!--            <Space-->
+<!--                android:layout_width="40dp"-->
+<!--                android:layout_height="match_parent" />-->
 
-            <!-- LIGHT-WEIGHT -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+<!--            &lt;!&ndash; LIGHT-WEIGHT &ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
 
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/homeFragmentButtonLightweight"
-                    style="@style/style_button_demand"
-                    android:background="@drawable/background_button_gaming"
-                    android:src="@drawable/ic_cancel" />
+<!--                <androidx.appcompat.widget.AppCompatImageButton-->
+<!--                    android:id="@+id/personalityFragmentButtonCancel"-->
+<!--                    style="@style/style_button_demand"-->
+<!--                    android:background="@drawable/background_button_gaming"-->
+<!--                    android:src="@drawable/ic_cancel" />-->
 
-                <TextView
-                    style="@style/style_text_view_demand_button"
-                    android:text="@string/cancel"
-                    tools:ignore="SmallSp" />
+<!--                <TextView-->
+<!--                    style="@style/style_text_view_demand_button"-->
+<!--                    android:text="@string/cancel"-->
+<!--                    tools:ignore="SmallSp" />-->
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
-    </HorizontalScrollView>
+<!--    </HorizontalScrollView>-->
 
     <View
         android:layout_width="match_parent"

@@ -2,6 +2,7 @@ package com.example.doanthuctap.api;
 
 import com.example.doanthuctap.container.AuthWithGoogleResponse;
 import com.example.doanthuctap.container.CategoriesResponse;
+import com.example.doanthuctap.container.ChangeInformationResponse;
 import com.example.doanthuctap.container.ConfirmOrderResponse;
 import com.example.doanthuctap.container.GetAllOrdersResponse;
 import com.example.doanthuctap.container.GetLatestOrderResponse;
@@ -56,6 +57,15 @@ public interface HTTPRequest {
                                 @Field("first_name") String firstName,
                                 @Field("last_name") String lastName);
 
+
+    @FormUrlEncoded
+    @POST("profile")
+    Call<ChangeInformationResponse> changeInformation(@HeaderMap Map<String, String> headers,
+                                                      @Field("email") String email,
+                                                      @Field("first_name") String firstName,
+                                                      @Field("last_name") String lastName,
+                                                      @Field("phone") String phone,
+                                                      @Field("address") String address);
 
     /**
      * @author Phong-Kaster

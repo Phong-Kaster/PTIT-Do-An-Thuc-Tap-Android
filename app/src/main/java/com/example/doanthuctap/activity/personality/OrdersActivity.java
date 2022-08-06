@@ -52,11 +52,22 @@ public class OrdersActivity extends AppCompatActivity implements OrderStatusRecy
     private List<Order> orders = new ArrayList<>();
 
     private Dialog dialog;
+    private String orderStatus = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orders);
+
+        /*get orderStatus from personality fragment */
+        if( getIntent() != null)
+        {
+            orderStatus = getIntent().getStringExtra("orderStatus").trim().length() > 0 ?
+                    getIntent().getStringExtra("orderStatus").trim() : "";
+        }
+
+
+
         setupComponent();
         setupOrderStatusRecyclerView();
         setupViewModel();
@@ -85,6 +96,7 @@ public class OrdersActivity extends AppCompatActivity implements OrderStatusRecy
 
         /*Step 2 - headers*/
         headers = globalVariable.getHeaders();
+        parameters.put("status", orderStatus);
         viewModel.getAllOrder(headers, parameters);
 
         /*Step 3 - pout data into view*/
@@ -141,6 +153,8 @@ public class OrdersActivity extends AppCompatActivity implements OrderStatusRecy
 
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         ordersStatusRecyclerView.setLayoutManager(manager);
+
+
     }
 
 
@@ -184,6 +198,10 @@ public class OrdersActivity extends AppCompatActivity implements OrderStatusRecy
         });
     }
 
+    /**
+     * OrderStatusRecyclerViewAdapter - interface
+     * @param status
+     */
     @Override
     public void onItemClicked(String status) {
         if( status.equals("all") )

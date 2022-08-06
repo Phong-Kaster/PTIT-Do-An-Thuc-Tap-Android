@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.personality.ChangeInformationActivity">
+
+    <!-- HEADER -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:background="@color/colorTheme"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <ImageButton
+            android:id="@+id/checkoutActivityButtonGoBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/background_button_back"
+            android:minWidth="20dp"
+            android:minHeight="20dp"
+            android:src="@drawable/ic_arrow_back"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:text="@string/personal_information"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_below="@id/header"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- avatar -->
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_gravity="center"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/default_avatar" />
+
+            <!-- information -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <EditText
+                    android:id="@+id/changeInforEmail"
+                    style="@style/input_style"
+                    android:drawableStart="@drawable/mail"
+                    android:focusable="false"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:text="@string/username"
+                    android:textColor="@color/black" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"/>
+
+                <EditText
+                    android:id="@+id/changeInforFirstName"
+                    style="@style/input_style"
+                    android:drawableStart="@drawable/ic_first_name"
+                    android:hint="@string/password"
+                    android:inputType="text"
+                    android:text="@string/nguyen_thanh_phone"
+                    android:textColor="@color/colorTextBlack"
+                    android:autofillHints="First Name" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"/>
+
+                <EditText
+                    android:id="@+id/changeInforLastName"
+                    style="@style/input_style"
+                    android:drawableStart="@drawable/ic_first_name"
+                    android:hint="@string/password"
+                    android:inputType="text"
+                    android:text="@string/nguyen_thanh_phone"
+                    android:textColor="@color/colorTextBlack"
+                    android:autofillHints="Last Name" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"/>
+
+                <EditText
+                    android:id="@+id/changeInforPhone"
+                    android:text="@string/default_phone"
+                    android:hint="@string/password"
+                    android:inputType="phone"
+                    android:textColor="@color/colorTextBlack"
+                    android:drawableStart="@drawable/ic_phone"
+                    style="@style/input_style"
+                    android:autofillHints="" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"/>
+
+                <EditText
+                    android:id="@+id/changeInforAddress"
+                    android:text="@string/default_address"
+                    android:hint="@string/password"
+                    android:inputType="phone"
+                    android:textColor="@color/colorTextBlack"
+                    android:drawableStart="@drawable/ic_address"
+                    style="@style/input_style"
+                    android:autofillHints="" />
+
+            </LinearLayout>
+
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/changeInforButtonSave"
+                style="@style/button_style"
+                android:layout_gravity="center"
+                android:text="@string/save" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</RelativeLayout>

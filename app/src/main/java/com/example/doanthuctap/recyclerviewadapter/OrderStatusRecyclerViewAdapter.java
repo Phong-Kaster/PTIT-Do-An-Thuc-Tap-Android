@@ -74,13 +74,18 @@ public class OrderStatusRecyclerViewAdapter extends RecyclerView.Adapter<OrderSt
 
             callback.onItemClicked(element.getValue());
 
-            Toast.makeText(context, value, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, value, Toast.LENGTH_SHORT).show();
         });
     }
 
     @Override
     public int getItemCount() {
         return objects.size();
+    }
+
+    public void setSelectedItem(int position)
+    {
+
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{

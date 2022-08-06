@@ -1,18 +1,24 @@
 package com.example.doanthuctap.activity.home;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.doanthuctap.R;
+import com.example.doanthuctap.helper.GlobalVariable;
 import com.example.doanthuctap.model.Setting;
+import com.example.doanthuctap.model.User;
 import com.example.doanthuctap.recyclerviewadapter.SettingsRecyclerViewAdapter;
+import com.example.doanthuctap.viewModel.home.PersonalityFragmentViewModel;
+import com.example.doanthuctap.viewModel.personality.OrderInformationViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +29,18 @@ public class PersonalityFragment extends Fragment {
     private List<Setting> settings = new ArrayList<>();
     private RecyclerView recyclerView;
     private SettingsRecyclerViewAdapter adapter;
+
+    private TextView username;
+    private TextView buttonChangeInformation;
+
+    /*Auth user*/
+    private User authUser;
+    private PersonalityFragmentViewModel viewModel;
+    String token;
+
+    /* button send request to find orders with status*/
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,16 +54,44 @@ public class PersonalityFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_personality, container, false);
 
+        assert this.getArguments() != null;
+        token = this.getArguments().getString("accessToken");
+
         setupComponent(view);
+        setupViewModel();
         setupSettings();
         setupRecyclerView();
-
+        //setupScreen();
+        setupEvent();
         return view;
     }
 
     private void setupComponent(View view)
     {
         recyclerView = view.findViewById(R.id.personalitySettings);
+        username = view.findViewById(R.id.personalityName);
+        buttonChangeInformation = view.findViewById(R.id.personalityButtonChangeInformation);
+
+        GlobalVariable globalVariable = (GlobalVariable) requireActivity().getApplication();
+        authUser = globalVariable.getAuthUser();
+    }
+
+
+    @SuppressLint("SetTextI18n")
+    private void setupViewModel()
+    {
+        viewModel = new ViewModelProvider(this).get(PersonalityFragmentViewModel.class);
+        viewModel.getProfile(token);
+
+        viewModel.getResponse().observe(requireActivity(), response -> {
+            int result = response.getResult();
+            if( result == 1)
+            {
+                String firstName = response.getData().getFirstName();
+                String lastName = response.getData().getLastName();
+                username.setText( firstName + " " + lastName );
+            }
+        });
     }
 
     private void setupSettings()
@@ -66,9 +112,54 @@ public class PersonalityFragment extends Fragment {
         LinearLayoutManager manager = new LinearLayoutManager(requireActivity().getApplicationContext());
         recyclerView.setLayoutManager(manager);
 
-        SettingsRecyclerViewAdapter adapter =
-                new SettingsRecyclerViewAdapter(requireActivity(), settings);
+        adapter = new SettingsRecyclerViewAdapter(requireActivity(), settings);
         recyclerView.setAdapter(adapter);
+    }
 
+
+    @SuppressLint("SetTextI18n")
+    private void setupScreen()
+    {
+        username.setText( authUser.getFirstName() + " " + authUser.getLastName() );
+    }
+
+
+    private void setupEvent()
+    {
+        buttonChangeInformation.setOnClickListener(view->{
+//            Intent intent = new Intent(requireContext(), ChangeInformationActivity.class);
+//            startActivity(intent);
+        });
+
+        /* button send request to find orders with status*/
+//        buttonStatusProcessing.setOnClickListener(view->{
+//            Intent intent = new Intent(requireContext(), OrdersActivity.class);
+//            intent.putExtra("orderStatus", "processing");
+//            startActivity(intent);
+//        });
+//
+//        buttonStatusPacked.setOnClickListener(view->{
+//            Intent intent = new Intent(requireContext(), OrdersActivity.class);
+//            intent.putExtra("orderStatus", "packed");
+//            startActivity(intent);
+//        });
+//
+//        buttonStatusBeingTransported.setOnClickListener(view->{
+//            Intent intent = new Intent(requireContext(), OrdersActivity.class);
+//            intent.putExtra("orderStatus", "being transported");
+//            startActivity(intent);
+//        });
+//
+//        buttonStatusDelivered.setOnClickListener(view->{
+//            Intent intent = new Intent(requireContext(), OrdersActivity.class);
+//            intent.putExtra("orderStatus", "delivered");
+//            startActivity(intent);
+//        });
+//
+//        buttonStatusCancel.setOnClickListener(view->{
+//            Intent intent = new Intent(requireContext(), OrdersActivity.class);
+//            intent.putExtra("orderStatus", "cancel");
+//            startActivity(intent);
+//        });
     }
 }

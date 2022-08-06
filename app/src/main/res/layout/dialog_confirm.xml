@@ -54,6 +54,7 @@
                 style="@style/button_style"
                 android:layout_width="wrap_content"
                 android:paddingHorizontal="40dp"
+                android:textSize="11sp"
                 android:id="@+id/btnOK"
                 android:text="@string/ok"/>
 
@@ -66,7 +67,7 @@
                 android:layout_marginStart="16dp"
                 android:paddingHorizontal="40dp"
                 android:text="@string/cancel"
-                android:textSize="12sp"
+                android:textSize="11sp"
                 android:textStyle="bold" />
 
         </LinearLayout>

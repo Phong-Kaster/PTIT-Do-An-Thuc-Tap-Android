@@ -7,17 +7,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProvider;
 
-import com.example.doanthuctap.MainActivity;
 import com.example.doanthuctap.R;
 import com.example.doanthuctap.helper.Dialog;
 import com.example.doanthuctap.helper.GlobalVariable;
-import com.example.doanthuctap.viewModel.home.HomeFragmentViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.lang.ref.WeakReference;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -34,16 +30,14 @@ public class HomeActivity extends AppCompatActivity {
     private Dialog dialog;
     private BottomNavigationView bottomNavigationView;
     private Fragment fragment = null;
-    private HomeFragmentViewModel homeFragmentViewModel;
 
     public static WeakReference<HomeActivity> weakActivity;
-    // etc..
-    public static HomeActivity getmInstanceActivity() {
-        return weakActivity.get();
-    }
 
-    private final int cartFragment = 2131231184;
-    private boolean isCartFragment = false;
+
+
+
+    private boolean isFragmentChosen = false;
+    private int selectedFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,26 +86,31 @@ public class HomeActivity extends AppCompatActivity {
 
     private void setupComponent(){
         bottomNavigationView = findViewById(R.id.bottomNavigationMenu);
-        homeFragmentViewModel = new ViewModelProvider(this).get(HomeFragmentViewModel.class);
     }
 
     @SuppressLint("NonConstantResourceId")
     private void setupEvent(){
         /*set up event when users click on item in bottom navigation view*/
         bottomNavigationView.setOnItemSelectedListener(item -> {
-            isCartFragment = false;
+            isFragmentChosen = false;
+
             switch (item.getItemId()){
                 case R.id.shortcutHome:
+                    selectedFragment = R.id.shortcutHome;
                     fragment = new HomeFragment();
                     break;
                 case R.id.shortcutCategory:
+                    selectedFragment = R.id.shortcutCategory;
                     fragment = new CategoryFragment();
                     break;
                 case R.id.shortcutCart:
-                    isCartFragment = true;
+                    isFragmentChosen = true;
+                    selectedFragment = R.id.shortcutCart;
                     fragment = new CartFragment();
                     break;
                 case R.id.shortcutPersonality:
+                    isFragmentChosen = true;
+                    selectedFragment = R.id.shortcutPersonality;
                     fragment = new PersonalityFragment();
                     break;
             }
@@ -164,29 +163,16 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if( isCartFragment )
+        if( isFragmentChosen )
         {
             BottomNavigationView bottomNavigationView;
             bottomNavigationView = findViewById(R.id.bottomNavigationMenu);
-            bottomNavigationView.setSelectedItemId(R.id.shortcutCart);
+            bottomNavigationView.setSelectedItemId(selectedFragment);
         }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-    }
-
-    private void refreshFragment()
-    {
-        FragmentManager manager = getSupportFragmentManager();
-        @SuppressLint("ResourceType") Fragment currentFragment = manager.findFragmentById(2131231187);
-
-
-
-        manager.beginTransaction()
-                .detach(currentFragment)
-                .attach(currentFragment)
-                .commit();
     }
 }

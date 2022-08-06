@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.doanthuctap.R;
+import com.example.doanthuctap.activity.personality.ChangeInformationActivity;
 import com.example.doanthuctap.activity.personality.OrdersActivity;
 import com.example.doanthuctap.model.Setting;
 
@@ -68,13 +69,15 @@ public class SettingsRecyclerViewAdapter extends RecyclerView.Adapter<SettingsRe
                 switch (element.getId())
                 {
                     case "orders":
-                        context.startActivity(new Intent(context, OrdersActivity.class));
+                        Intent intent = new Intent(context, OrdersActivity.class);
+                        intent.putExtra("orderStatus", "");
+                        context.startActivity(intent);
                         break;
                     case "darkMode":
                         context.startActivity(new Intent(context, OrdersActivity.class));
                         break;
                     case "profile":
-                        context.startActivity(new Intent(context, OrdersActivity.class));
+                        context.startActivity(new Intent(context, ChangeInformationActivity.class));
                         break;
                     case "language":
                         context.startActivity(new Intent(context, OrdersActivity.class));
