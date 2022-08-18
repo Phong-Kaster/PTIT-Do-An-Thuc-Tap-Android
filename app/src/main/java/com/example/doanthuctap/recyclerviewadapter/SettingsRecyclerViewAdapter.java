@@ -8,12 +8,14 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.doanthuctap.R;
+import com.example.doanthuctap.activity.admin.order.AdminOrdersActivity;
+import com.example.doanthuctap.activity.admin.product.AdminProductsActivity;
 import com.example.doanthuctap.activity.personality.ChangeInformationActivity;
 import com.example.doanthuctap.activity.personality.OrdersActivity;
 import com.example.doanthuctap.model.Setting;
@@ -74,13 +76,25 @@ public class SettingsRecyclerViewAdapter extends RecyclerView.Adapter<SettingsRe
                         context.startActivity(intent);
                         break;
                     case "darkMode":
-                        context.startActivity(new Intent(context, OrdersActivity.class));
+                        if( AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES )
+                        {
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                        }
+                        else
+                        {
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                        }
                         break;
                     case "profile":
                         context.startActivity(new Intent(context, ChangeInformationActivity.class));
                         break;
                     case "language":
-                        context.startActivity(new Intent(context, OrdersActivity.class));
+                        break;
+                    case "adminOrders":
+                        context.startActivity(new Intent(context, AdminOrdersActivity.class));
+                        break;
+                    case "adminProducts":
+                        context.startActivity(new Intent(context, AdminProductsActivity.class));
                         break;
                 }
             });

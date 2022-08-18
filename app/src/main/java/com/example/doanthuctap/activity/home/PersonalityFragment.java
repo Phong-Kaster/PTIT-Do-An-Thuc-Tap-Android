@@ -105,6 +105,16 @@ public class PersonalityFragment extends Fragment {
         settings.add(setting2);
         settings.add(setting3);
         settings.add(setting4);
+
+        if( authUser.getRole().equals("admin") )
+        {
+            Setting setting5 = new Setting("adminOrders", getString(R.string.all_orders_admin), R.drawable.ic_all_orders_admin);
+            Setting setting6 = new Setting("adminProducts", getString(R.string.all_products_admin), R.drawable.ic_all_products_admin);
+
+            settings.add(setting5);
+            settings.add(setting6);
+        }
+
     }
 
     private void setupRecyclerView()

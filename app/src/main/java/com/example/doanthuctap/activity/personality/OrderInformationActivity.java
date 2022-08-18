@@ -3,6 +3,7 @@ package com.example.doanthuctap.activity.personality;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -110,7 +111,7 @@ public class OrderInformationActivity extends AppCompatActivity {
                 txtReceiverName.setText( receiverName );
                 txtReceiverPhone.setText( receiverPhone );
                 txtReceiverAddress.setText( receiverAddress );
-                txtStatus.setText( status);
+                txtStatus.setText( status );
                 txtTotalAmount.setText(total);
                 txtProvisionalCalculation.setText(total);
                 setupOrderContentRecyclerView(objects);

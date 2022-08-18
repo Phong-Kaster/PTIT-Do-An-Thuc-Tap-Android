@@ -269,25 +269,39 @@ public class CartCheckoutActivity extends AppCompatActivity {
         /*BUTTON PLACE ORDER*/
         dialog.confirm();
         buttonPlaceOrder.setOnClickListener(view -> {
+
+            boolean flag = authenticateReceiverInformation();
+            if( !flag )
+            {
+                dialog.announce();
+                dialog.show(R.string.attention, getString(R.string.invalid_receiver_information), R.drawable.ic_close);
+                dialog.btnOK.setOnClickListener(view1->dialog.close());
+                return;
+            }
+
             dialog.show(R.string.attention, getString(R.string.are_you_sure_about_placing_order), R.drawable.ic_info);
 
             /*DIALOG BUTTON OK*/
             dialog.btnOK.setOnClickListener(view1->
             {
+                /*Step 1 - send a request to modify order information*/
                 dialog.close();
-                viewModel.modifyOrderInformation(orderId, receiverPhone, receiverAddress, receiverName, description,
+                headers = globalVariable.getHeaders();
+                viewModel.modifyOrderInformation(headers,orderId, receiverPhone, receiverAddress, receiverName, description,
                         String.valueOf(total) );
-                viewModel.confirmOrder( orderId, orderStatus );
+                viewModel.confirmOrder(headers, orderId, orderStatus);
 
 
+
+                /*Step 2 - modify order information successfully then confirm order*/
                 viewModel.getConfirmOrderResponse().observe(CartCheckoutActivity.this, response ->
                 {
                     int result = response.getResult();
-                    System.out.println("cart checkout activity - message: " + response.getMsg());
                     if( result == 0)
                     {
                         dialog.announce();
                         dialog.show(R.string.fail, response.getMsg(), R.drawable.ic_close);
+                        dialog.btnOK.setOnClickListener(view2->dialog.close());
                     }
                     else
                     {
@@ -295,18 +309,33 @@ public class CartCheckoutActivity extends AppCompatActivity {
                                 CartSuccessActivity.class);
                         intent.putExtra("total", String.valueOf(total));
                         intent.putExtra("description", description);
+                        intent.putExtra("orderId", orderId);
                         startActivity(intent);
                         finish();
 
                     }
                 });
+                /*DIALOG BUTTON CANCEL*/
+                dialog.btnCancel.setOnClickListener(view2-> dialog.close());
+
             });
 
-            /*DIALOG BUTTON CANCEL*/
-            dialog.btnCancel.setOnClickListener(view1-> dialog.close());
         });
 
 
+    }
+
+    /**
+     * check receiver information
+     * @return boolean return true if information is valid
+     * return false for the opposite result
+     */
+    private boolean authenticateReceiverInformation() {
+        if( receiverAddress.isEmpty() || receiverPhone.isEmpty() || receiverName.isEmpty() )
+        {
+            return false;
+        }
+        return true;
     }
 
     private void setupRecyclerView(List<GetLatestOrderResponseContent> objects)
@@ -322,5 +351,34 @@ public class CartCheckoutActivity extends AppCompatActivity {
         super.onRestart();
         finish();
         startActivity(getIntent());
+    }
+
+    private void confirmOrder(Map<String, String> headers, String orderId, String orderStatus)
+    {
+        viewModel.confirmOrder(headers, orderId, orderStatus );
+
+        viewModel.getConfirmOrderResponse().observe(CartCheckoutActivity.this, response ->
+        {
+            int result = response.getResult();
+            if( result == 0)
+            {
+                dialog.announce();
+                dialog.show(R.string.fail, response.getMsg(), R.drawable.ic_close);
+                dialog.btnOK.setOnClickListener(view2->dialog.close());
+            }
+            else
+            {
+                Intent intent = new Intent(CartCheckoutActivity.this,
+                        CartSuccessActivity.class);
+                intent.putExtra("total", String.valueOf(total));
+                intent.putExtra("description", description);
+                intent.putExtra("orderId", orderId);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+        /*DIALOG BUTTON CANCEL*/
+        dialog.btnCancel.setOnClickListener(view1-> dialog.close());
     }
 }

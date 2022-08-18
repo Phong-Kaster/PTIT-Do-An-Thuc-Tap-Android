@@ -30,7 +30,7 @@ public class Beautifier {
     }
 
     public static String shortenName(String input){
-        String output = "";
+        String output = input;
 
         if( input.length() > 20 ){
             output = input.substring(0, 19) + "...";
@@ -172,7 +172,7 @@ public class Beautifier {
         String verified = context.getString(R.string.verified);
         String packed = context.getString(R.string.packed);
         String beingTransported = context.getString(R.string.being_transported);
-        String delivery = context.getString(R.string.done);
+        String delivered = context.getString(R.string.done);
         String cancel = context.getString(R.string.cancel);
 
 
@@ -192,9 +192,9 @@ public class Beautifier {
         {
             output = beingTransported;
         }
-        else if( input.equals("delivery") )
+        else if( input.equals("delivered") )
         {
-            output = delivery;
+            output = delivered;
         }
         else if( input.equals("cancel") )
         {

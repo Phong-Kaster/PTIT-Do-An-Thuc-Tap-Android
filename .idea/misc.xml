@@ -5,12 +5,15 @@
       <map>
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/add_to_cart_button_confirm_style.xml" value="0.168" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/backgroud_dialog_danger.xml" value="0.1395" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/background_button_add_photo.xml" value="0.2" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/background_button_advanced_search_cancel.xml" value="0.1365" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/background_button_advanced_search_confirm.xml" value="0.152" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/background_button_advanced_search_confirm_2.xml" value="0.1585" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/background_button_back.xml" value="0.156" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/background_button_confirm_cart.xml" value="0.2" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/background_button_confirm_cart_2.xml" value="0.201" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/background_button_edit_order_information.xml" value="0.201" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/background_button_edit_order_information_disable.xml" value="0.183" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/background_button_gaming.xml" value="0.1515" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/background_button_graphic.xml" value="0.1515" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/background_button_lightweight.xml" value="0.1515" />
@@ -19,6 +22,7 @@
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/background_button_product_info_add_to_cart.xml" value="0.1475" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/background_button_product_info_buy_now.xml" value="0.1475" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/background_button_product_infor.xml" value="0.1245" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/background_button_remove_order_information.xml" value="0.185" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/background_button_student.xml" value="0.1515" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/background_button_watch_order.xml" value="0.2" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/background_card_view.xml" value="0.2" />
@@ -49,10 +53,15 @@
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/customized_radio_button_2.xml" value="0.134" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/customized_spinner.xml" value="0.1525" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/dialog_background.xml" value="0.1395" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_13_inch.xml" value="0.148" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_14_inch.xml" value="0.148" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_15_inch.xml" value="0.148" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_add.xml" value="0.1835" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_address.xml" value="0.201" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_all_products_admin.xml" value="0.1945" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_arrow_back.xml" value="0.156" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_arrow_forward.xml" value="0.201" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_arrow_forward_2.xml" value="0.201" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_being_transported.xml" value="0.201" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_cancel.xml" value="0.1555" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_cart_blue.xml" value="0.15" />
@@ -65,6 +74,7 @@
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_close.xml" value="0.159" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_comment.xml" value="0.1475" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_dark_mode.xml" value="0.1555" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_description.xml" value="0.1745" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_done.xml" value="0.201" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_filter.xml" value="0.156" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_first_name.xml" value="0.201" />
@@ -87,7 +97,11 @@
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_receiver_name.xml" value="0.155" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_search.xml" value="0.1635" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_star.xml" value="0.145" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_status.xml" value="0.201" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_time.xml" value="0.201" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_time2.xml" value="0.201" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_to_pay.xml" value="0.1555" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/ic_total_amount.xml" value="0.201" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/input_style.xml" value="0.164" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/loading_screen_background.xml" value="0.156" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/shortcut_cart_state.xml" value="0.141" />
@@ -96,6 +110,17 @@
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/shortcut_menu_state.xml" value="0.162" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/drawable/shortcut_personality_state.xml" value="0.141" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/account_dialog.xml" value="0.18802083333333333" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/activity_admin_add_product_to_cart.xml" value="0.1890625" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/activity_admin_order_change_content.xml" value="0.1890625" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/activity_admin_order_change_information.xml" value="0.2436923148431724" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/activity_admin_order_create.xml" value="0.2436923148431724" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/activity_admin_orders.xml" value="0.2436923148431724" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/activity_admin_photo.xml" value="0.1890625" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/activity_admin_product_change_information.xml" value="0.1890625" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/activity_admin_product_create.xml" value="0.3055555555555556" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/activity_admin_product_edit.xml" value="0.21104651162790697" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/activity_admin_products.xml" value="0.2436923148431724" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/activity_admin_products_search.xml" value="0.36923078006541266" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/activity_advanced_search.xml" value="0.2436923148431724" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/activity_cart_checkout.xml" value="0.36923078006541266" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/activity_cart_success.xml" value="0.36923078006541266" />
@@ -110,6 +135,8 @@
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/activity_product_information.xml" value="0.2436923148431724" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/activity_search.xml" value="0.2436923148431724" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/activity_sign_up.xml" value="0.2436923148431724" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/admin_order_information_recycler_view_element.xml" value="0.36923078006541266" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/admin_product_recycler_view_element.xml" value="0.494769245287653" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/categories_recycler_view_adapter_view.xml" value="0.36923078006541266" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/checkout_order_content_element.xml" value="0.553846170098119" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/dialog_annouce.xml" value="0.18802083333333333" />
@@ -118,7 +145,9 @@
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/fragment_category.xml" value="0.2436923148431724" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/fragment_home.xml" value="0.18461539003270633" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/fragment_personality.xml" value="0.36923078006541266" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/ic_to_pay_2.xml" value="0.18802083333333333" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/loading_screen.xml" value="0.1890625" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/modal_bottom_sheet_add_product_into_order.xml" value="0.18802083333333333" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/modal_bottom_sheet_add_to_cart.xml" value="0.494769245287653" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/normal_alert.xml" value="0.36923078006541266" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/order_content_recycler_view_adapter_element.xml" value="0.36923078006541266" />
@@ -126,6 +155,7 @@
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/orders_status_recycler_view_element.xml" value="0.1890625" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/personality_setting_element.xml" value="0.36923078006541266" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/personality_setting_header.xml" value="0.18802083333333333" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/photo_recycler_view_element.xml" value="0.18802083333333333" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/products_recycler_view_adapter_element.xml" value="0.4448669201520912" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/layout/spinner_option_element.xml" value="0.36923078006541266" />
         <entry key="..\:/GitHub/PTIT-Do-An-Thuc-Tap-Android/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1" />

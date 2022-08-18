@@ -83,8 +83,8 @@ public class CartFragmentViewModel extends ViewModel {
         return modifyOrderContentData;
     }
 
-    public void modifyOrderContent(String orderId, String productId, String quantity )
+    public void modifyOrderContent(Map<String, String> headers, String orderId, String productId, String quantity )
     {
-        modifyOrderContentData = orderRepository.modifyOrderContent(orderId, productId, quantity);
+        modifyOrderContentData = orderRepository.modifyOrderContent(headers, orderId, productId, quantity);
     }
 }

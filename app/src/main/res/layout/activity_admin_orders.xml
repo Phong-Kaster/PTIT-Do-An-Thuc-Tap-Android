@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activity.admin.order.AdminOrdersActivity">
+
+    <!-- HEADER -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorTheme"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <ImageButton
+            android:id="@+id/adminOrdersButtonGoBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/background_button_back"
+            android:minWidth="20dp"
+            android:minHeight="20dp"
+            android:src="@drawable/ic_arrow_back"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:text="@string/all_order_admin"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+
+    <!-- SEARCH VIEW -->
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/adminOrdersSearchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header"
+        android:layout_margin="20dp"
+        android:background="@drawable/background_search_view_orders"
+        android:focusable="false"
+        android:iconifiedByDefault="false"
+        android:paddingStart="10dp"
+        android:theme="@style/SearchViewStyle"
+        app:defaultQueryHint="@string/enter_your_keyword"
+        app:iconifiedByDefault="false"
+        app:queryBackground="@null"
+        tools:ignore="RtlSymmetry" />
+
+    <View
+        android:id="@+id/adminOrdersSpace1"
+        android:layout_below="@id/adminOrdersSearchView"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/colorSeparator"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/adminOrdersStatusRecyclerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/adminOrdersSpace1" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_below="@+id/adminOrdersStatusRecyclerView"
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/adminOrdersInformationRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/adminOrdersButtonCreateOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="40dp"
+        android:contentDescription="@null"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+</RelativeLayout>

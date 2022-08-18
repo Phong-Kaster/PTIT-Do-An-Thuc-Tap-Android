@@ -65,25 +65,35 @@ public class CartCheckoutViewModel extends ViewModel {
         return confirmOrderResponse;
     }
 
-    public void confirmOrder(String orderId, String orderStatus)
+    public void confirmOrder(Map<String, String> header,String orderId, String orderStatus)
     {
-        confirmOrderResponse = orderRepository.confirmOrder(orderId, orderStatus);
+        confirmOrderResponse = orderRepository.confirmOrder(header,orderId, orderStatus);
         animation = orderRepository.getAnimation();
     }
 
-    private MutableLiveData<ModifyReceiverResponse> modifyOrderInformationResponse;
-    public void modifyOrderInformation(String orderId,
+    private MutableLiveData<ModifyReceiverResponse> modifyOrderInformation;
+
+    public MutableLiveData<ModifyReceiverResponse> getModifyOrderInformationResponse()
+    {
+        if( modifyOrderInformation == null)
+        {
+            modifyOrderInformation = new MutableLiveData<>();
+        }
+        return modifyOrderInformation;
+    }
+
+    public void modifyOrderInformation(Map<String, String> headers,String orderId,
                                     String receiverPhone,
                                     String receiverAddress,
                                     String receiverName,
                                     String description,
                                     String total)
     {
-        if( modifyOrderInformationResponse == null )
+        if( modifyOrderInformation == null )
         {
-            modifyOrderInformationResponse = new MutableLiveData<>();
+            modifyOrderInformation = new MutableLiveData<>();
         }
-        modifyOrderInformationResponse = orderRepository.modifyOrderInformation(orderId, receiverPhone,
+        modifyOrderInformation = orderRepository.modifyOrderInformation(headers,orderId, receiverPhone,
                 receiverAddress, receiverName, description, total);
         animation = orderRepository.getAnimation();
     }

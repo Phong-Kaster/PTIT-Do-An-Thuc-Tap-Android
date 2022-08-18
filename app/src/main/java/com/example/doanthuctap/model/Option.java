@@ -1,6 +1,8 @@
 package com.example.doanthuctap.model;
 
 
+import android.content.Context;
+
 import com.example.doanthuctap.R;
 
 import java.util.ArrayList;
@@ -161,6 +163,106 @@ public class Option {
         options.add(demand3);
         options.add(demand4);
         options.add(demand5);
+        return options;
+    }
+
+    /**
+     * @author Phong-Kaster
+     * @return order status
+     */
+    public static List<Option> getOrderStatus(Context context)
+    {
+        List<Option> options = new ArrayList<>();
+
+        String processing = context.getString(R.string.to_pay);
+        String verified = context.getString(R.string.verified);
+        String packed = context.getString(R.string.packed);
+        String beingTransported = context.getString(R.string.being_transported);
+        String done = context.getString(R.string.done);
+        String cancel = context.getString(R.string.cancel);
+
+        /*order status processing*/
+        Option status0 = new Option();
+        status0.setIcon(R.drawable.ic_to_pay_2);
+        status0.setName(processing);
+
+
+        /*demand Gaming*/
+        Option status1 = new Option();
+        status1.setIcon(R.drawable.ic_verified);
+        status1.setName(verified);
+
+
+        /*demand Student*/
+        Option status2 = new Option();
+        status2.setIcon(R.drawable.ic_packed_2);
+        status2.setName(packed);
+
+        /*demand Office*/
+        Option status3 = new Option();
+        status3.setIcon(R.drawable.ic_being_transported_2);
+        status3.setName(beingTransported);
+
+        /*demand Gaming*/
+        Option status4 = new Option();
+        status4.setIcon(R.drawable.ic_done_2);
+        status4.setName(done);
+
+        /*demand Gaming*/
+        Option status5 = new Option();
+        status5.setIcon(R.drawable.ic_cancel_2);
+        status5.setName(cancel);
+
+        options.add(status0);
+        options.add(status1);
+        options.add(status2);
+        options.add(status3);
+        options.add(status4);
+        options.add(status5);
+
+        return options;
+    }
+
+    /**
+     * @author Phong-Kaster
+     * @return list of screen size
+     */
+    public static List<Option> getScreenSize()
+    {
+        List<Option> options = new ArrayList<>();
+
+        String screen13inch = "13";
+        String screen14inch = "14";
+        String screen15inch = "15.6";
+        String screen17inch = "17.3";
+
+        /*order status processing*/
+        Option option0 = new Option();
+        option0.setIcon(R.drawable.ic_13_inch);
+        option0.setName(screen13inch);
+
+
+        /*demand Gaming*/
+        Option option1 = new Option();
+        option1.setIcon(R.drawable.ic_14_inch);
+        option1.setName(screen14inch);
+
+
+        /*demand Student*/
+        Option option2 = new Option();
+        option2.setIcon(R.drawable.ic_15_inch);
+        option2.setName(screen15inch);
+
+        /*demand Office*/
+        Option option3 = new Option();
+        option3.setIcon(R.drawable.ic_17_inch);
+        option3.setName(screen17inch);
+
+        options.add(option0);
+        options.add(option1);
+        options.add(option2);
+        options.add(option3);
+
         return options;
     }
 }

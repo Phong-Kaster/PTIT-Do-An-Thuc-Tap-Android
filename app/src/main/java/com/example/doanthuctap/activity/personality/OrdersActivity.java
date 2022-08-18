@@ -31,7 +31,9 @@ import java.util.Map;
 /**
  * this activity is used to watch all orders
  */
-public class OrdersActivity extends AppCompatActivity implements OrderStatusRecyclerViewAdapter.callbacks {
+public class OrdersActivity extends AppCompatActivity
+        implements OrderStatusRecyclerViewAdapter.callbacks,
+                    OrderInformationRecyclerViewAdapter.Callbacks {
 
     private OrdersActivityViewModel viewModel;
     private ImageButton buttonBack;
@@ -97,6 +99,8 @@ public class OrdersActivity extends AppCompatActivity implements OrderStatusRecy
         /*Step 2 - headers*/
         headers = globalVariable.getHeaders();
         parameters.put("status", orderStatus);
+        parameters.put("order[dir]", "desc");
+        parameters.put("order[column]","create_at");
         viewModel.getAllOrder(headers, parameters);
 
         /*Step 3 - pout data into view*/
@@ -153,14 +157,12 @@ public class OrdersActivity extends AppCompatActivity implements OrderStatusRecy
 
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         ordersStatusRecyclerView.setLayoutManager(manager);
-
-
     }
 
 
     private void setupOrderInformationRecyclerView(List<Order> orders)
     {
-        ordersInformationAdapter = new OrderInformationRecyclerViewAdapter(this, orders);
+        ordersInformationAdapter = new OrderInformationRecyclerViewAdapter(this, orders, this);
         ordersInformationRecyclerView.setAdapter( ordersInformationAdapter );
 
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -213,5 +215,28 @@ public class OrdersActivity extends AppCompatActivity implements OrderStatusRecy
             parameters.put("status", status);
         }
         viewModel.getAllOrder(headers, parameters);
+    }
+
+    @Override
+    public void onClickedButtonCancel(String orderId) {
+        viewModel.cancelOrder(headers, orderId);
+
+        /*listen response*/
+        dialog.announce();
+        viewModel.getCancelOrderResponse().observe(this, response->{
+            int result = response.getResult();
+            int title = R.string.success;
+            String msg = getString(R.string.cancel_order_successfully);
+            int icon = R.drawable.ic_check;
+
+            if( result == 0)
+            {
+                title = R.string.fail;
+                msg = response.getMsg();
+                icon = R.drawable.ic_cancel;
+            }
+            dialog.show(title, msg, icon);
+        });
+        dialog.btnOK.setOnClickListener(view1->dialog.close());
     }
 }

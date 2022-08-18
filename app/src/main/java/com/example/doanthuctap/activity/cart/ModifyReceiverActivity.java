@@ -12,8 +12,12 @@ import android.widget.ImageButton;
 import com.example.doanthuctap.R;
 import com.example.doanthuctap.container.ModifyReceiverResponse;
 import com.example.doanthuctap.helper.Dialog;
+import com.example.doanthuctap.helper.GlobalVariable;
 import com.example.doanthuctap.helper.LoadingScreen;
 import com.example.doanthuctap.viewModel.cart.ModifyReceiverViewModel;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ModifyReceiverActivity extends AppCompatActivity {
 
@@ -34,7 +38,8 @@ public class ModifyReceiverActivity extends AppCompatActivity {
     private String total = "";
     private LoadingScreen loadingScreen;
     private Dialog dialog;
-
+    private Map<String, String> headers = new HashMap<>();
+    private GlobalVariable globalVariable;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +69,9 @@ public class ModifyReceiverActivity extends AppCompatActivity {
 
         loadingScreen = new LoadingScreen(this);
         dialog = new Dialog(this);
+
+        globalVariable = (GlobalVariable) this.getApplication();
+        headers = globalVariable.getHeaders();
     }
 
 
@@ -124,7 +132,8 @@ public class ModifyReceiverActivity extends AppCompatActivity {
             String receiverAddress = txtReceiverAddress.getText().toString();
             String receiverPhone = txtReceiverPhone.getText().toString();
 
-            viewModel.modifyReceiverOrder(orderId, receiverPhone, receiverAddress,
+
+            viewModel.modifyReceiverOrder(headers,orderId, receiverPhone, receiverAddress,
                     receiverName, description, total);
 
 

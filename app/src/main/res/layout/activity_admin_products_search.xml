@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.admin.product.AdminProductsSearchActivity">
+
+
+
+    <!-- HEADER -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorTheme"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingTop="5dp"
+            android:text="@string/product_filter"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_below="@id/header"
+        android:layout_above="@id/buttonLayout"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/adminProductsSearchScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--KEYWORD-->
+            <TextView
+                android:text="@string/keyword"
+                style="@style/advanced_search_text_view" />
+
+            <EditText
+                android:id="@+id/adminProductsSearchKeyword"
+                style="@style/input_style"
+                android:autofillHints="First Name"
+                android:drawableStart="@drawable/ic_first_name"
+                android:hint="@string/keyword"
+                android:inputType="text"
+                android:textColor="@color/colorTextBlack" />
+
+            <!--MANUFACTURER-->
+            <TextView
+                android:text="@string/manufacturer"
+                style="@style/advanced_search_text_view" />
+
+            <Spinner
+                android:id="@+id/adminProductsSearchSpinnerManufacturer"
+                android:padding="10dp"
+                android:background="@drawable/customized_spinner"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <!--PRICE-->
+            <TextView
+                android:text="@string/price"
+                style="@style/advanced_search_text_view" />
+
+            <!--2 cái edit text-->
+            <LinearLayout
+                android:padding="10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <EditText
+                    android:id="@+id/adminProductsSearchPriceFrom"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/priceFrom"
+                    android:inputType="numberDecimal"
+                    android:maxHeight="120dp"
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp" />
+
+                <Space
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"/>
+
+                <TextView
+                    android:text="@string/to"
+                    android:gravity="center"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"/>
+
+                <Space
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"/>
+
+                <EditText
+                    android:id="@+id/adminProductsSearchPriceTo"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/priceTo"
+                    android:inputType="numberDecimal"
+                    android:maxHeight="120dp"
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp" />
+
+            </LinearLayout>
+
+            <!--SCREEN SIZE-->
+            <TextView
+                android:text="@string/screen_size"
+                style="@style/advanced_search_text_view" />
+            <!--checkbox-->
+            <RadioGroup
+                android:id="@+id/radioGroupScreenSize"
+                android:paddingStart="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="RtlSymmetry">
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:button="@drawable/customized_radio_button_2"
+                    android:id="@+id/adminProductsSearchCheckBox13inch"
+                    android:text="@string/screen_size_13_inch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:button="@drawable/customized_radio_button_2"
+                    android:id="@+id/adminProductsSearchCheckBox14inch"
+                    android:text="@string/screen_size_14_inch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:button="@drawable/customized_radio_button_2"
+                    android:id="@+id/adminProductsSearchCheckBox156inch"
+                    android:text="@string/screen_size_15_6_inch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:button="@drawable/customized_radio_button_2"
+                    android:id="@+id/adminProductsSearchCheckBox173inch"
+                    android:text="@string/screen_size_17_3_inch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </RadioGroup>
+
+            <!--CPU-->
+            <TextView
+                android:text="@string/cpu"
+                style="@style/advanced_search_text_view" />
+            <RadioGroup
+                android:id="@+id/radioGroupCpu"
+                android:paddingStart="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="RtlSymmetry">
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:button="@drawable/customized_radio_button"
+                    android:id="@+id/adminProductsSearchRadioButtoni3"
+                    android:text="@string/cpu_core_i3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:button="@drawable/customized_radio_button"
+                    android:id="@+id/adminProductsSearchRadioButtoni5"
+                    android:text="@string/cpu_core_i5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:button="@drawable/customized_radio_button"
+                    android:id="@+id/adminProductsSearchRadioButtoni7"
+                    android:text="@string/cpu_core_i7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </RadioGroup>
+
+            <!-- GRAPHIC CARD -->
+            <TextView
+                android:text="@string/graphic_card"
+                style="@style/advanced_search_text_view" />
+            <Spinner
+                android:id="@+id/adminProductsSearchSpinnerGraphicCard"
+                android:background="@drawable/customized_spinner"
+                android:padding="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <!-- DEMAND -->
+            <TextView
+                android:text="@string/demand"
+                style="@style/advanced_search_text_view" />
+            <Spinner
+                android:id="@+id/adminProductsSearchSpinnerDemand"
+                android:padding="10dp"
+                android:background="@drawable/customized_spinner"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+<!--     BUTTON CONFIRM & BUTTON CANCEL-->
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="77dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorBackground"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/adminProductsSearchButtonConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/background_button_advanced_search_confirm"
+            android:text="@string/confirm"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            tools:ignore="SmallSp" />
+
+        <Space
+            android:layout_width="30dp"
+            android:layout_height="match_parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/adminProductsSearchButtonReset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/background_button_advanced_search_cancel"
+            android:text="@string/reset"
+            android:textColor="@color/colorBlue"
+            android:textSize="10sp"
+            tools:ignore="SmallSp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -19,7 +19,7 @@
         android:padding="5dp">
 
         <ImageButton
-            android:id="@+id/checkoutActivityButtonGoBack"
+            android:id="@+id/changeInforButtonGoBack"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/background_button_back"

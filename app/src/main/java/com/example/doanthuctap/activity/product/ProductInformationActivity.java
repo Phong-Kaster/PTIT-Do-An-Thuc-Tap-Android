@@ -92,6 +92,7 @@ public class ProductInformationActivity extends AppCompatActivity implements Add
     private Product product;// the product is gotten from viewModel
 
     private GlobalVariable globalVariable;
+    private Map<String, String> headers = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,14 +137,12 @@ public class ProductInformationActivity extends AppCompatActivity implements Add
         dialog = new Dialog(this);
         loadingScreen = new LoadingScreen(this);
 
-//        buttonBack = findViewById(R.id.productInforButtonBack);
         buttonAddToCart = findViewById(R.id.productInforButtonAddToCart);
         buttonReview = findViewById(R.id.productInforButtonReview);
         buttonBuyNow = findViewById(R.id.productInforButtonBuyNow);
 
-
         globalVariable = (GlobalVariable) this.getApplication();
-//        buttonCart = findViewById(R.id.productInforButtonCart);
+        headers = globalVariable.getHeaders();
     }
 
     private void setupViewModel()
@@ -287,10 +286,24 @@ public class ProductInformationActivity extends AppCompatActivity implements Add
         /*Step 5 - button buy now*/
         buttonBuyNow.setOnClickListener(view->{
             /*put a product into the order*/
-            viewModel.modifyOrderContent(orderId, productId, "1");
-            Intent intent = new Intent(this, CartCheckoutActivity.class);
-            startActivity(intent);
-            finish();
+            viewModel.modifyOrderContent(headers, orderId, productId, "1");
+            viewModel.getModifyOrderContentResponse().observe(this, response->{
+
+                int result = response.getResult();
+                if( result == 1)
+                {
+                    Intent intent = new Intent(this, CartCheckoutActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else
+                {
+                    dialog.announce();
+                    dialog.show(R.string.fail, response.getMsg(), R.drawable.ic_close);
+                    dialog.btnOK.setOnClickListener(view1 -> dialog.close());
+                }
+            });
+
         });
     }
 
@@ -366,7 +379,7 @@ public class ProductInformationActivity extends AppCompatActivity implements Add
             if( productQuantity > 1)
             {
                 productQuantity--;
-                txtQuantity.setText(String.valueOf(productQuantity));
+                totalAmount = productQuantity*product.getPrice();
 
                 String quantity = String.valueOf(productQuantity);
                 String totalAmountValue = Beautifier.formatNumber(totalAmount) + "đ";
@@ -377,15 +390,17 @@ public class ProductInformationActivity extends AppCompatActivity implements Add
         });
 
         /*add To Cart Fragment - button confirm*/
+        System.out.println("button confirm clicked !");
         buttonConfirm.setOnClickListener(view->{
             //System.out.println("add To Cart Fragment - button confirm - orderId: " + orderId);
             /*send request to API - /orders/{id}*/
             //orderId = Beautifier.shortenOrderId(orderId);
-            viewModel.modifyOrderContent(orderId, productId, txtQuantity.getText().toString());
+            headers = globalVariable.getHeaders();
+            viewModel.modifyOrderContent(headers, orderId, productId, txtQuantity.getText().toString());
             /*listen for response data*/
             dialog.announce();
-            viewModel.getOrderContent().observe(this, modifyOrderContentResponse -> {
-                int result = modifyOrderContentResponse.getResult();
+            viewModel.getModifyOrderContentResponse().observe(this, response -> {
+                int result = response.getResult();
                 sheet.cancel();
 
                 String title = getString(R.string.success);
@@ -395,7 +410,7 @@ public class ProductInformationActivity extends AppCompatActivity implements Add
                 if(result == 0)
                 {
                     title = getString(R.string.fail);
-                    msg = modifyOrderContentResponse.getMsg();
+                    msg = response.getMsg();
                     icon = R.drawable.ic_close;
                 }
 

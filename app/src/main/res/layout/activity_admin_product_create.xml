@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.admin.product.AdminProductCreateActivity">
+
+    <!-- HEADER -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorTheme"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <ImageButton
+            android:id="@+id/adminProductCreateButtonBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/background_button_back"
+            android:minWidth="20dp"
+            android:minHeight="20dp"
+            android:src="@drawable/ic_arrow_back"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:text="@string/create_product"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <!-- NAME -->
+            <TextView
+                android:text="@string/product_name"
+                style="@style/advanced_search_text_view" />
+
+            <EditText
+                android:id="@+id/adminProductCreateName"
+                style="@style/input_style"
+                android:autofillHints="First Name"
+                android:drawableStart="@drawable/ic_first_name"
+                android:hint="@string/product_name"
+                android:inputType="text"
+                android:textColor="@color/colorTextBlack" />
+
+            <!--MANUFACTURER-->
+            <TextView
+                android:text="@string/manufacturer"
+                style="@style/advanced_search_text_view" />
+
+            <Spinner
+                android:id="@+id/adminProductCreateManufacturerSpinner"
+                android:padding="10dp"
+                android:background="@drawable/customized_spinner"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15dp"/>
+
+            <!-- PRICE -->
+            <TextView
+                android:text="@string/price"
+                style="@style/advanced_search_text_view" />
+
+            <EditText
+                android:id="@+id/adminProductCreatePrice"
+                style="@style/input_style"
+                android:autofillHints="First Name"
+                android:drawableStart="@drawable/ic_first_name"
+                android:hint="@string/product_price"
+                android:inputType="text"
+                android:textColor="@color/colorTextBlack" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15dp"/>
+
+            <!-- REMAINING -->
+            <TextView
+                android:text="@string/product_remaining"
+                style="@style/advanced_search_text_view" />
+
+            <EditText
+                android:id="@+id/adminProductCreateRemaining"
+                style="@style/input_style"
+                android:autofillHints="First Name"
+                android:drawableStart="@drawable/ic_first_name"
+                android:hint="@string/product_remaining"
+                android:inputType="numberDecimal"
+                android:textColor="@color/colorTextBlack" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15dp"/>
+
+            <!-- SCREEN SIZE -->
+            <TextView
+                android:text="@string/screen_size"
+                style="@style/advanced_search_text_view" />
+
+            <Spinner
+                android:id="@+id/adminProductCreateScreenSizeSpinner"
+                android:padding="10dp"
+                android:background="@drawable/customized_spinner"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15dp"/>
+
+            <!-- CPU -->
+            <TextView
+                android:text="@string/cpu"
+                style="@style/advanced_search_text_view" />
+
+            <EditText
+                android:id="@+id/adminProductCreateCPU"
+                style="@style/input_style"
+                android:autofillHints="First Name"
+                android:drawableStart="@drawable/ic_first_name"
+                android:hint="@string/cpu"
+                android:inputType="text"
+                android:textColor="@color/colorTextBlack" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15dp"/>
+
+            <!-- RAM -->
+            <TextView
+                android:text="@string/ram"
+                style="@style/advanced_search_text_view" />
+
+            <EditText
+                android:id="@+id/adminProductCreateRAM"
+                style="@style/input_style"
+                android:autofillHints="First Name"
+                android:drawableStart="@drawable/ic_first_name"
+                android:hint="@string/ram"
+                android:inputType="numberDecimal"
+                android:textColor="@color/colorTextBlack" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15dp"/>
+
+            <!-- GRAPHIC CARD -->
+            <TextView
+                android:text="@string/graphic_card"
+                style="@style/advanced_search_text_view" />
+
+            <EditText
+                android:id="@+id/adminProductCreateGraphicCard"
+                style="@style/input_style"
+                android:autofillHints="First Name"
+                android:drawableStart="@drawable/ic_first_name"
+                android:hint="@string/graphic_card"
+                android:inputType="text"
+                android:textColor="@color/colorTextBlack" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15dp"/>
+
+            <!-- ROM -->
+            <TextView
+                android:text="@string/rom"
+                style="@style/advanced_search_text_view" />
+
+            <EditText
+                android:id="@+id/adminProductCreateROM"
+                style="@style/input_style"
+                android:autofillHints="First Name"
+                android:drawableStart="@drawable/ic_first_name"
+                android:hint="@string/rom_2"
+                android:inputType="numberDecimal"
+                android:textColor="@color/colorTextBlack" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15dp"/>
+
+            <!--DEMAND-->
+            <TextView
+                android:text="@string/demand"
+                style="@style/advanced_search_text_view" />
+
+            <Spinner
+                android:id="@+id/adminProductCreateDemandSpinner"
+                android:padding="10dp"
+                android:background="@drawable/customized_spinner"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15dp"/>
+
+            <!--DESCRIPTION-->
+            <TextView
+                android:text="@string/content"
+                style="@style/advanced_search_text_view" />
+
+            <EditText
+                android:id="@+id/adminProductCreateContent"
+                style="@style/advanced_search_text_view"
+                android:autofillHints="First Name"
+                android:drawableStart="@drawable/ic_first_name"
+                android:hint="@string/content"
+                android:inputType="textMultiLine"
+                android:lines="8"
+                android:singleLine="true"
+                android:textColor="@color/colorTextBlack" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/adminProductCreateButtonConfirm"
+                style="@style/button_style"
+                android:layout_gravity="center"
+                android:text="@string/confirm" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

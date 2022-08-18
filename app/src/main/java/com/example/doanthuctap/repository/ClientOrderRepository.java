@@ -64,15 +64,6 @@ public class ClientOrderRepository {
 
 
     private MutableLiveData<ModifyOrderContentResponse> contentObjects;
-    public MutableLiveData<ModifyOrderContentResponse> getContentObjects()
-    {
-        if( contentObjects == null)
-        {
-            contentObjects = new MutableLiveData<>();
-        }
-        return  contentObjects;
-    }
-
     /**
      * get information of the latest order
      */
@@ -136,7 +127,7 @@ public class ClientOrderRepository {
     /**
      * modify content of an order
      */
-    public MutableLiveData<ModifyOrderContentResponse> modifyOrderContent(String orderId, String productId, String quantity)
+    public MutableLiveData<ModifyOrderContentResponse> modifyOrderContent(Map<String, String> headers, String orderId, String productId, String quantity)
     {
         if(contentObjects == null){
             contentObjects = new MutableLiveData<>();
@@ -171,7 +162,7 @@ public class ClientOrderRepository {
         }
 
 
-        Call<ModifyOrderContentResponse> container = api.modifyOrderContent(orderId, productId, quantity, "orderContent");
+        Call<ModifyOrderContentResponse> container = api.modifyOrderContent(headers, orderId, productId, quantity, "orderContent");
 
 
         /*Step 3*/
@@ -216,7 +207,7 @@ public class ClientOrderRepository {
     /**
      * modify information of an order
      */
-    public MutableLiveData<ModifyReceiverResponse> modifyOrderInformation(String orderId,
+    public MutableLiveData<ModifyReceiverResponse> modifyOrderInformation(Map<String, String> headers,String orderId,
                                                                        String receiverPhone,
                                                                        String receiverAddress,
                                                                        String receiverName,
@@ -267,7 +258,7 @@ public class ClientOrderRepository {
 
 
         /*Step 3*/
-        Call<ModifyReceiverResponse> container = api.modifyOrderInformation(orderId,
+        Call<ModifyReceiverResponse> container = api.modifyOrderInformation(headers,orderId,
                                                                             receiverPhone,
                                                                             receiverAddress,
                                                                             receiverName,
@@ -319,7 +310,7 @@ public class ClientOrderRepository {
      * get order confirm response
      * */
     private MutableLiveData<ConfirmOrderResponse> confirmOrderResponse;
-    public MutableLiveData<ConfirmOrderResponse> confirmOrder(String id, String orderStatus)
+    public MutableLiveData<ConfirmOrderResponse> confirmOrder(Map<String, String> header,String id, String orderStatus)
     {
         if( confirmOrderResponse == null )
         {
@@ -341,7 +332,7 @@ public class ClientOrderRepository {
 
 
         /*Step 2 - call api*/
-        Call<ConfirmOrderResponse> container = api.confirmOrder(id, orderNextStatus);
+        Call<ConfirmOrderResponse> container = api.confirmOrder(header,id, orderNextStatus);
 
 
         /*Step 3 - */

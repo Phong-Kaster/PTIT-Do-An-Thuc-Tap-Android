@@ -270,7 +270,7 @@ public class CartFragment extends Fragment implements OrderContentRecyclerViewAd
                         /*notify to adapter & remove the transaction on SERVER*/
                         products.remove(position);
                         adapter.notifyItemRemoved(position);
-                        viewModel.modifyOrderContent(orderId, productId, quantity);
+                        viewModel.modifyOrderContent(headers, orderId, productId, quantity);
                     }
 
                     public void onChildDraw (@NonNull Canvas c,
@@ -306,24 +306,14 @@ public class CartFragment extends Fragment implements OrderContentRecyclerViewAd
         if( "add".equals(action) )
         {
             totalAmount = totalAmount + price;// sum current total amount with intPrice
-            viewModel.modifyOrderContent(orderId, String.valueOf(productId), String.valueOf(quantity+1) );
+            viewModel.modifyOrderContent(headers, orderId, String.valueOf(productId), String.valueOf(quantity+1) );
         }
         else if( "minus".equals(action) )
         {
             totalAmount = totalAmount - price;
-            viewModel.modifyOrderContent(orderId, String.valueOf(productId), String.valueOf(quantity-1));
+            viewModel.modifyOrderContent(headers, orderId, String.valueOf(productId), String.valueOf(quantity-1));
         }
 
         txtTotalAmount.setText( Beautifier.formatNumber(totalAmount) + "đ" );
-    }
-
-    private void refreshFragment()
-    {
-        FragmentManager manager = requireActivity().getSupportFragmentManager();
-        Fragment currentFragment = manager.findFragmentById(R.id.frameLayout);
-        manager.beginTransaction()
-                .detach(currentFragment)
-                .attach(currentFragment)
-                .commit();
     }
 }

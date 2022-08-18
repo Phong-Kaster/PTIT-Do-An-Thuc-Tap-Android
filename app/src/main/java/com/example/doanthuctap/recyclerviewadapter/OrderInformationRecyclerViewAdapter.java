@@ -7,19 +7,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.doanthuctap.R;
 import com.example.doanthuctap.activity.personality.OrderInformationActivity;
 import com.example.doanthuctap.helper.Beautifier;
 import com.example.doanthuctap.model.Order;
-import com.example.doanthuctap.model.OrderStatus;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -27,11 +27,13 @@ public class OrderInformationRecyclerViewAdapter extends RecyclerView.Adapter<Or
 
     private Context context;
     private List<Order> objects = new ArrayList<>();
+    private OrderInformationRecyclerViewAdapter.Callbacks callbacks;
 
-    public OrderInformationRecyclerViewAdapter(Context context, List<Order> objects)
+    public OrderInformationRecyclerViewAdapter(Context context, List<Order> objects, OrderInformationRecyclerViewAdapter.Callbacks callbacks)
     {
         this.context = context;
         this.objects = objects;
+        this.callbacks = callbacks;
     }
 
 
@@ -57,16 +59,37 @@ public class OrderInformationRecyclerViewAdapter extends RecyclerView.Adapter<Or
         holder.status.setText(status);
         holder.date.setText( date);
         holder.total.setText( total );
+
         holder.layout.setOnClickListener(view->{
             Intent intent = new Intent(context, OrderInformationActivity.class);
             intent.putExtra("orderId", orderId);
             context.startActivity(intent);
         });
+
+
+
         holder.buttonWatch.setOnClickListener(view->{
             Intent intent = new Intent(context, OrderInformationActivity.class);
             intent.putExtra("orderId", orderId);
             context.startActivity(intent);
         });
+
+        /*BUTTON CANCEL*/
+        List<String> invalidStatus = Arrays.asList("verified","packed","being transported","delivered", "cancel");
+        boolean flag = invalidStatus.contains(element.getStatus());
+        if( flag )
+        {
+            holder.buttonCancel.setEnabled(false);
+            int colorGrey = ContextCompat.getColor(context,R.color.colorGrey);
+            holder.buttonCancel.setBackgroundDrawable(ContextCompat.getDrawable(context,R.drawable.background_button_edit_order_information_disable ));
+            holder.buttonCancel.setTextColor(colorGrey);
+        }
+        else
+        {
+            holder.buttonCancel.setOnClickListener(view->{
+                callbacks.onClickedButtonCancel(orderId);
+            });
+        }
     }
 
     @Override
@@ -81,6 +104,7 @@ public class OrderInformationRecyclerViewAdapter extends RecyclerView.Adapter<Or
         private final TextView date;
         private final TextView total;
         private final AppCompatButton buttonWatch;
+        private final AppCompatButton buttonCancel;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -90,6 +114,11 @@ public class OrderInformationRecyclerViewAdapter extends RecyclerView.Adapter<Or
             date = itemView.findViewById(R.id.orderInformationDate);
             total = itemView.findViewById(R.id.orderInformationTotal);
             buttonWatch = itemView.findViewById(R.id.orderInformationButtonWatchOrder);
+            buttonCancel = itemView.findViewById(R.id.orderInformationButtonBuyCancel);
         }
+    }
+
+    public interface Callbacks{
+        void onClickedButtonCancel(String orderId);
     }
 }

@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel;
 import com.example.doanthuctap.container.ModifyReceiverResponse;
 import com.example.doanthuctap.repository.ClientOrderRepository;
 
+import java.util.Map;
+
 public class ModifyReceiverViewModel extends ViewModel {
 
     private MutableLiveData<ModifyReceiverResponse> response;
@@ -49,14 +51,14 @@ public class ModifyReceiverViewModel extends ViewModel {
      * @param receiverName
      * @param description
      */
-    public void modifyReceiverOrder(String orderId,
+    public void modifyReceiverOrder(Map<String, String> headers, String orderId,
                                     String receiverPhone,
                                     String receiverAddress,
                                     String receiverName,
                                     String description,
                                     String total)
     {
-        response = orderRepository.modifyOrderInformation(orderId, receiverPhone,
+        response = orderRepository.modifyOrderInformation(headers,orderId, receiverPhone,
                 receiverAddress, receiverName, description, total);
         animation = orderRepository.getAnimation();
     }

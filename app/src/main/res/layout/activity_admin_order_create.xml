@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.admin.order.AdminOrderCreateActivity">
+
+
+    <!--header -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorTheme"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <ImageButton
+            android:id="@+id/adminOrderCreateInforButtonBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/background_button_back"
+            android:minWidth="20dp"
+            android:minHeight="20dp"
+            android:src="@drawable/ic_arrow_back"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:text="@string/create_order_information"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- content -->
+    <ScrollView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <!-- DELIVERY ADDRESS  -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp"
+                android:paddingBottom="10dp"
+                android:text="@string/delivery_address"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:drawableStart="@drawable/ic_location" />
+
+            <EditText
+                android:id="@+id/adminOrderCreateInforReceiverName"
+                style="@style/input_style"
+                android:autofillHints="First Name"
+                android:drawableStart="@drawable/ic_first_name"
+                android:hint="@string/receiver_name"
+                android:inputType="text"
+                android:textColor="@color/colorTextBlack" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <EditText
+                android:id="@+id/adminOrderCreateInforReceiverPhone"
+                style="@style/input_style"
+                android:autofillHints="First Name"
+                android:drawableStart="@drawable/ic_phone"
+                android:hint="@string/receiver_phone"
+                android:inputType="phone"
+                android:textColor="@color/colorTextBlack" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <EditText
+                android:id="@+id/adminOrderCreateInforReceiverAddress"
+                style="@style/input_style"
+                android:autofillHints=""
+                android:drawableStart="@drawable/ic_address"
+                android:hint="@string/receiver_address"
+                android:inputType="text"
+                android:textColor="@color/colorTextBlack" />
+
+            <!-- DESCRIPTION -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/description"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:drawableStart="@drawable/ic_description" />
+
+            <EditText
+                android:id="@+id/adminOrderCreateInforDescription"
+                style="@style/input_style"
+                android:autofillHints=""
+                android:drawableStart="@drawable/ic_description"
+                android:hint="@string/description"
+                android:inputType="text"
+                android:textColor="@color/colorTextBlack" />
+
+            <!-- STATUS -->
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:drawablePadding="5dp"-->
+<!--                android:paddingTop="10dp"-->
+<!--                android:paddingBottom="10dp"-->
+<!--                android:text="@string/status2"-->
+<!--                android:textColor="@color/colorTextBlack"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:drawableStart="@drawable/ic_status" />-->
+
+<!--            <androidx.appcompat.widget.AppCompatSpinner-->
+<!--                android:id="@+id/adminOrderCreateInforStatus"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content" />-->
+
+            <!-- TOTAL -->
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:drawablePadding="5dp"-->
+<!--                android:paddingTop="10dp"-->
+<!--                android:paddingBottom="10dp"-->
+<!--                android:text="@string/total_amount2"-->
+<!--                android:textColor="@color/colorTextBlack"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:drawableStart="@drawable/ic_total_amount" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/adminOrderChangeInforTotalAmount"-->
+<!--                style="@style/input_style"-->
+<!--                android:autofillHints=""-->
+<!--                android:drawableStart="@drawable/ic_total_amount"-->
+<!--                android:focusable="false"-->
+<!--                android:hint="@string/total_amount2"-->
+<!--                android:inputType="text"-->
+<!--                android:textColor="@color/colorTextBlack" />-->
+
+            <!-- CREATE AT -->
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:drawablePadding="5dp"-->
+<!--                android:paddingTop="10dp"-->
+<!--                android:paddingBottom="10dp"-->
+<!--                android:text="@string/create_at"-->
+<!--                android:textColor="@color/colorTextBlack"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:drawableStart="@drawable/ic_time2" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/adminOrderCreateInforCreateAt"-->
+<!--                style="@style/input_style"-->
+<!--                android:autofillHints=""-->
+<!--                android:drawableStart="@drawable/ic_time2"-->
+<!--                android:focusable="false"-->
+<!--                android:hint="@string/create_at"-->
+<!--                android:inputType="text"-->
+<!--                android:textColor="@color/colorTextBlack" />-->
+
+            <!-- UPDATE AT -->
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:drawablePadding="5dp"-->
+<!--                android:paddingTop="10dp"-->
+<!--                android:paddingBottom="10dp"-->
+<!--                android:text="@string/update_at"-->
+<!--                android:textColor="@color/colorTextBlack"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:drawableStart="@drawable/ic_time2" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/adminOrderCreateInforUpdateAt"-->
+<!--                style="@style/input_style"-->
+<!--                android:autofillHints=""-->
+<!--                android:drawableStart="@drawable/ic_time2"-->
+<!--                android:focusable="false"-->
+<!--                android:hint="@string/update_at"-->
+<!--                android:inputType="text"-->
+<!--                android:textColor="@color/colorTextBlack" />-->
+        </LinearLayout>
+    </ScrollView>
+
+
+    <!-- BUTTON SAVE AND BUTTON ORDER CONTENT -->
+
+
+    <!-- button save -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/adminOrderCreateInforButtonSave"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        style="@style/button_style"
+        android:layout_marginBottom="20dp"
+        android:text="@string/save" />
+
+
+
+</RelativeLayout>

@@ -97,9 +97,18 @@ public class ProductInformationViewModel extends ViewModel {
         animation = orderRepository.getAnimation();
     }
 
-    public void modifyOrderContent(String orderId, String productId, String quantity)
+    private MutableLiveData<ModifyOrderContentResponse> modifyOrderContent;
+    public MutableLiveData<ModifyOrderContentResponse> getModifyOrderContentResponse()
     {
-        orderContent = orderRepository.modifyOrderContent(orderId, productId, quantity);
+        if( modifyOrderContent == null)
+        {
+            modifyOrderContent = new MutableLiveData<>();
+        }
+        return modifyOrderContent;
+    }
+    public void modifyOrderContent(Map<String, String> headers,String orderId, String productId, String quantity)
+    {
+        modifyOrderContent = orderRepository.modifyOrderContent(headers, orderId, productId, quantity);
         animation = orderRepository.getAnimation();
     }
 }

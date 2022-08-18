@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.example.doanthuctap.R;
 import com.example.doanthuctap.helper.Dialog;
@@ -35,6 +36,7 @@ public class ChangeInformationActivity extends AppCompatActivity {
     private LoadingScreen loadingScreen;
 
     private User authUser;
+    private ImageButton buttonBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,7 @@ public class ChangeInformationActivity extends AppCompatActivity {
         loadingScreen = new LoadingScreen(this);
 
         authUser = globalVariable.getAuthUser();
+        buttonBack = findViewById(R.id.changeInforButtonGoBack);
     }
 
     private void setupViewModel()
@@ -125,6 +128,10 @@ public class ChangeInformationActivity extends AppCompatActivity {
 
             headers = globalVariable.getHeaders();
             viewModel.changeInformation(headers, email, firstName, lastName, phone, address);
+        });
+
+        buttonBack.setOnClickListener(view->{
+            finish();
         });
     }
 }
