@@ -188,6 +188,9 @@
     <string name="create_product_successfully">Tạo sản phẩm mới thành công</string>
     <string name="cancel_order_successfully">Huỷ đơn hàng thành công</string>
     <string name="invalid_receiver_information">Thông tin người nhận không hợp lệ</string>
-    <string name="photo">Thêm ảnh</string>
+    <string name="photo">Ảnh sản phẩm</string>
     <string name="open_gallery">Mở thư viện ảnh</string>
+    <string name="product_avatar">Ảnh đại diện sản phẩm</string>
+    <string name="set_product_avatar">Đặt làm ảnh đại diện</string>
+    <string name="action_successfully">Thao tác thành công</string>
 </resources>

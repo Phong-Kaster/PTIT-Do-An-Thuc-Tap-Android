@@ -18,6 +18,7 @@ import com.example.doanthuctap.R;
 import com.example.doanthuctap.activity.product.ProductInformationActivity;
 import com.example.doanthuctap.container.ProductsResponse;
 import com.example.doanthuctap.helper.Beautifier;
+import com.example.doanthuctap.helper.GlobalVariable;
 import com.example.doanthuctap.model.ProductClient;
 import com.squareup.picasso.Picasso;
 
@@ -28,6 +29,7 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
 
     private Context context;
     private List<ProductClient> objects = new ArrayList<>();
+    private final String ROOT_URL = Beautifier.getRootURL();
 
     public ProductsRecyclerViewAdapter(Context context, List<ProductClient> objects){
         this.context = context;
@@ -49,7 +51,7 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
         ProductClient product = objects.get(position);
 
         String avatar = product.getAvatar().length() > 0 ?
-                product.getAvatar() : context.getString(R.drawable.product_default_avatar);
+                ROOT_URL + product.getAvatar() : context.getString(R.drawable.product_default_avatar);
         int id = product.getId();
         String name =       Beautifier.shortenName(product.getName());
         String price =      Beautifier.formatNumber(product.getPrice()) + "đ";
@@ -61,7 +63,7 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
         /*sau nay co server public thi se ko dung cai nay nua*/
         String temporaryAvatar = Beautifier.generateRandomAvatar();
 
-        Picasso.get().load(temporaryAvatar).into(holder.productAvatar);
+        Picasso.get().load(avatar).into(holder.productAvatar);
         holder.productName.setText(name);
         holder.productPrice.setText(price);
         holder.productRemaining.setText(remaining);
@@ -69,7 +71,7 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
             Intent intent = new Intent(context, ProductInformationActivity.class);
             intent.putExtra("productId", String.valueOf(id) );
             /*gui kem cai anh dang load bang internet, sau nay co server public thi ko can nua*/
-            intent.putExtra("temporaryAvatar", temporaryAvatar);
+            intent.putExtra("temporaryAvatar", avatar);
             context.startActivity(intent);
         });
     }

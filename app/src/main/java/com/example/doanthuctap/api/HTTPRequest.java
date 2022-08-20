@@ -20,6 +20,8 @@ import com.example.doanthuctap.container.GetProductsWithCategoryIDResponse;
 import com.example.doanthuctap.container.LoginResponse;
 import com.example.doanthuctap.container.ModifyOrderContentResponse;
 import com.example.doanthuctap.container.ModifyReceiverResponse;
+import com.example.doanthuctap.container.PhotoResponse;
+import com.example.doanthuctap.container.PhotosResponse;
 import com.example.doanthuctap.container.ProductByIdResponse;
 import com.example.doanthuctap.container.ProductsResponse;
 import com.example.doanthuctap.container.ProfileResponse;
@@ -265,4 +267,23 @@ public interface HTTPRequest {
                                                         @Field("rom") String rom,
                                                         @Field("demand") String demand,
                                                         @Field("content") String content);
+
+
+    /*-------------------------------------------------------------------*/
+    /*--------------------------- ADMIN PHOTOS-------------------------*/
+    /*-------------------------------------------------------------------*/
+
+    @GET("admin/products/photos/{id}")
+    Call<PhotosResponse> adminGetPhotos(@HeaderMap Map<String, String> headers,
+                                        @Path("id") String productId);
+
+    @DELETE("admin/products/photos/{productId}/{photoId}")
+    Call<PhotoResponse> adminRemovePhoto(@HeaderMap Map<String, String> headers,
+                                         @Path("productId") String productId,
+                                         @Path("photoId") int photoId);
+
+    @PUT("admin/products/photos/{productId}/{photoId}")
+    Call<PhotoResponse> adminSetAvatar(@HeaderMap Map<String, String> headers,
+                                       @Path("productId") String productId,
+                                       @Path("photoId") int photoId);
 }

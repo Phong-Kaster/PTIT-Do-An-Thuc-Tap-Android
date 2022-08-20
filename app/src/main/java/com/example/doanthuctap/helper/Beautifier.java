@@ -206,4 +206,12 @@ public class Beautifier {
         }
         return output;
     }
+
+    /**
+     * @return String the root url
+     */
+    public static String getRootURL()
+    {
+        return "http://192.168.1.221:8080/PTIT-Do-An-Thuc-Tap/assets/uploads/";
+    }
 }

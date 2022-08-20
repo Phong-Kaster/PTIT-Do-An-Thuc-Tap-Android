@@ -1,10 +1,12 @@
 package com.example.doanthuctap.activity.admin.product;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,15 +14,18 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.doanthuctap.R;
+import com.example.doanthuctap.activity.admin.AdminPhotoActivity;
 import com.example.doanthuctap.arrayadapter.DemandArrayAdapter;
 import com.example.doanthuctap.arrayadapter.ManufacturerArrayAdapter;
 import com.example.doanthuctap.arrayadapter.ScreenSizeArrayAdapter;
+import com.example.doanthuctap.helper.Beautifier;
 import com.example.doanthuctap.helper.Dialog;
 import com.example.doanthuctap.helper.GlobalVariable;
 import com.example.doanthuctap.helper.LoadingScreen;
 import com.example.doanthuctap.model.Option;
 import com.example.doanthuctap.model.ProductClient;
 import com.example.doanthuctap.viewModel.admin.AdminProductEditViewModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,6 +51,7 @@ public class AdminProductEditActivity extends AppCompatActivity {
     private EditText txtROM;
     private Spinner spinnerDemand;
     private EditText txtContent;
+
 
 
     private LoadingScreen loadingScreen;
@@ -221,6 +227,7 @@ public class AdminProductEditActivity extends AppCompatActivity {
     private void setupScreen(ProductClient product)
     {
         /*Step 1 - declare product*/
+        String avatar = Beautifier.getRootURL()  + product.getAvatar();
         String name = product.getName();
         String manufacturer = product.getManufacturer().toLowerCase();
         int price = product.getPrice();
@@ -235,6 +242,7 @@ public class AdminProductEditActivity extends AppCompatActivity {
 
 
         /*Step 2 - set up screen*/
+
         /*Name*/
         txtName.setText(name);
 
@@ -295,8 +303,10 @@ public class AdminProductEditActivity extends AppCompatActivity {
 
     private void setupEvent()
     {
+        /*BUTTON BACK*/
         buttonBack.setOnClickListener(view->finish());
 
+        /*BUTTON CONFIRM*/
         buttonConfirm.setOnClickListener(view->{
             /*Step 1 - declare product*/
             String name = txtName.getText().toString();
@@ -357,6 +367,14 @@ public class AdminProductEditActivity extends AppCompatActivity {
                 }
             });
             dialog.btnOK.setOnClickListener(view1->dialog.close());
+        });
+
+
+        /*BUTTON ADD PHOTO*/
+        buttonAddPhoto.setOnClickListener(view->{
+            Intent intent = new Intent(this, AdminPhotoActivity.class);
+            intent.putExtra("productId", productId);
+            startActivity(intent);
         });
     }
 }

@@ -26,6 +26,7 @@ public class AdminProductsRecyclerViewAdapter extends RecyclerView.Adapter<Admin
 
     private Context context;
     private List<ProductClient> objects = new ArrayList<>();
+    private final String ROOT_URL = Beautifier.getRootURL();
 
     public AdminProductsRecyclerViewAdapter(Context context, List<ProductClient> objects){
         this.context = context;
@@ -47,7 +48,7 @@ public class AdminProductsRecyclerViewAdapter extends RecyclerView.Adapter<Admin
         ProductClient product = objects.get(position);
 
         String avatar = product.getAvatar().length() > 0 ?
-                product.getAvatar() : context.getString(R.drawable.product_default_avatar);
+                ROOT_URL + product.getAvatar() : context.getString(R.drawable.product_default_avatar);
         int id = product.getId();
         String name =       Beautifier.shortenName(product.getName());
         String cpu =        product.getCpu();
@@ -61,7 +62,7 @@ public class AdminProductsRecyclerViewAdapter extends RecyclerView.Adapter<Admin
         /*sau nay co server public thi se ko dung cai nay nua*/
         String temporaryAvatar = Beautifier.generateRandomAvatar();
 
-        Picasso.get().load(temporaryAvatar).into(holder.productAvatar);
+        Picasso.get().load(avatar).into(holder.productAvatar);
         holder.productName.setText(name);
         holder.productCPU.setText(cpu);
         holder.productGraphicCard.setText(graphicCard);

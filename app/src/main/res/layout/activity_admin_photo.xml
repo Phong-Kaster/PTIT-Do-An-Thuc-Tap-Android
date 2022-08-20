@@ -10,12 +10,13 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_marginVertical="20dp"
-        android:id="@+id/adminPhotoOpenGallery"
+        android:id="@+id/adminPhotoButtonOpenGallery"
         style="@style/button_style"
         android:layout_gravity="center"
         android:text="@string/open_gallery" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginHorizontal="20dp"
         android:id="@+id/adminPhotoRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

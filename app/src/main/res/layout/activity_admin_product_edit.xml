@@ -47,22 +47,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
+            <!-- AVATAR -->
+<!--            <ImageView-->
+<!--                android:layout_gravity="center"-->
+<!--                android:id="@+id/adminProductAvatar"-->
+<!--                android:layout_marginBottom="20dp"-->
+<!--                android:src="@drawable/product_default_avatar"-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="100dp"/>-->
+
             <!-- PHOTOS -->
             <androidx.appcompat.widget.AppCompatButton
+                android:layout_marginHorizontal="50dp"
                 android:id="@+id/adminProductButtonAddPhoto"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/background_button_add_photo"
-                android:layout_marginStart="10dp"
                 android:textColor="@color/colorBlue"
                 android:textAllCaps="false"
                 android:text="@string/photo" />
-
-<!--            <androidx.recyclerview.widget.RecyclerView-->
-<!--                android:id="@+id/adminProductPhotosRecyclerView"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="50dp"/>-->
 
             <!-- NAME -->
             <TextView

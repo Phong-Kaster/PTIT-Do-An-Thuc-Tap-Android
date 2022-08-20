@@ -1,13 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/elementLayout"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
+    android:paddingBottom="10dp"
     android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/elementPhoto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:src="@drawable/product_default_avatar"
+        android:layout_width="150dp"
+        android:layout_height="150dp"/>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_marginHorizontal="10dp"
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/elementButtonSetAvatar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_button_order_information"
+            android:padding="10dp"
+            android:text="@string/set_product_avatar"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlue"
+            android:textSize="10sp"
+            tools:ignore="SmallSp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_weight="1"
+            android:id="@+id/elementButtonRemove"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/background_button_remove_order_information"
+            android:padding="10dp"
+            android:text="@string/remove"
+            android:textStyle="bold"
+            android:textColor="@color/colorRed"
+            android:textSize="10sp"
+            tools:ignore="SmallSp" />
+
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
+
+        <TextView
+            android:id="@+id/elementDefaultAvatar"
+            android:gravity="center"
+            android:textSize="10sp"
+            android:visibility="gone"
+            android:textColor="@color/colorTextBlack"
+            android:text="@string/product_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="SmallSp" />
+
+    </LinearLayout>
+
 
 </LinearLayout>
