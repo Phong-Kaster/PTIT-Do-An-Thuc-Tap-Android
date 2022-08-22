@@ -31,6 +31,9 @@ import com.example.doanthuctap.model.AdminGetOrderByIdResponse;
 
 import java.util.Map;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.DELETE;
 import retrofit2.http.Field;
@@ -38,8 +41,10 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.HeaderMap;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
 
@@ -286,4 +291,23 @@ public interface HTTPRequest {
     Call<PhotoResponse> adminSetAvatar(@HeaderMap Map<String, String> headers,
                                        @Path("productId") String productId,
                                        @Path("photoId") int photoId);
+
+    /**
+     *
+     * @param headers
+     * @param file We use the MultipartBody.Part class that allows us to send the actual
+     * file name besides the binary file data with the request.
+     * @return
+     */
+    @Multipart
+    @POST("admin/products/photos")
+    Call<PhotoResponse> adminUploadPhoto(@Header("Authorization") String authorization,
+                                         @Part("product_id") RequestBody productId,
+                                         @Part MultipartBody.Part file);
+
+    @Multipart
+    @POST("test")
+    Call<PhotoResponse> adminUploadPhotoTest(@Header("Authorization") String authorization,
+                                             @Part MultipartBody.Part file,
+                                             @Part("product_id") RequestBody productId);
 }

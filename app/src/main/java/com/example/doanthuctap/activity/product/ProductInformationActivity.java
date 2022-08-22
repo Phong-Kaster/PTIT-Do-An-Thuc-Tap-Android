@@ -138,7 +138,7 @@ public class ProductInformationActivity extends AppCompatActivity implements Add
         loadingScreen = new LoadingScreen(this);
 
         buttonAddToCart = findViewById(R.id.productInforButtonAddToCart);
-        buttonReview = findViewById(R.id.productInforButtonReview);
+//        buttonReview = findViewById(R.id.productInforButtonReview);
         buttonBuyNow = findViewById(R.id.productInforButtonBuyNow);
 
         globalVariable = (GlobalVariable) this.getApplication();
@@ -208,7 +208,6 @@ public class ProductInformationActivity extends AppCompatActivity implements Add
             if( result == 1)
             {
                 orderId = getLatestOrderResponse.getData().getId();
-                //System.out.println("viewModel - get latest order - orderId: " + getLatestOrderResponse.getData().getId());
             }
         });
 

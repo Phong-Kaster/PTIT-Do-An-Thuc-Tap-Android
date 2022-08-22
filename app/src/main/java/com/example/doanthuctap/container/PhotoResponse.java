@@ -1,5 +1,7 @@
 package com.example.doanthuctap.container;
 
+import androidx.annotation.Nullable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -9,6 +11,7 @@ public class PhotoResponse {
     @Expose
     private int result;
 
+    @Nullable
     @SerializedName("msg")
     @Expose
     private String msg;

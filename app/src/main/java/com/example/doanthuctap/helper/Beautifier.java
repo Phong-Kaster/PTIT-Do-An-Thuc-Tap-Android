@@ -176,7 +176,7 @@ public class Beautifier {
         String cancel = context.getString(R.string.cancel);
 
 
-        if( input.toLowerCase().equals("processing") )
+        if( input.equals("processing") )
         {
             output = processing;
         }

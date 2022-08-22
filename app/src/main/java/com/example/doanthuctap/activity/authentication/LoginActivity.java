@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
         txtUsername = findViewById(R.id.txtUsername);
         txtPassword = findViewById(R.id.txtPassword);
 
-        txtForgotPassword = findViewById(R.id.txtForgotPassword);
+//        txtForgotPassword = findViewById(R.id.txtForgotPassword);
         btnGoogleLogin = findViewById(R.id.btnGoogleLogin);
 
 //        btnFacebookLogin = findViewById(R.id.btnFacebookLogin);
@@ -105,10 +105,23 @@ public class LoginActivity extends AppCompatActivity {
                 loadingScreen.stop();
             }
         });
+
+        /*set up dialog*/
         dialog.announce();
+        dialog.btnOK.setOnClickListener(view->dialog.close());
+
         viewModel.getObjects().observe(this, loginResponse -> {
+
+            if (loginResponse == null) {
+                dialog.show(getString(R.string.attention),
+                        getString(R.string.oops_there_is_an_issue),
+                        R.drawable.ic_close);
+                return;
+            }
+
             int result = loginResponse.getResult();
             String message = loginResponse.getMsg();
+
             if( result == 1)
             {
                 /*Lay du lieu tu API ra*/
@@ -128,12 +141,11 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
             else{
-
                 dialog.show(getString(R.string.attention),
                         message,
                         R.drawable.ic_close);
             }
-            dialog.btnOK.setOnClickListener(view->dialog.close());
+
         });
     }
 
@@ -185,9 +197,9 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        txtForgotPassword.setOnClickListener(view-> {
-            Toast.makeText(this,"Tính năng đang được phát triển", Toast.LENGTH_SHORT).show();
-        });
+//        txtForgotPassword.setOnClickListener(view-> {
+//            Toast.makeText(this,"Tính năng đang được phát triển", Toast.LENGTH_SHORT).show();
+//        });
 
         btnGoogleLogin.setOnClickListener(view->{
             Intent intent = googleSignInClient.getSignInIntent();
@@ -199,7 +211,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    /**
+    /*
      * @author Phong-Kater
      * start google sign in for result
      * */

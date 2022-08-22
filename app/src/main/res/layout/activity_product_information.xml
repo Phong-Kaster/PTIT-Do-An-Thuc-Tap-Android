@@ -313,27 +313,27 @@
         android:paddingTop="10dp"
         android:orientation="horizontal">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/productInforButtonReview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:background="@color/colorBackground"
-            android:drawableTop="@drawable/ic_comment"
-            android:maxWidth="150dp"
-            android:minWidth="100dp"
-            android:text="@string/review"
-            android:textColor="@color/colorTextBlack"
-            android:textSize="8sp"
-            tools:ignore="SmallSp" />
+<!--        <androidx.appcompat.widget.AppCompatButton-->
+<!--            android:id="@+id/productInforButtonReview"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@color/colorBackground"-->
+<!--            android:drawableTop="@drawable/ic_comment"-->
+<!--            android:maxWidth="150dp"-->
+<!--            android:minWidth="100dp"-->
+<!--            android:text="@string/review"-->
+<!--            android:textColor="@color/colorTextBlack"-->
+<!--            android:textSize="8sp"-->
+<!--            tools:ignore="SmallSp" />-->
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/productInforButtonAddToCart"
             android:layout_width="100dp"
             android:minWidth="100dp"
             android:maxWidth="150dp"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/background_button_product_info_add_to_cart"
@@ -346,7 +346,7 @@
             android:id="@+id/productInforButtonBuyNow"
             android:layout_width="100dp"
             android:minWidth="100dp"
-            android:layout_weight="3"
+            android:layout_weight="1"
             android:maxWidth="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
