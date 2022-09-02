@@ -25,7 +25,7 @@ import com.example.doanthuctap.helper.LoadingScreen;
 import com.example.doanthuctap.model.GetLatestOrderResponseContent;
 import com.example.doanthuctap.recyclerviewadapter.AdminOrderContentRecyclerViewAdapter;
 import com.example.doanthuctap.recyclerviewadapter.OrderContentRecyclerViewAdapter;
-import com.example.doanthuctap.viewModel.admin.AdminOrderChangeContentViewModel;
+import com.example.doanthuctap.viewModel.admin.order.AdminOrderChangeContentViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Arrays;

@@ -1,6 +1,7 @@
 package com.example.doanthuctap.activity.home;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.doanthuctap.R;
+import com.example.doanthuctap.activity.personality.ChangeInformationActivity;
 import com.example.doanthuctap.helper.GlobalVariable;
 import com.example.doanthuctap.model.Setting;
 import com.example.doanthuctap.model.User;
@@ -99,12 +101,12 @@ public class PersonalityFragment extends Fragment {
         Setting setting1 = new Setting("orders", getString(R.string.all_orders),R.drawable.ic_all_orders );
         Setting setting2 = new Setting("darkMode", getString(R.string.dark_mode),R.drawable.ic_dark_mode );
         Setting setting3 = new Setting("profile", getString(R.string.personal_information),R.drawable.ic_profile );
-        Setting setting4 = new Setting("language", getString(R.string.language),R.drawable.ic_language );
+//        Setting setting4 = new Setting("language", getString(R.string.language),R.drawable.ic_language );
 
         settings.add(setting1);
         settings.add(setting2);
         settings.add(setting3);
-        settings.add(setting4);
+//        settings.add(setting4);
 
         if( authUser.getRole().equals("admin") )
         {
@@ -127,18 +129,11 @@ public class PersonalityFragment extends Fragment {
     }
 
 
-    @SuppressLint("SetTextI18n")
-    private void setupScreen()
-    {
-        username.setText( authUser.getFirstName() + " " + authUser.getLastName() );
-    }
-
-
     private void setupEvent()
     {
         buttonChangeInformation.setOnClickListener(view->{
-//            Intent intent = new Intent(requireContext(), ChangeInformationActivity.class);
-//            startActivity(intent);
+            Intent intent = new Intent(requireContext(), ChangeInformationActivity.class);
+            startActivity(intent);
         });
 
         /* button send request to find orders with status*/

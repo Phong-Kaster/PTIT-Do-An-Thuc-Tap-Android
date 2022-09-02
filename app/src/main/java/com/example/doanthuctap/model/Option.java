@@ -150,7 +150,7 @@ public class Option {
         /*demand Gaming*/
         Option demand4 = new Option();
         demand4.setIcon(R.drawable.logo_design);
-        demand4.setName("Graphic");
+        demand4.setName("Design");
 
         /*demand Gaming*/
         Option demand5 = new Option();

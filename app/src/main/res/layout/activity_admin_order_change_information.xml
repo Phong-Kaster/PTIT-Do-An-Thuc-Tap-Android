@@ -14,8 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorTheme"
-        android:orientation="horizontal"
-        android:padding="5dp">
+        android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/adminOrderChangeInforButtonBack"
@@ -41,6 +40,8 @@
 
     <!-- content -->
     <ScrollView
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -216,6 +217,8 @@
 
     <!-- BUTTON SAVE AND BUTTON ORDER CONTENT -->
     <LinearLayout
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
         android:layout_below="@id/content"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"

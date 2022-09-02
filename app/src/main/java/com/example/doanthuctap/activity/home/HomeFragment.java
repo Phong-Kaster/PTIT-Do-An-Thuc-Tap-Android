@@ -178,6 +178,7 @@ public class HomeFragment extends Fragment {
         buttonDemandLightweight.setOnClickListener(view -> {
             Intent intent = new Intent(requireActivity(), SearchActivity.class);
             intent.putExtra("demand", "lightweight");
+            intent.putExtra("search", "");
             startActivity(intent);
         });
 

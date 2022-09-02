@@ -28,6 +28,7 @@ public class OrderContentRecyclerViewAdapter extends RecyclerView.Adapter<OrderC
     private List<GetLatestOrderResponseContent> objects = new ArrayList<>();
     private OrderContentRecyclerViewAdapter.Callback callback;
     private int valueQuantity = 1;
+    private String ROOT_URL = Beautifier.getRootURL();
 
     public OrderContentRecyclerViewAdapter(Context context,
                                            List<GetLatestOrderResponseContent> objects,
@@ -57,7 +58,7 @@ public class OrderContentRecyclerViewAdapter extends RecyclerView.Adapter<OrderC
 
         String name = content.getProductName();
         String avatar = content.getProductAvatar().length() > 0 ?
-                content.getProductAvatar() : context.getString(R.drawable.product_default_avatar);
+                ROOT_URL + content.getProductAvatar() : context.getString(R.drawable.product_default_avatar);
         String price =      Beautifier.formatNumber( content.getPrice() ) + "đ";
         int quantity = content.getQuantity();
 
@@ -67,33 +68,23 @@ public class OrderContentRecyclerViewAdapter extends RecyclerView.Adapter<OrderC
         String temporaryAvatar = Beautifier.generateRandomAvatar();
 
 
-        Picasso.get().load(temporaryAvatar).into(holder.avatar);
+        Picasso.get().load(avatar).into(holder.avatar);
 //        holder.callback = this.callback;
         holder.name.setText(name);
         holder.price.setText(price);
         holder.quantity.setText(String.valueOf(quantity));
-//        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
-//            }
-//        });
 
         holder.buttonAdd.setOnClickListener(view -> {
-            //Toast.makeText(context, "Add", Toast.LENGTH_SHORT).show();
             /*send price to update total amount in cart fragment*/
             callback.onClickButtonQuantity("add", content.getProductId(), valueQuantity, content.getPrice());
-
             /*update current element's view*/
             valueQuantity++;
             holder.quantity.setText(String.valueOf(valueQuantity));
         });
         holder.buttonMinus.setOnClickListener(view->{
-            //Toast.makeText(context, "Minus", Toast.LENGTH_SHORT).show();
             if( valueQuantity > 1)
             {
                 callback.onClickButtonQuantity("minus", content.getProductId(), valueQuantity, content.getPrice());
-                Toast.makeText(context, "Minus", Toast.LENGTH_SHORT).show();
                 /*update current element's view*/
                 valueQuantity--;
                 holder.quantity.setText(String.valueOf(valueQuantity));

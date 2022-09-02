@@ -266,9 +266,18 @@ public class CartCheckoutActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        System.out.println("auth user role: " + globalVariable.getAuthUser().getRole());
         /*BUTTON PLACE ORDER*/
         dialog.confirm();
         buttonPlaceOrder.setOnClickListener(view -> {
+
+            if( globalVariable.getAuthUser().getRole().equals("admin") )
+            {
+                dialog.announce();
+                dialog.show(R.string.attention, getString(R.string.you_are_an_admin), R.drawable.ic_close);
+                dialog.btnOK.setOnClickListener(view1->dialog.close());
+                return;
+            }
 
             boolean flag = authenticateReceiverInformation();
             if( !flag )
@@ -280,7 +289,8 @@ public class CartCheckoutActivity extends AppCompatActivity {
             }
 
             dialog.show(R.string.attention, getString(R.string.are_you_sure_about_placing_order), R.drawable.ic_info);
-
+            /*DIALOG BUTTON CANCEL*/
+            dialog.btnCancel.setOnClickListener(view2-> dialog.close());
             /*DIALOG BUTTON OK*/
             dialog.btnOK.setOnClickListener(view1->
             {
@@ -315,9 +325,6 @@ public class CartCheckoutActivity extends AppCompatActivity {
 
                     }
                 });
-                /*DIALOG BUTTON CANCEL*/
-                dialog.btnCancel.setOnClickListener(view2-> dialog.close());
-
             });
 
         });

@@ -20,7 +20,7 @@ import com.example.doanthuctap.model.Order;
 import com.example.doanthuctap.model.OrderStatus;
 import com.example.doanthuctap.recyclerviewadapter.AdminOrderInformationRecyclerViewAdapter;
 import com.example.doanthuctap.recyclerviewadapter.OrderStatusRecyclerViewAdapter;
-import com.example.doanthuctap.viewModel.admin.AdminOrdersActivityViewModel;
+import com.example.doanthuctap.viewModel.admin.order.AdminOrdersActivityViewModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;

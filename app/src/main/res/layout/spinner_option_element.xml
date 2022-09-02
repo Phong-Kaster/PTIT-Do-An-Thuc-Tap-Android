@@ -20,6 +20,7 @@
         android:id="@+id/optionName"
         android:textSize="13sp"
         android:textStyle="bold"
+        android:textColor="@color/colorTextBlack"
         android:text="@string/acer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

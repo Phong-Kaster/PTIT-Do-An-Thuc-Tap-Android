@@ -26,6 +26,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 
+/**
+ * Google Cloud: https://console.cloud.google.com/apis/credentials?project=doanthuctap
+ */
 public class LoginActivity extends AppCompatActivity {
 
     private EditText txtUsername;
@@ -235,7 +238,6 @@ public class LoginActivity extends AppCompatActivity {
     {
         /*Step 1 - send id token to server to authentication | sign up*/
         String idToken = account.getIdToken();
-
         viewModel.authWithGoogleAccount(idToken);
 
 

@@ -13,7 +13,6 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import com.example.doanthuctap.R;
-import com.example.doanthuctap.activity.admin.order.AdminOrderChangeContentActivity;
 import com.example.doanthuctap.arrayadapter.OrderStatusArrayAdapter;
 import com.example.doanthuctap.helper.Beautifier;
 import com.example.doanthuctap.helper.Dialog;
@@ -21,7 +20,7 @@ import com.example.doanthuctap.helper.GlobalVariable;
 import com.example.doanthuctap.helper.LoadingScreen;
 import com.example.doanthuctap.model.Option;
 import com.example.doanthuctap.model.Order;
-import com.example.doanthuctap.viewModel.admin.AdminOrderChangeInformationViewModel;
+import com.example.doanthuctap.viewModel.admin.order.AdminOrderChangeInformationViewModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;

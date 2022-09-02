@@ -20,7 +20,7 @@ import com.example.doanthuctap.helper.GlobalVariable;
 import com.example.doanthuctap.helper.LoadingScreen;
 import com.example.doanthuctap.model.Option;
 import com.example.doanthuctap.model.ProductClient;
-import com.example.doanthuctap.viewModel.admin.AdminProductCreateViewModel;
+import com.example.doanthuctap.viewModel.admin.product.AdminProductCreateViewModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;

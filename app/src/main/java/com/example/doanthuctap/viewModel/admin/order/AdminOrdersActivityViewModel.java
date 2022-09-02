@@ -1,4 +1,4 @@
-package com.example.doanthuctap.viewModel.admin;
+package com.example.doanthuctap.viewModel.admin.order;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;

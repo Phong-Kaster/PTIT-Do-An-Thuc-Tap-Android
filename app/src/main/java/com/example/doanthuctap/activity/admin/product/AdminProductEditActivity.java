@@ -2,11 +2,11 @@ package com.example.doanthuctap.activity.admin.product;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,8 +24,7 @@ import com.example.doanthuctap.helper.GlobalVariable;
 import com.example.doanthuctap.helper.LoadingScreen;
 import com.example.doanthuctap.model.Option;
 import com.example.doanthuctap.model.ProductClient;
-import com.example.doanthuctap.viewModel.admin.AdminProductEditViewModel;
-import com.squareup.picasso.Picasso;
+import com.example.doanthuctap.viewModel.admin.product.AdminProductEditViewModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -292,7 +291,7 @@ public class AdminProductEditActivity extends AppCompatActivity {
         demandValue.put("gaming", 1);
         demandValue.put("student", 2);
         demandValue.put("office", 3);
-        demandValue.put("graphic", 4);
+        demandValue.put("design", 4);
         demandValue.put("lightweight", 5);
         int demandPosition = demandValue.get(demand) != null ? demandValue.get(demand) : 0 ;
         spinnerDemand.setSelection(demandPosition);
@@ -341,22 +340,24 @@ public class AdminProductEditActivity extends AppCompatActivity {
             /*Step 3 - make request*/
             viewModel.updateProductByID(headers, body);
 
-            viewModel.getAnimation().observe(this, aBoolean -> {
-                if( aBoolean )
-                {
-                    loadingScreen.start();
-                }
-                else
-                {
-                    loadingScreen.stop();
-                }
-            });
+//            viewModel.getAnimation().observe(this, aBoolean -> {
+//                if( aBoolean.equals(true) )
+//                {
+//                    loadingScreen.start();
+//                }
+//                else
+//                {
+//                    loadingScreen.stop();
+//                }
+//            });
 
             dialog.announce();
             viewModel.getUpdateProductByIDResponse().observe(this, response->{
+
                 int result = response.getResult();
                 String msg = response.getMsg();
-
+                Log.d("AdminProduct", "result: " + result);
+                Log.d("AdminProduct", "msg: " + msg);
                 if( result == 1)
                 {
                     dialog.show(R.string.success, getString(R.string.update_product_successfully), R.drawable.ic_check);
@@ -366,7 +367,10 @@ public class AdminProductEditActivity extends AppCompatActivity {
                     dialog.show(R.string.fail, msg, R.drawable.ic_close);
                 }
             });
-            dialog.btnOK.setOnClickListener(view1->dialog.close());
+            dialog.btnOK.setOnClickListener(view1->{
+                dialog.close();
+                loadingScreen.stop();
+            });
         });
 
 

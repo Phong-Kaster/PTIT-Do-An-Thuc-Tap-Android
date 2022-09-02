@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -29,7 +30,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * this activity is used to watch all orders
+ * this activity is used to watch all orders - history order
  */
 public class OrdersActivity extends AppCompatActivity
         implements OrderStatusRecyclerViewAdapter.callbacks,
@@ -56,6 +57,7 @@ public class OrdersActivity extends AppCompatActivity
     private Dialog dialog;
     private String orderStatus = "";
 
+    private SwipeRefreshLayout swipeRefreshLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +90,7 @@ public class OrdersActivity extends AppCompatActivity
         loadingScreen = new LoadingScreen(this);
 
         dialog = new Dialog(this);
+        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
     }
 
     private void setupViewModel()
@@ -138,10 +141,11 @@ public class OrdersActivity extends AppCompatActivity
         /*Step 1 - set up orders status recycler view*/
         OrderStatus status1 = new OrderStatus( getString(R.string.all), "all");
         OrderStatus status2 = new OrderStatus( getString(R.string.to_pay), "processing");
-        OrderStatus status3 = new OrderStatus( getString(R.string.packed), "packed");
-        OrderStatus status4 = new OrderStatus( getString(R.string.being_transported), "being transported");
-        OrderStatus status5 = new OrderStatus( getString(R.string.done), "delivered");
-        OrderStatus status6 = new OrderStatus( getString(R.string.cancel), "cancel");
+        OrderStatus status3 = new OrderStatus( getString(R.string.verified), "verified");
+        OrderStatus status4 = new OrderStatus( getString(R.string.packed), "packed");
+        OrderStatus status5 = new OrderStatus( getString(R.string.being_transported), "being transported");
+        OrderStatus status6 = new OrderStatus( getString(R.string.done), "delivered");
+        OrderStatus status7 = new OrderStatus( getString(R.string.cancel), "cancel");
 
 
         List<OrderStatus> orderStatuses = new ArrayList<>();
@@ -151,6 +155,7 @@ public class OrdersActivity extends AppCompatActivity
         orderStatuses.add(status4);
         orderStatuses.add(status5);
         orderStatuses.add(status6);
+        orderStatuses.add(status7);
 
         ordersStatusAdapter = new OrderStatusRecyclerViewAdapter(this, orderStatuses,OrdersActivity.this);
         ordersStatusRecyclerView.setAdapter(ordersStatusAdapter);
@@ -170,6 +175,7 @@ public class OrdersActivity extends AppCompatActivity
     }
 
 
+    @SuppressLint("NotifyDataSetChanged")
     private void setupEvent()
     {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -197,6 +203,13 @@ public class OrdersActivity extends AppCompatActivity
 
         buttonBack.setOnClickListener(view->{
             finish();
+        });
+
+        /*SWIPE REFRESH LAYOUT*/
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            viewModel.getAllOrder(headers, parameters);
+            ordersInformationAdapter.notifyDataSetChanged();
+            swipeRefreshLayout.setRefreshing(false);
         });
     }
 
@@ -237,6 +250,26 @@ public class OrdersActivity extends AppCompatActivity
             }
             dialog.show(title, msg, icon);
         });
-        dialog.btnOK.setOnClickListener(view1->dialog.close());
+        dialog.btnOK.setOnClickListener(view1->{
+            dialog.close();
+            viewModel.getAllOrder(headers, parameters);
+
+            /*Step 3 - pout data into view*/
+            viewModel.getAllOrdersResponse().observe(this, response -> {
+                int result = response.getResult();
+                if( result == 1)
+                {
+                    orders.clear();
+                    orders.addAll( response.getData() );
+                    setupOrderInformationRecyclerView( response.getData() );
+                }
+                else
+                {
+                    dialog.announce();
+                    dialog.show(R.string.attention, getString(R.string.oops_there_is_an_issue), R.drawable.ic_close);
+                    dialog.btnOK.setOnClickListener(view->dialog.close());
+                }
+            });
+        });
     }
 }

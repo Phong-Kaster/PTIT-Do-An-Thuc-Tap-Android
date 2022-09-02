@@ -17,14 +17,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.doanthuctap.R;
 import com.example.doanthuctap.helper.GlobalVariable;
 import com.example.doanthuctap.helper.LoadingScreen;
 import com.example.doanthuctap.model.ProductClient;
 import com.example.doanthuctap.recyclerviewadapter.AdminProductsRecyclerViewAdapter;
-import com.example.doanthuctap.viewModel.admin.AdminProductsActivityViewModel;
+import com.example.doanthuctap.viewModel.admin.product.AdminProductsActivityViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.HashMap;

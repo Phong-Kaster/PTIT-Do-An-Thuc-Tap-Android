@@ -26,6 +26,7 @@ public class AdminProductRepository {
         {
             animation = new MutableLiveData<>();
         }
+        animation.setValue(true);
         return animation;
     }
 

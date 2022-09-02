@@ -116,22 +116,22 @@
             <!-- specifications - manufacturer -->
             <LinearLayout
                 android:paddingStart="10dp"
-                android:paddingEnd="10dp"
+                android:paddingBottom="10dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 tools:ignore="RtlSymmetry">
 
                 <TextView
                     style="@style/product_infor_text_view_specification"
                     android:text="@string/manufacturer_2"
+                    android:drawablePadding="5dp"
                     app:drawableStartCompat="@drawable/ic_circle"
                     tools:ignore="SmallSp" />
 
                 <TextView
                     android:id="@+id/productInforManufacturer"
                     style="@style/product_infor_text_view_specification"
-                    android:paddingStart="10dp"
                     android:text="@string/acer" />
 
             </LinearLayout>
@@ -139,10 +139,10 @@
             <!-- specifications - screen_side -->
             <LinearLayout
                 android:paddingStart="10dp"
-                android:paddingEnd="10dp"
+                android:paddingBottom="10dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 tools:ignore="RtlSymmetry">
 
                 <TextView
@@ -161,10 +161,10 @@
             <!-- specifications - cpu -->
             <LinearLayout
                 android:paddingStart="10dp"
-                android:paddingEnd="10dp"
+                android:paddingBottom="10dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 tools:ignore="RtlSymmetry">
 
                 <TextView
@@ -183,10 +183,10 @@
             <!-- specifications - ram -->
             <LinearLayout
                 android:paddingStart="10dp"
-                android:paddingEnd="10dp"
+                android:paddingBottom="10dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 tools:ignore="RtlSymmetry">
 
                 <TextView
@@ -205,10 +205,10 @@
             <!-- specifications - graphic card -->
             <LinearLayout
                 android:paddingStart="10dp"
-                android:paddingEnd="10dp"
+                android:paddingBottom="10dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 tools:ignore="RtlSymmetry">
 
                 <TextView
@@ -227,10 +227,10 @@
             <!-- specifications - ROM -->
             <LinearLayout
                 android:paddingStart="10dp"
-                android:paddingEnd="10dp"
+                android:paddingBottom="10dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 tools:ignore="RtlSymmetry">
 
                 <TextView
@@ -249,10 +249,10 @@
             <!-- specifications - Demand -->
             <LinearLayout
                 android:paddingStart="10dp"
-                android:paddingEnd="10dp"
+                android:paddingBottom="10dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 tools:ignore="RtlSymmetry">
 
                 <TextView
@@ -278,6 +278,7 @@
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:textSize="12sp"
+                android:textColor="@color/colorTextBlack"
                 android:text="@string/product_default_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>

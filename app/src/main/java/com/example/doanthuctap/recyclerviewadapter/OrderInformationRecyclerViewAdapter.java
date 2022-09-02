@@ -75,7 +75,7 @@ public class OrderInformationRecyclerViewAdapter extends RecyclerView.Adapter<Or
         });
 
         /*BUTTON CANCEL*/
-        List<String> invalidStatus = Arrays.asList("verified","packed","being transported","delivered", "cancel");
+        List<String> invalidStatus = Arrays.asList("packed","being transported","delivered", "cancel");
         boolean flag = invalidStatus.contains(element.getStatus());
         if( flag )
         {

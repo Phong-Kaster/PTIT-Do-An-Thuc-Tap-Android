@@ -7,13 +7,12 @@ import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 
 import com.example.doanthuctap.R;
 import com.example.doanthuctap.helper.Dialog;
 import com.example.doanthuctap.helper.GlobalVariable;
 import com.example.doanthuctap.helper.LoadingScreen;
-import com.example.doanthuctap.viewModel.admin.AdminOrderCreateActivityViewModel;
+import com.example.doanthuctap.viewModel.admin.order.AdminOrderCreateActivityViewModel;
 
 import java.util.HashMap;
 import java.util.Map;
