@@ -1,5 +1,5 @@
-<h1 align="center">Đồ Án Thực Tập - Android<br/>
-    Ứng dụng thương mại điện tử nền tảng Android
+<h1 align="center">Đồ Án Thực Tập<br/>
+    Sàn thương mại điện tử Wahoo dành cho nền tảng AndroidOS
 </h1>
 
 <p align="center">
@@ -15,8 +15,15 @@
   - [**1. Login**](#1-login)
   - [**2. Sign Up**](#2-sign-up)
   - [**3. Home**](#3-home)
-- [**Video**](#video)
-- [**Post Script**](#post-script)
+  - [**4. Search \& Search with special conditions**](#4-search--search-with-special-conditions)
+  - [**5. Detail**](#5-detail)
+  - [**6. Cart**](#6-cart)
+  - [**7. Personal**](#7-personal)
+- [**Minor Features**](#minor-features)
+  - [**1. Order management**](#1-order-management)
+  - [**2. Product management**](#2-product-management)
+  - [**3. Dark mode**](#3-dark-mode)
+  - [**4. Personal Information**](#4-personal-information)
 - [Made with 💘 and JAVA ](#made-with--and-java-)
 
 # [**Introduction**](#introduction)
@@ -96,7 +103,7 @@ Qúa trình đăng nhập hoàn tất, người dùng sẽ được tự động
 báo sẽ hiển thị để người dùng nhận biết rằng họ đã đăng nhập thành công với tài khoản Google.
 
 <p align="center">
-    <img src="./photo/photo_05.jpg" height="640" />
+    <img src="./photo/photo_05_03.jpg" height="640" />
 </p>
 <h3 align="center">
 
@@ -119,20 +126,242 @@ Với tùy chọn đăng nhập bằng tài khoản & mật khẩu truyền th�
 
 ## [**3. Home**](#3-home)
 
-# [**Video**](#video)
+Màn hình chính sẽ hiển thị các thông tin nổi bật của sàn thương mại. Ở đây, sản phẩm chính mà sàn thương mại Wahoo cung cấp 
+sẽ là máy tính xách tay/laptop. Ngoài ra, ứng dụng cũng hỗ trợ các tùy chọn nổi bật để người dùng dễ dàng tìm các sản phẩm theo 
+nhu cầu cá nhân như: Gaming, văn phòng, design,...
 
-<div align="center">
-    
-[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://www.youtube.com/watch?v=ZtrGcIkKv4U&ab_channel=PhongKaster)
+<p align="center">
+    <img src="./photo/photo_04.jpg" height="640" />
+</p>
+<h3 align="center">
 
-</div>
+***Hiển thị nhiều tùy chọn phù hợp với như cầu cá nhân🎯🕹🎮***
+</h3>
+
+## [**4. Search & Search with special conditions**](#4-search--search-with-special-conditions)
+
+🔍 Tìm kiếm là một chức năng khác cũng tương đối quan trọng trong ứng dụng. 
+ 
+<p align="center">
+    <img src="./photo/photo_06_01.jpg" height="640" />
+</p>
+<h3 align="center">
+
+***Tìm kiếm dựa trên các danh mục sẵn có 🏷🔖***
+</h3>
+
+Với ứng dụng Wahoo, người sử dụng có thể tìm kiếm sản phẩm mong muốn bằng hai cách:
+
+1. Tìm kiếm bằng cách nhập từ khóa 
+
+2. Tìm kiếm với các điều kiện cấu hình tương ứng.
+
+<p align="center">
+    <img src="./photo/photo_06_04.jpg" height="640" />
+    <img src="./photo/photo_06_02.jpg" height="640" />
+    <img src="./photo/photo_06_03.jpg" height="640" />
+</p>
 
 <h3 align="center">
 
-***Video***
+***Hoặc tìm kiếm nâng cao bằng cách chỉ định các thông số kĩ thuật 🏷🔖***
 </h3>
 
-# [**Post Script**](#post-script)
+## [**5. Detail**](#5-detail)
 
- 
+Sau khi tìm kiếm đúng sản phẩm thì chúng ta sẽ cần xem chi tiết sản phẩm đó( Dĩ nhiên rồi🤣). 
+Phần này giới thiệu tới các bạn về cách mà `Wahoo` hiển thị chi tiết sản phẩm cho khách hàng.
+
+<p align="center">
+    <img src="./photo/photo_05_01.jpg" height="640" />
+</p>
+
+<h3 align="center">
+
+***Xem chi tiết sản phẩm 🏷🔖***
+</h3>
+
+Khi trượt xuống bên dưới người dùng có thể tìm ra các sản phẩm tương tự như sản phẩm đang xem 
+
+<p align="center">
+    <img src="./photo/photo_05_02.jpg" height="640" />
+</p>
+
+<h3 align="center">
+
+***Trượt xuống để xem sản phẩm tương tự 🤪***
+</h3>
+
+Bằng cách nhấn vào nút **Thêm vào giỏ hàng**, người dùng cũng có thể quyết định số lượng sản phẩm được cho vào giỏ hàng 
+với số lượng tùy ý.
+
+<p align="center">
+    <img src="./photo/photo_05_03.jpg" height="640" />
+</p>
+
+<h3 align="center">
+
+***Thêm vào giỏ hàng 🛒1️⃣8️⃣9️⃣6️⃣***
+</h3>
+
+## [**6. Cart**](#6-cart)
+
+Sàn thương mại nào cũng sẽ cần có giỏ hàng để phục vụ cho khách hàng kiểm tra và tiến hành thanh toán. 
+`Wahoo` cũng không nằm ngoài điều này. 
+
+<p align="center">
+    <img src="./photo/photo_10_01.jpg" height="640" />
+</p>
+<h3 align="center">
+
+***Giỏ hàng - chức năng không thể thiếu trong các ứng dụng thương mại điện tử 🛒***
+</h3>
+
+Với màn hình này, khách hàng có thể thêm số lượng hoặc xóa bỏ món hàng bằng cách vuốt từ phải qua. Ngoài ra,
+khách hàng có thể chọn nút **Thanh toán** sau khi đã chọn được món hàng ưng ý.
+
+<p align="center">
+    <img src="./photo/photo_10_02.jpg" height="640" />
+</p>
+<h3 align="center">
+
+***Kiểm tra các thông tin cần thiết trước khi xác nhận thanh toán ✅***
+</h3>
+
+Hệ thống sẽ tiến hành kiểm tra số lượng tồn của sản phẩm và trả về kết quả phù hợp:
+
+- Nếu một trong các sản phẩm bị thiếu thì sẽ hiện thông báo 
+
+- Nếu tất cả sản phẩm đặt mua nằm trong danh mục mong muốn thì trả kết quả thành công
+
+<p align="center">
+    <img src="./photo/photo_10_03.jpg" height="640" />
+</p>
+<h3 align="center">
+
+***Thanh toán thành công ✅☑✅☑***
+</h3>
+
+## [**7. Personal**](#7-personal)
+
+Phần này chứa toàn bộ các chức năng liên quan tới cá nhân người sử dụng
+
+<p align="center">
+    <img src="./photo/photo_11.jpg" height="640" />
+</p>
+<h3 align="center">
+
+***Các chức năng cá nhân***
+</h3>
+
+Hình ảnh bên trên thể hiện các chức năng khác mà ứng dụng hỗ trợ người dùng như: 
+
+1. **Tất cả hóa đơn** - Cho phép người dùng xem toàn bộ các đơn hàng mà bản thân đã mua
+
+2. **Chế độ ban đêm** - Bật tắt chế độ ban đêm bằng cách ấn vào
+
+3. **Thông tin cá nhân** - Cập nhật thông tin cá nhân
+
+4. **Ngôn ngữ** - Tùy chọn ngôn ngữ ứng dụng của hệ thông
+
+5. **Quản lý đơn hàng** - Chỉ dành cho Admin, quản lý các đơn hàng khi bạn là người bán
+
+6. **Quản lý sản phẩm** - Chỉ dành cho Admin, chỉnh sửa thông tin sản phẩm đang bày bán trên sàn thương mại
+
+# [**Minor Features**](#minor-features)
+
+## [**1. Order management**](#1-order-management)
+
+Chức năng này được dùng để quản lý các đơn hàng có trên sàn. Quản trị viên có thể thao tác thêm - xóa - sửa trực tiếp trên điện thoại.
+
+<p align="center">
+    <img src="./photo/photo_13_0.jpg" height="640" />
+</p>
+<h3 align="center">
+
+***Quản lý đơn hàng trực tiếp trên sản phẩm🛒***
+</h3>
+
+Chúng ta cũng có thể xem chi tiết đơn hàng khi ấn vào nút tương ứng
+
+<p align="center">
+    <img src="./photo/photo_13_1.jpg" height="640" />
+</p>
+<h3 align="center">
+
+***Dễ dàng xem chi tiết sản phẩm***
+</h3>
+
+Nếu phát hiện sự bất thường hoặc khách hàng có yều thay đổi thông tin như địa chỉ liên lạc, số lượng sản phẩm, ...
+quản trị viên hoàn toàn có thể thay đổi thông tin theo ý khách hàng.
+
+<p align="center">
+    <img src="./photo/photo_13_2.jpg" height="640" />
+</p>
+<h3 align="center">
+
+***Sửa thông tin, cập nhật tình trạng đơn hàng trực tiếp trên di động🎊***
+</h3>
+
+Nếu thực hiện hành động không có khả năng phục hồi như chức năng **XÓA**. Ứng dụng sẽ luôn hiển thị thông báo 
+để nhắc nhở quản trị viên về hành động này.
+
+<p align="center">
+    <img src="./photo/photo_14.jpg" height="640" />
+</p>
+<h3 align="center">
+
+***Luôn nhắc nhở khi thực hiện các thao tác có thể tác động lớn tới dữ liệu ⚠***
+</h3>
+
+## [**2. Product management**](#2-product-management)
+
+Quản trị viên cũng có thể dễ dàng thêm hoặc chỉnh sửa thông tin của sản phẩm trực tiếp trên di động với đầy đủ các thông tin sản phẩm như sau:
+
+<p align="center">
+    <img src="./photo/photo_18_01.jpg" height="640" />
+    <img src="./photo/photo_18_02.jpg" height="640" />
+</p>
+<h3 align="center">
+
+***Chinh sửa thông tin sản phẩm như: ảnh đại diện 🙋‍♂️, giá bán💲, ...***
+</h3>
+
+Nếu dữ liệu đầu vào hợp lệ thì sẽ hiển thị thông báo thành công
+
+<p align="center">
+    <img src="./photo/photo_18_03.jpg" height="640" />
+</p>
+<h3 align="center">
+
+***Lưu dữ liệu thành công😆***
+</h3>
+
+## [**3. Dark mode**](#3-dark-mode)
+
+Chế độ ban đêm của ứng dụng mới màu nền chuyển sang màu đen tuyền và chữ trắng để người dùng dễ dàng 
+sử dụng ở nơi có ánh sáng thấp.
+
+<p align="center">
+    <img src="./photo/photo_17_01.jpg" height="640" />
+    <img src="./photo/photo_17_02.jpg" height="640" />
+    <img src="./photo/photo_17_03.jpg" height="640" />
+</p>
+<h3 align="center">
+
+***Chế độ ban đêm 🌙***
+</h3>
+
+## [**4. Personal Information**](#4-personal-information)
+
+Chức năng cập nhật thông tin cá nhân thì như tên gọi. Phong cũng không biết mô tả gì thêm.
+
+<p align="center">
+    <img src="./photo/photo_19.jpg" height="640" />
+</p>
+<h3 align="center">
+
+***Có avatar đẹp hơn thì cập nhật liền đi🤔***
+</h3>
+
 # [Made with 💘 and JAVA <img src="https://www.vectorlogo.zone/logos/java/java-horizontal.svg" width="60">](#)
