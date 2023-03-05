@@ -9,7 +9,7 @@
     <string name="greetings">Welcome</string>
     <string name="welcome_back">Welcome back,</string>
     <string name="enter_email_and_password_to_login"><![CDATA[Enter email & password to login]]></string>
-    <string name="username">phong@gmail.com</string>
+    <string name="username">phongkaster@gmail.com</string>
     <string name="forget_password">Forget password</string>
     <string name="or">Or</string>
     <string name="does_have_an_account">Does have an account</string>
@@ -125,7 +125,7 @@
     <string name="please_prepare_enough_money_on_delivery_date">Please, prepare enough money on delivery date</string>
     <string name="pretend_delivery_date">Pretended delivery date:</string>
     <string name="for_more_information_about_your_order"><![CDATA[For more information about your order, click Personality > History]]></string>
-    <string name="watch_order">Watch order</string>
+    <string name="watch_order">Watch</string>
     <string name="default_delivery_date">Ngày 28–7 đến 31–8</string>
     <string name="update_personal_information">Update personal information</string>
     <string name="to_pay">To pay</string>
@@ -163,7 +163,7 @@
     <string name="all_order_admin">Order management</string>
     <string name="enter_your_keyword">Enter your keyword</string>
     <string name="remove">Remove</string>
-    <string name="edit">Rdit</string>
+    <string name="edit">Edit</string>
     <string name="remove_successfully">Remove successfully</string>
     <string name="change_order_information">Change order information</string>
     <string name="receiver_phone">Receiver hone</string>

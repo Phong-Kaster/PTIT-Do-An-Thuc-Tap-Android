@@ -12,7 +12,7 @@ public class HTTPService {
     //public static final String APP_PATH = "http://10.0.2.2:8080/PTIT-Do-An-Thuc-Tap/";
 
     /*Use this APP_PATH if tesing device is a real hardware device*/
-    public static final String APP_PATH = "http://192.168.1.221:8080/PTIT-Do-An-Thuc-Tap/";
+    public static final String APP_PATH = "http://192.168.1.2:8080/PTIT-Do-An-Thuc-Tap/";
 
     private static Retrofit retrofit;
 

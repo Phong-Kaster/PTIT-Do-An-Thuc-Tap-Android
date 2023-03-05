@@ -51,7 +51,7 @@ public class AdminProductEditViewModel extends ViewModel {
      */
     public void getProductByID(Map<String, String> headers, String orderId)
     {
-        animation = productRepository.getAnimation();
+//        animation = productRepository.getAnimation();
         getProduct = productRepository.getProductById(headers, orderId);
     }
 
@@ -65,9 +65,21 @@ public class AdminProductEditViewModel extends ViewModel {
         }
         return updateProduct;
     }
+
+
+    private MutableLiveData<Boolean> updateProductAnimation;
+    public MutableLiveData<Boolean> getUpdateProductAnimationAnimation()
+    {
+        if( updateProductAnimation == null )
+        {
+            updateProductAnimation = new MutableLiveData<>();
+        }
+
+        return updateProductAnimation;
+    }
     public void updateProductByID(Map<String, String> headers, Map<String, String> body)
     {
-        animation = productRepository.getAnimation();
+        updateProductAnimation = productRepository.getAnimation();
         updateProduct = productRepository.updateProductById(headers, body);
     }
 }

@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -18,7 +19,7 @@ import com.example.doanthuctap.viewModel.personality.ChangeInformationViewModel;
 
 import java.util.Map;
 
-public class ChangeInformationActivity extends AppCompatActivity {
+public class AccountInformationActivity extends AppCompatActivity {
 
     private EditText txtFirstName;
     private EditText txtLastName;

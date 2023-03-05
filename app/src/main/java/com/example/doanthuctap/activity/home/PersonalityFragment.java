@@ -14,13 +14,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.doanthuctap.R;
-import com.example.doanthuctap.activity.personality.ChangeInformationActivity;
+import com.example.doanthuctap.activity.personality.AccountInformationActivity;
 import com.example.doanthuctap.helper.GlobalVariable;
 import com.example.doanthuctap.model.Setting;
 import com.example.doanthuctap.model.User;
 import com.example.doanthuctap.recyclerviewadapter.SettingsRecyclerViewAdapter;
 import com.example.doanthuctap.viewModel.home.PersonalityFragmentViewModel;
-import com.example.doanthuctap.viewModel.personality.OrderInformationViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -132,7 +131,7 @@ public class PersonalityFragment extends Fragment {
     private void setupEvent()
     {
         buttonChangeInformation.setOnClickListener(view->{
-            Intent intent = new Intent(requireContext(), ChangeInformationActivity.class);
+            Intent intent = new Intent(requireContext(), AccountInformationActivity.class);
             startActivity(intent);
         });
 

@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.doanthuctap.R;
 import com.example.doanthuctap.activity.admin.order.AdminOrdersActivity;
 import com.example.doanthuctap.activity.admin.product.AdminProductsActivity;
-import com.example.doanthuctap.activity.personality.ChangeInformationActivity;
+import com.example.doanthuctap.activity.personality.AccountInformationActivity;
 import com.example.doanthuctap.activity.personality.OrdersActivity;
 import com.example.doanthuctap.model.Setting;
 
@@ -86,7 +86,7 @@ public class SettingsRecyclerViewAdapter extends RecyclerView.Adapter<SettingsRe
                         }
                         break;
                     case "profile":
-                        context.startActivity(new Intent(context, ChangeInformationActivity.class));
+                        context.startActivity(new Intent(context, AccountInformationActivity.class));
                         break;
                     case "language":
                         break;

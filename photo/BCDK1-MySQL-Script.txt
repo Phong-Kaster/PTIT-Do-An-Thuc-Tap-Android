@@ -1,0 +1,105 @@
+create table `users`(
+  	`id` int AUTO_INCREMENT PRIMARY KEY,
+    `email` varchar(50) not null unique,
+    `password` varchar(255) not null unique,
+    `first_name` varchar(20), 
+    `last_name` varchar(20),
+    `role` varchar(15),
+    `active` int,
+    `create_at` datetime,
+    `update_at` datetime
+ );
+ 
+
+create table `categories`(
+	`id` int AUTO_INCREMENT PRIMARY KEY,
+    `name` varchar(50) not null,
+    `description` varchar(255),
+    `position` int,
+    `parent_id` int,
+    `slug` varchar(15)
+);
+
+
+create table `products` (
+    `id` int AUTO_INCREMENT PRIMARY KEY,
+    `name` varchar(50) not null default 0,
+    `remaining` int DEFAULT 0,
+    `manufacturer` varchar(30),
+    `price` int default 0,
+    `screen_size` varchar(10),
+    `cpu` varchar(15),
+    `ram` varchar(10),
+    `graphic_card` varchar(20),
+    `rom` varchar(10),
+    `demand` varchar(20),
+    `content` text,
+    `create_at` datetime,
+    `update_at` datetime
+);
+
+
+create table product_category(
+    `id` int AUTO_INCREMENT PRIMARY KEY,
+    `category_id` int,
+    `product_id` int,
+
+    FOREIGN KEY(category_id) REFERENCES categories(id),
+    FOREIGN KEY(product_id) REFERENCES products(id)
+);
+
+
+create table orders(
+    `id` BINARY(16) PRIMARY KEY,
+    `user_id` int,
+    `receiver_phone` varchar(15),
+    `receiver_address` varchar(255),
+    `receiver_name` varchar(30),
+    `description` varchar(255),
+    `create_at` datetime,
+    `status` varchar(20),
+    `total` int,
+    FOREIGN KEY(user_id) REFERENCES users(id) 
+);
+
+
+create table ordersContent(
+    `id` int AUTO_INCREMENT PRIMARY KEY,
+    `order_id` BINARY(16) not null,
+    `product_id` int not null,
+    `quantity` int default 0,
+    `price` int default 0,
+
+    FOREIGN KEY(order_id) REFERENCES orders(id),
+    FOREIGN KEY(product_id) REFERENCES products(id)
+);
+
+
+create table `productsPhoto`(
+    `id` int AUTO_INCREMENT PRIMARY KEY,
+    `product_id` int not null,
+    `path` varchar(255),
+    `is_avatar` int,
+    FOREIGN KEY(product_id) REFERENCES products(id)
+);
+
+
+create table `productsReview`(
+    `id` int AUTO_INCREMENT PRIMARY KEY,
+    `product_id` int not null,
+    `content` varchar(255),
+    `parent_id` int,
+    `status` varchar(15),
+    `author_name` varchar(30),
+    `author_email` varchar(30),
+    `create_at` datetime,
+    `update_at` datetime,
+
+    FOREIGN KEY (product_id) REFERENCES products(id)
+);
+
+create table `configuration`(
+    `id` int AUTO_INCREMENT PRIMARY KEY,
+    `name` varchar(30),
+    `data` text 
+)

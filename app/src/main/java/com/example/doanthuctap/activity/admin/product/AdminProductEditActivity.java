@@ -132,16 +132,16 @@ public class AdminProductEditActivity extends AppCompatActivity {
 
 
         /*Step 2 - animation*/
-        viewModel.getAnimation().observe(this, aBoolean -> {
-            if( aBoolean )
-            {
-                loadingScreen.start();
-            }
-            else
-            {
-                loadingScreen.stop();
-            }
-        });
+//        viewModel.getAnimation().observe(this, aBoolean -> {
+//            if( aBoolean )
+//            {
+//                loadingScreen.start();
+//            }
+//            else
+//            {
+//                loadingScreen.stop();
+//            }
+//        });
 
 
         /*Step 3 - listen response*/
@@ -253,6 +253,7 @@ public class AdminProductEditActivity extends AppCompatActivity {
         manufacturerValue.put("dell", 3);
         manufacturerValue.put("hp", 4);
         manufacturerValue.put("msi", 5);
+        manufacturerValue.put("lenovo", 6);
         int manufacturerPosition = manufacturerValue.get(manufacturer) != null ? manufacturerValue.get(manufacturer) : 0 ;
         spinnerManufacturer.setSelection(manufacturerPosition);
 
@@ -300,6 +301,7 @@ public class AdminProductEditActivity extends AppCompatActivity {
         txtContent.setText(content);
     }
 
+
     private void setupEvent()
     {
         /*BUTTON BACK*/
@@ -340,7 +342,7 @@ public class AdminProductEditActivity extends AppCompatActivity {
             /*Step 3 - make request*/
             viewModel.updateProductByID(headers, body);
 
-//            viewModel.getAnimation().observe(this, aBoolean -> {
+//            viewModel.getUpdateProductAnimationAnimation().observe(this, aBoolean -> {
 //                if( aBoolean.equals(true) )
 //                {
 //                    loadingScreen.start();
@@ -356,8 +358,6 @@ public class AdminProductEditActivity extends AppCompatActivity {
 
                 int result = response.getResult();
                 String msg = response.getMsg();
-                Log.d("AdminProduct", "result: " + result);
-                Log.d("AdminProduct", "msg: " + msg);
                 if( result == 1)
                 {
                     dialog.show(R.string.success, getString(R.string.update_product_successfully), R.drawable.ic_check);
@@ -369,7 +369,6 @@ public class AdminProductEditActivity extends AppCompatActivity {
             });
             dialog.btnOK.setOnClickListener(view1->{
                 dialog.close();
-                loadingScreen.stop();
             });
         });
 

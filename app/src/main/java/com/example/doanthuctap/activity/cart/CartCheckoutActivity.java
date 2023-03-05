@@ -266,7 +266,6 @@ public class CartCheckoutActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        System.out.println("auth user role: " + globalVariable.getAuthUser().getRole());
         /*BUTTON PLACE ORDER*/
         dialog.confirm();
         buttonPlaceOrder.setOnClickListener(view -> {

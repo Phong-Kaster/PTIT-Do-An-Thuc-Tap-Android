@@ -79,12 +79,18 @@ public class Option {
         manufacturer5.setIcon(R.drawable.logo_msi);
         manufacturer5.setName("MSi");
 
+        /*manufacturer MSi*/
+        Option manufacturer6 = new Option();
+        manufacturer6.setIcon(R.drawable.logo_lenovo);
+        manufacturer6.setName("Lenovo");
+
         options.add(manufacturer0);
         options.add(manufacturer1);
         options.add(manufacturer2);
         options.add(manufacturer3);
         options.add(manufacturer4);
         options.add(manufacturer5);
+        options.add(manufacturer6);
 
         return options;
     }

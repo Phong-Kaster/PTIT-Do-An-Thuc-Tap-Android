@@ -179,7 +179,7 @@ public interface HTTPRequest {
 
     /**
      *
-     * @param id is the cateogory's id
+     * @param id is the category's id
      * @return GetProductsWithCategoryIDResponse
      */
     @GET("categories/{id}")

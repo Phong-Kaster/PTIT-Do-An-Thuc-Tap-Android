@@ -212,6 +212,6 @@ public class Beautifier {
      */
     public static String getRootURL()
     {
-        return "http://192.168.1.221:8080/PTIT-Do-An-Thuc-Tap/assets/uploads/";
+        return "http://192.168.1.2:8080/PTIT-Do-An-Thuc-Tap/assets/uploads/";
     }
 }

@@ -65,7 +65,8 @@ public class LoginViewModel extends ViewModel {
             public void onFailure(@NonNull Call<LoginResponse> call, @NonNull Throwable t) {
 //                animation.setValue(false);
 //                object.setValue(null);
-                System.out.println("Auth with Google account - throwable: " + t.getMessage());
+                System.out.println("Auth with Account - throwable: " + t.getMessage());
+                System.out.println(t.getCause());
                 animation.setValue(false);
             }
         });
